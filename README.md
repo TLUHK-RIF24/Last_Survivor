@@ -6,6 +6,8 @@
 - Kaarel Kallas - Arendaja, disain [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/3)
 - Johann Vink - Arendaja, disain [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/4)
 
+Kanban tahvel [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/).
+
 # Idee kirjeldus ja ülevaade
 
 Arendame 2D roguelike wave-survivor tüüpi mängu Unity mängumootoris.
@@ -21,4 +23,8 @@ Rohkem valiku ja põhjuse kohta saab vaadata [siin](https://github.com/TLUHK-RIF
 
 Projekti peamised riskid on seotud inimfaktoriga ja tehniliste probleemidega. Riskianalüüsi saab vaadata [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/main/Projekti%20dokumentatsioon/Risikianal%C3%BC%C3%BCs.md).
 Riskide maandamiseks keskendume minimaalse töötava versiooni loomisele, regulaarsele testimisele ning selgele tööjaotusele.
+
+# Inspiratsioonid
+
+Inspiratsiooni kaust on [siin](https://github.com/TLUHK-RIF24/Last_Survivor/tree/main/Ideed).
 
