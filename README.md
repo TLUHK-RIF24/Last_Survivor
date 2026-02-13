@@ -33,3 +33,7 @@ Inspiratsiooni kaust on [siin](https://github.com/TLUHK-RIF24/Last_Survivor/tree
 Lisaks ülikoolis tehtud tööle on planeeritud iganädalased sprint koosolekud, kus käime läbi kõik tehtud ja tegemata ülesanded, päevikud, ja küsimused ning jagame uued ülesanded.
 Sprindikoosolekud toimuvad üldiselt kolmapäeveti kell 20.00, kuid kui kellelgi meeskonnaliikmetest pole võimalik osaleda, siis leiame uue sobiva aja. 
 Koosolekuteks koguneme Discordi-is.
+
+# Videotükikeste kaust
+
+[Kaust](https://drive.google.com/drive/folders/11NwVq1rIIpjQuZyjQvQLYjXcTtTNrRxM?usp=sharing).
