@@ -14,7 +14,8 @@ Täpne kirjeldus leiad [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/
 
 # Kasutatud tehnoloogiad ja tehnoloogia valik
 
-Otsustasime kasutada Unity mängumootorit, kuna see vastab meie projekti tehnilistele vajadustele, toetab hästi 2D mänguarendust ning sobib meie meeskonna oskustasemega
+Otsustasime kasutada Unity mängumootorit, kuna see vastab meie projekti tehnilistele vajadustele, toetab hästi 2D mänguarendust ning sobib meie meeskonna oskustasemega.
+Rohkem valiku ja põhjuse kohta saab vaadata [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/main/Projekti%20dokumentatsioon/M%C3%A4ngumootori_anal%C3%BC%C3%BCs.md).
 
 # Riskianalüüs
 
