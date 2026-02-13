@@ -12,7 +12,7 @@ Kanban tahvel [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/).
 
 Arendame 2D roguelike wave-survivor tüüpi mängu Unity mängumootoris.
 Mängu inspiratsiooniks on sarnased mängud nagu Vampire Survivors, kus mängija peab ellu jääma järjest raskemaks muutuvates vaenlaste lainetes.
-Täpne kirjeldus leiad [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/main/Projekti%20dokumentatsioon/Projekti_%C3%BClevaade.md).
+Täpse kirjelduse leiad [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/main/Projekti%20dokumentatsioon/Projekti_%C3%BClevaade.md).
 
 # Kasutatud tehnoloogiad ja tehnoloogia valik
 
