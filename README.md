@@ -27,6 +27,7 @@ Riskide maandamiseks keskendume minimaalse töötava versiooni loomisele, regula
 # Inspiratsioonid
 
 Inspiratsiooni kaust on [siin](https://github.com/TLUHK-RIF24/Last_Survivor/tree/main/Ideed).
+Figma inspiratsiooni board on [siin](https://www.figma.com/design/6iQ9S2FoqQhSoNVS1AwYKh/Last-Survivor?node-id=0-1&t=TtJexrWOAQZ0W6AL-1).
 
 # Tegevusplaan ja umbkaudne ajakava
 
