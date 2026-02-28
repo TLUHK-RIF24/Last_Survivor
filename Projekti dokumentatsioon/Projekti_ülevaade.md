@@ -25,6 +25,7 @@ Mäng on suunatud:
 - Teismelistele ja noortele täiskasvanutele
 - Mängijatele, kellele meeldivad kiire tempoga action-mängud
 - Roguelike ja arcade stiilis mängude huvilistele
+  Rohkem kasutaja ja persona kohta loe [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/02-homework/Projekti%20dokumentatsioon/Kasutaja_ülevaade.md)
 
 Mäng peab olema:
 - Lihtne õppida
