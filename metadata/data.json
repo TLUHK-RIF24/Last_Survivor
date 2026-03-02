@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-03-01T09:15:00Z",
+  "semester_start": "2026-02-02",
+  "semester_end": "2026-06-30",
+  "semester_id": "26K",
+  "code": "HKI5109.HK",
+  "short_code": "P_I",
+  "title": "Praktika I",
+  "credits": 10,
+  "assessment_form": "arvestus",
+  "work_context": {
+    "type": "practice_repo"
+  },
+  "learning_outcomes": [],
+  "prerequisites": [],
+  "vcs_use": "mandatory"
+}
