@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 432632893289445858}
   - component: {fileID: 6025219141120002331}
   - component: {fileID: 7710187277090701131}
+  - component: {fileID: 1251557611184196766}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -180,3 +181,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1251557611184196766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6921906802517932801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23601baf8ca869844ac604b837e60e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  moveSpeed: 2
