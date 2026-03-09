@@ -23,11 +23,9 @@ public class PlayerShooter : MonoBehaviour
     void TryShoot()
     {
         GameObject nearest = FindNearestEnemy();
+        if (nearest == null) return;
 
-        // If no enemy, shoot right (for testing)
-        Vector2 direction = nearest != null
-            ? (nearest.transform.position - transform.position).normalized
-            : Vector2.right;
+        Vector2 direction = (nearest.transform.position - transform.position).normalized;
 
         GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
