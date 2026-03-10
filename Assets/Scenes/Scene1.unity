@@ -437,7 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   spawnRules:
   - {fileID: 11400000, guid: 24266fadaa7fe704e88f4e790056679a, type: 2}
-  baseSpawnInterval: 3
+  baseSpawnInterval: 2
   minSpawnInterval: 0.3
   difficultyRampInterval: 30
 --- !u!4 &2075509786
