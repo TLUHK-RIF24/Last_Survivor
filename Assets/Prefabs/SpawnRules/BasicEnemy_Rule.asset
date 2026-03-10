@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417f9a2b5fe499742a5ba783d26ce4d1, type: 3}
   m_Name: BasicEnemy_Rule
   m_EditorClassIdentifier: Assembly-CSharp::SpawnRule
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 6921906802517932801, guid: 46bb1732e00b9ae48ac6d76fc2996f9a, type: 3}
   startTime: 0
   spawnWeight: 1
   spawnInClusters: 0
