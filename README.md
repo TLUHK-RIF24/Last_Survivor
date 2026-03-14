@@ -13,6 +13,13 @@ Kanban tahvel [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/).
 Arendame 2D roguelike wave-survivor tüüpi mängu Unity mängumootoris.
 Mängu inspiratsiooniks on sarnased mängud nagu Vampire Survivors, kus mängija peab ellu jääma järjest raskemaks muutuvates vaenlaste lainetes.
 Täpse kirjelduse leiad [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/main/Projekti%20dokumentatsioon/Projekti_%C3%BClevaade.md).
+Stsenaariumi leaid [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/02-homework/Projekti%20dokumentatsioon/Stsenaarium.md)
+
+# Mängumehhaanika
+
+Mängumehhanika keskmes on lihtne, kuid sõltuvust tekitav tsükkel: liikumine → ründamine → XP saamine → uuenduste valimine → raskuse kasv.
+Mängu on lihtne õppida, kuid ellujäämine muutub aja jooksul järjest keerulisemaks.
+Täpse kirjelduse leiad [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/02-homework/Projekti%20dokumentatsioon/Mängu_mehanism.md)
 
 # Kasutatud tehnoloogiad ja tehnoloogia valik
 
@@ -27,6 +34,7 @@ Riskide maandamiseks keskendume minimaalse töötava versiooni loomisele, regula
 # Inspiratsioonid
 
 Inspiratsiooni kaust on [siin](https://github.com/TLUHK-RIF24/Last_Survivor/tree/main/Ideed).
+Figma inspiratsiooni board on [siin](https://www.figma.com/design/6iQ9S2FoqQhSoNVS1AwYKh/Last-Survivor?node-id=0-1&t=TtJexrWOAQZ0W6AL-1).
 
 # Tegevusplaan ja umbkaudne ajakava
 
