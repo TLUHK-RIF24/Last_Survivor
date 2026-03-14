@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: a8b4e1aeabd15c74e839b921d8b9ccc2
+guid: 34101d4b42f3e9c47b85e43e8ffbd298
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8667466294985060184
-    second: tree_0
+      213: 2965929575433305523
+    second: snake-Sheet_0
+  - first:
+      213: 1520182768147342573
+    second: snake-Sheet_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,45 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tree_top
+      name: snake-Sheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 256
-        height: 192
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 21
+        y: 13
+        width: 32
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8a09eb0b359f6b780800000000000000
-      internalID: -8667466294985060184
+      spriteID: 3bdf6841c39192920800000000000000
+      internalID: 2965929575433305523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tree_trunk
+      name: snake-Sheet_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
-        width: 256
-        height: 63
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+        x: 82
+        y: 13
+        width: 32
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8cd3f10b7ead8d84b92cb0419029131f
-      internalID: -1536153167
+      spriteID: de4a7116c26c81510800000000000000
+      internalID: 1520182768147342573
       vertices: []
       indices: 
       edges: []
@@ -147,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f78b149b34db54f4782ff96a32e2df12
+    spriteID: c4b49126097486341a8ca1798e90e404
     internalID: 0
     vertices: []
     indices: 
@@ -155,14 +158,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":4.0},"gridSpriteSize":{"x":256.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      tree_1: -1958392203
-      tree_2: -221141802
-      tree_top: -8667466294985060184
-      tree_trunk: -1536153167
+      snake-Sheet_0: 2965929575433305523
+      snake-Sheet_1: 1520182768147342573
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

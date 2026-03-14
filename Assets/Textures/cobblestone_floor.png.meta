@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a8b4e1aeabd15c74e839b921d8b9ccc2
+guid: 051c02f4aa5872f40aa67ba17a972c5c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8667466294985060184
-    second: tree_0
+      213: -4088319066258326374
+    second: cobblestone_floor_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -47,11 +47,11 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tree_top
+      name: cobblestone_floor_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 256
-        height: 192
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8a09eb0b359f6b780800000000000000
-      internalID: -8667466294985060184
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tree_trunk
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1
-        width: 256
-        height: 63
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8cd3f10b7ead8d84b92cb0419029131f
-      internalID: -1536153167
+      spriteID: a9c3737587f5347c0800000000000000
+      internalID: -4088319066258326374
       vertices: []
       indices: 
       edges: []
@@ -147,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f78b149b34db54f4782ff96a32e2df12
+    spriteID: c7ea86021ebf9d64b951569b4744c7df
     internalID: 0
     vertices: []
     indices: 
@@ -155,14 +133,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":4.0},"gridSpriteSize":{"x":256.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      tree_1: -1958392203
-      tree_2: -221141802
-      tree_top: -8667466294985060184
-      tree_trunk: -1536153167
+      cobblestone_floor_0: -4088319066258326374
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
