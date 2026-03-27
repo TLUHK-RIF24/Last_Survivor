@@ -4330,7 +4330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   spawnRules:
   - {fileID: 11400000, guid: 24266fadaa7fe704e88f4e790056679a, type: 2}
-  baseSpawnInterval: 1
+  baseSpawnInterval: 2
   minSpawnInterval: 0.3
   difficultyRampInterval: 30
 --- !u!4 &2075509786
@@ -4442,7 +4442,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1731419616}
   - {fileID: 962790067}
-  - {fileID: 7491937734416478493}
   - {fileID: 2075509786}
   - {fileID: 107711286}
   - {fileID: 1169109295}
