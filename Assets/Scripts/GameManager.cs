@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
-
+    // TESTIMISEKS, VAJUTADES L, NAITAB LEVEL UP EKRAANI UI'D
     void Update()
     {
         if (Keyboard.current.lKey.wasPressedThisFrame)
