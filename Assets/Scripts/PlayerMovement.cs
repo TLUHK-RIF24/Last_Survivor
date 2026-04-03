@@ -3,8 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float movespeed;
-    
     public Rigidbody2D rb;
 
     private Vector2 moveDirection;
@@ -35,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        rb.linearVelocity = new Vector2(moveDirection.x * movespeed, moveDirection.y * movespeed);
+        float speed = PlayerStats.Instance.moveSpeed;
+        rb.linearVelocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
     }
 }
