@@ -3,8 +3,6 @@ using UnityEngine;
 public class PlayerShooter : MonoBehaviour
 {
     [Header("Shooting Settings")]
-    public float fireRate = 1.5f;
-    public float projectileSpeed = 10f;
     public GameObject projectilePrefab;
 
     private float fireTimer = 0f;
@@ -13,7 +11,7 @@ public class PlayerShooter : MonoBehaviour
     {
         fireTimer += Time.deltaTime;
 
-        if (fireTimer >= fireRate)
+        if (fireTimer >= PlayerStats.Instance.fireRate)
         {
             fireTimer = 0f;
             TryShoot();
@@ -29,7 +27,7 @@ public class PlayerShooter : MonoBehaviour
 
         GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = direction * projectileSpeed;
+        rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
