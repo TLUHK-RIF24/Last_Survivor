@@ -4970,7 +4970,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e270640b300104a8935cda0def40c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
-  allUpgrades: []
+  allUpgrades:
+  - {fileID: 11400000, guid: ce22c9351578b3d418662b3539645b57, type: 2}
+  - {fileID: 11400000, guid: 8332fecfde1fe214fbc6ce567e6cc942, type: 2}
+  - {fileID: 11400000, guid: 82553b6af4a9dad478230efd2d7c9ba7, type: 2}
+  - {fileID: 11400000, guid: 3db3ee0aff6ea2a44b02bc66fc3809c5, type: 2}
+  - {fileID: 11400000, guid: f9bb82a0f46901149b79acbf86e76fcc, type: 2}
+  - {fileID: 11400000, guid: b324dcad6ae700341b3853fb0ef5006b, type: 2}
+  - {fileID: 11400000, guid: eaa6758c28275814285233b10715f35a, type: 2}
+  - {fileID: 11400000, guid: e7c90172722e64643be3a455b742c20c, type: 2}
+  - {fileID: 11400000, guid: cd9013fcf478f594e87ca2a03e353f0c, type: 2}
+  - {fileID: 11400000, guid: bc2ee73ae1b387c44bf573a49059aa3d, type: 2}
+  - {fileID: 11400000, guid: 146344ce8754de143a3f45cc3dbf1be1, type: 2}
+  - {fileID: 11400000, guid: 0de4d599f54818d4f99ed559eaae19e9, type: 2}
+  - {fileID: 11400000, guid: 6fb138d36dfd12e489c3989c649588b0, type: 2}
 --- !u!4 &1214997741
 Transform:
   m_ObjectHideFlags: 0
