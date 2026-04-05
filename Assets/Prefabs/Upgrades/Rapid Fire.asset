@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283c26f1c5c92884c84bf5e9cc0378b4, type: 3}
   m_Name: Rapid Fire
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDefinition
-  upgradeName: 
+  upgradeName: Rapid Fire
   description: Unleash bullets even faster
   icon: {fileID: 0}
   rarity: 1
