@@ -7,24 +7,28 @@ public class PlayerShooter : MonoBehaviour
 
     private float fireTimer = 0f;
     private ShotgunAbility shotgun;
+    private PiercingArrowAbility piercing;
+    private BouncingShotAbility bouncing;
 
     void Start()
     {
         shotgun = GetComponent<ShotgunAbility>();
+        piercing = GetComponent<PiercingArrowAbility>();
+        bouncing = GetComponent<BouncingShotAbility>();
     }
 
     void Update()
     {
         fireTimer += Time.deltaTime;
-
         if (fireTimer >= PlayerStats.Instance.fireRate)
         {
             fireTimer = 0f;
             TryShoot();
         }
 
-        if (shotgun == null)
-            shotgun = GetComponent<ShotgunAbility>();
+        if (shotgun == null) shotgun = GetComponent<ShotgunAbility>();
+        if (piercing == null) piercing = GetComponent<PiercingArrowAbility>();
+        if (bouncing == null) bouncing = GetComponent<BouncingShotAbility>();
     }
 
     void TryShoot()
@@ -34,14 +38,10 @@ public class PlayerShooter : MonoBehaviour
 
         Vector2 direction = (nearest.transform.position - transform.position).normalized;
 
-        if (shotgun != null)
-        {
-            shotgun.FireShotgun(direction, projectilePrefab);
-        }
-        else
-        {
-            FireSingleBullet(direction);
-        }
+        if (shotgun != null) shotgun.FireShotgun(direction, projectilePrefab);
+        else if (piercing != null) piercing.FirePiercingArrow(direction);
+        else if (bouncing != null) bouncing.FireBouncingShot(direction);
+        else FireSingleBullet(direction);
     }
 
     void FireSingleBullet(Vector2 direction)
@@ -49,27 +49,20 @@ public class PlayerShooter : MonoBehaviour
         GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
-
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    GameObject FindNearestEnemy()
+    public GameObject FindNearestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject nearest = null;
         float minDist = Mathf.Infinity;
-
         foreach (GameObject enemy in enemies)
         {
             float dist = Vector2.Distance(transform.position, enemy.transform.position);
-            if (dist < minDist)
-            {
-                minDist = dist;
-                nearest = enemy;
-            }
+            if (dist < minDist) { minDist = dist; nearest = enemy; }
         }
-
         return nearest;
     }
 }
