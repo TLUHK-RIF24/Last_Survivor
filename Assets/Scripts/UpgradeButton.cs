@@ -21,13 +21,13 @@ public class UpgradeButton : MonoBehaviour
         upgradeNameText.text = upgrade.upgradeName;
         descriptionText.text = upgrade.description;
         rarityText.text = upgrade.rarity.ToString().ToUpper();
-        levelText.text = currentLevel == 0 ? "✦ NEW ✦" : $"Level {currentLevel} → {currentLevel + 1}";
+        levelText.text = currentLevel == 0 ? "NEW!" : $"Level {currentLevel} -> {currentLevel + 1}";
 
-        if (upgrade.icon != null)
+        if (upgrade.icon != null && iconImage != null)
             iconImage.sprite = upgrade.icon;
 
-        Color rarityColor = GetRarityColor(upgrade.rarity);
-        rarityBanner.color = rarityColor;
+        if (rarityBanner != null)
+            rarityBanner.color = GetRarityColor(upgrade.rarity);
     }
 
     Color GetRarityColor(Rarity rarity)
