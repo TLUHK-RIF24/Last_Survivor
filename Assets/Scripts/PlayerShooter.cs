@@ -6,6 +6,12 @@ public class PlayerShooter : MonoBehaviour
     public GameObject projectilePrefab;
 
     private float fireTimer = 0f;
+    private ShotgunAbility shotgun;
+
+    void Start()
+    {
+        shotgun = GetComponent<ShotgunAbility>();
+    }
 
     void Update()
     {
@@ -16,6 +22,9 @@ public class PlayerShooter : MonoBehaviour
             fireTimer = 0f;
             TryShoot();
         }
+
+        if (shotgun == null)
+            shotgun = GetComponent<ShotgunAbility>();
     }
 
     void TryShoot()
@@ -25,6 +34,18 @@ public class PlayerShooter : MonoBehaviour
 
         Vector2 direction = (nearest.transform.position - transform.position).normalized;
 
+        if (shotgun != null)
+        {
+            shotgun.FireShotgun(direction, projectilePrefab);
+        }
+        else
+        {
+            FireSingleBullet(direction);
+        }
+    }
+
+    void FireSingleBullet(Vector2 direction)
+    {
         GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
