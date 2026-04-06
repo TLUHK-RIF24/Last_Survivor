@@ -51,7 +51,8 @@ public class BoomerangProjectile : MonoBehaviour
         if (hitEnemies.Contains(other.gameObject)) return;
 
         hitEnemies.Add(other.gameObject);
-        EnemyHealth health = other.GetComponent<EnemyHealth>();
-        if (health != null) health.TakeDamage(damage);
+
+        BaseEnemy enemy = other.GetComponent<BaseEnemy>();
+        if (enemy != null) enemy.TakeDamage(damage);
     }
 }

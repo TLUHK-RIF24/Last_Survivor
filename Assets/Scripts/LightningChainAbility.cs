@@ -51,8 +51,8 @@ public class LightningChainAbility : MonoBehaviour
 
         alreadyHit.Add(target);
 
-        EnemyHealth health = target.GetComponent<EnemyHealth>();
-        if (health != null) health.TakeDamage(currentDamage);
+        BaseEnemy enemy = target.GetComponent<BaseEnemy>();
+        if (enemy != null) enemy.TakeDamage(currentDamage);
 
         SpawnLightningVisual(fromPos, target.transform.position);
 

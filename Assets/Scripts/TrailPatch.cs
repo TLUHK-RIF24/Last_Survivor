@@ -42,10 +42,10 @@ public class TrailPatch : MonoBehaviour
         if (!other.CompareTag("Enemy")) return;
         if (hitCooldowns.ContainsKey(other.gameObject)) return;
 
-        EnemyHealth health = other.GetComponent<EnemyHealth>();
-        if (health != null)
+        BaseEnemy enemy = other.GetComponent<BaseEnemy>();
+        if (enemy != null)
         {
-            health.TakeDamage(damage);
+            enemy.TakeDamage(damage);
             hitCooldowns[other.gameObject] = damageCooldown;
         }
     }

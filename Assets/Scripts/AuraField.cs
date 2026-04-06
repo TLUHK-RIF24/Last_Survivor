@@ -37,8 +37,8 @@ public class AuraField : MonoBehaviour
         {
             if (hit.CompareTag("Enemy"))
             {
-                EnemyHealth health = hit.GetComponent<EnemyHealth>();
-                if (health != null) health.TakeDamage(damage);
+                BaseEnemy enemy = hit.GetComponent<BaseEnemy>();
+                if (enemy != null) enemy.TakeDamage(damage);
             }
         }
     }
