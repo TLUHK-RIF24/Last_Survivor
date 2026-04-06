@@ -15,10 +15,12 @@ public class BouncingShotAbility : MonoBehaviour
     {
         GameObject bullet = new GameObject("BouncingBullet");
         bullet.transform.position = transform.position;
+        bullet.transform.localScale = new Vector3(0.3f, 0.3f, 1f);
 
         SpriteRenderer sr = bullet.AddComponent<SpriteRenderer>();
+        sr.sprite = SpriteHelper.CreateCircle();
         sr.color = new Color(0.3f, 0.8f, 1f);
-        bullet.transform.localScale = new Vector3(0.25f, 0.25f, 1f);
+        sr.sortingOrder = 2;
 
         Rigidbody2D rb = bullet.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0f;

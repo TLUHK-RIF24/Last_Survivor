@@ -29,7 +29,10 @@ public class BoomerangProjectile : MonoBehaviour
             transform.Rotate(0, 0, 360 * Time.deltaTime);
 
             if (Vector2.Distance(transform.position, startPos) >= maxDistance)
+            {
                 returning = true;
+                hitEnemies.Clear();
+            }
         }
         else
         {
@@ -50,8 +53,5 @@ public class BoomerangProjectile : MonoBehaviour
         hitEnemies.Add(other.gameObject);
         EnemyHealth health = other.GetComponent<EnemyHealth>();
         if (health != null) health.TakeDamage(damage);
-
-        // clear hit list when returning so it can hit again on the way back
-        if (returning) hitEnemies.Clear();
     }
 }

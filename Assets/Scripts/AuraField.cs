@@ -4,9 +4,8 @@ public class AuraField : MonoBehaviour
 {
     private float damage = 10f;
     private float damageInterval = 1f;
-    private float radius = 2f;
+    private float radius = 1.2f;
     private float timer = 0f;
-
     private GameObject auraVisual;
 
     void Start()
@@ -27,7 +26,7 @@ public class AuraField : MonoBehaviour
     public void LevelUp(int level)
     {
         damage = 10f + (level - 1) * 8f;
-        radius = 2f + (level - 1) * 0.3f;
+        radius = 1.2f + (level - 1) * 0.25f;
         UpdateVisual();
     }
 
@@ -39,8 +38,7 @@ public class AuraField : MonoBehaviour
             if (hit.CompareTag("Enemy"))
             {
                 EnemyHealth health = hit.GetComponent<EnemyHealth>();
-                if (health != null)
-                    health.TakeDamage(damage);
+                if (health != null) health.TakeDamage(damage);
             }
         }
     }
@@ -52,9 +50,9 @@ public class AuraField : MonoBehaviour
         auraVisual.transform.localPosition = Vector3.zero;
 
         SpriteRenderer sr = auraVisual.AddComponent<SpriteRenderer>();
-        sr.sprite = CreateCircleSprite();
-        sr.color = new Color(0.5f, 0f, 1f, 0.2f); 
-        sr.sortingOrder = -1;
+        sr.sprite = SpriteHelper.CreateCircle(128);
+        sr.color = new Color(0.5f, 0f, 1f, 0.25f);
+        sr.sortingOrder = 1;
 
         UpdateVisual();
     }
@@ -63,26 +61,5 @@ public class AuraField : MonoBehaviour
     {
         if (auraVisual != null)
             auraVisual.transform.localScale = Vector3.one * radius * 2f;
-    }
-
-    Sprite CreateCircleSprite()
-    {
-        
-        int size = 128;
-        Texture2D tex = new Texture2D(size, size);
-        Vector2 center = new Vector2(size / 2, size / 2);
-        float r = size / 2;
-
-        for (int x = 0; x < size; x++)
-        {
-            for (int y = 0; y < size; y++)
-            {
-                float dist = Vector2.Distance(new Vector2(x, y), center);
-                tex.SetPixel(x, y, dist <= r ? Color.white : Color.clear);
-            }
-        }
-
-        tex.Apply();
-        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f));
     }
 }

@@ -8,7 +8,6 @@ public class OrbitalAbility : MonoBehaviour
     private float orbitSpeed = 180f;
     private float damage = 15f;
     private float damageCooldown = 0.5f;
-
     private List<GameObject> orbs = new List<GameObject>();
     private float angle = 0f;
 
@@ -45,20 +44,17 @@ public class OrbitalAbility : MonoBehaviour
         orbs.Clear();
 
         for (int i = 0; i < orbCount; i++)
-        {
-            GameObject orb = CreateOrbVisual();
-            orbs.Add(orb);
-        }
+            orbs.Add(CreateOrbVisual());
     }
 
     GameObject CreateOrbVisual()
     {
         GameObject orb = new GameObject("Orb");
-        orb.tag = "Untagged";
 
         SpriteRenderer sr = orb.AddComponent<SpriteRenderer>();
-        sr.sprite = CreateCircleSprite();
-        sr.color = new Color(1f, 0.6f, 0f, 1f); 
+        sr.sprite = SpriteHelper.CreateCircle();
+        sr.color = new Color(1f, 0.6f, 0f, 1f);
+        sr.sortingOrder = 2;
         orb.transform.localScale = Vector3.one * 0.4f;
 
         CircleCollider2D col = orb.AddComponent<CircleCollider2D>();
@@ -69,23 +65,5 @@ public class OrbitalAbility : MonoBehaviour
         damager.damageCooldown = damageCooldown;
 
         return orb;
-    }
-
-    Sprite CreateCircleSprite()
-    {
-        int size = 64;
-        Texture2D tex = new Texture2D(size, size);
-        Vector2 center = new Vector2(size / 2, size / 2);
-        float r = size / 2;
-
-        for (int x = 0; x < size; x++)
-            for (int y = 0; y < size; y++)
-            {
-                float dist = Vector2.Distance(new Vector2(x, y), center);
-                tex.SetPixel(x, y, dist <= r ? Color.white : Color.clear);
-            }
-
-        tex.Apply();
-        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f));
     }
 }

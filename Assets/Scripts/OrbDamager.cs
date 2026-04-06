@@ -5,7 +5,6 @@ public class OrbDamager : MonoBehaviour
 {
     public float damage = 15f;
     public float damageCooldown = 0.5f;
-
     private Dictionary<GameObject, float> hitCooldowns = new Dictionary<GameObject, float>();
 
     void Update()
@@ -14,8 +13,7 @@ public class OrbDamager : MonoBehaviour
         foreach (GameObject key in keys)
         {
             hitCooldowns[key] -= Time.deltaTime;
-            if (hitCooldowns[key] <= 0f)
-                hitCooldowns.Remove(key);
+            if (hitCooldowns[key] <= 0f) hitCooldowns.Remove(key);
         }
     }
 

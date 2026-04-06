@@ -5,31 +5,34 @@ public class TrailPatch : MonoBehaviour
 {
     private float damage;
     private float duration;
+    private float elapsed = 0f;
     private float damageCooldown = 0.5f;
     private Dictionary<GameObject, float> hitCooldowns = new Dictionary<GameObject, float>();
+    private SpriteRenderer sr;
 
     public void Initialize(float dmg, float dur)
     {
         damage = dmg;
         duration = dur;
+        sr = GetComponent<SpriteRenderer>();
         Destroy(gameObject, dur);
     }
 
     void Update()
     {
-        var keys = new System.Collections.Generic.List<GameObject>(hitCooldowns.Keys);
+        elapsed += Time.deltaTime;
+
+        List<GameObject> keys = new List<GameObject>(hitCooldowns.Keys);
         foreach (var key in keys)
         {
             hitCooldowns[key] -= Time.deltaTime;
             if (hitCooldowns[key] <= 0f) hitCooldowns.Remove(key);
         }
 
-        // fade out over time
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (sr != null)
         {
             Color c = sr.color;
-            c.a = Mathf.Lerp(0.5f, 0f, 1f - (duration / duration));
+            c.a = Mathf.Lerp(0.5f, 0f, elapsed / duration);
             sr.color = c;
         }
     }

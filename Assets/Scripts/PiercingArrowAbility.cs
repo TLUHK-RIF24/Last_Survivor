@@ -15,10 +15,12 @@ public class PiercingArrowAbility : MonoBehaviour
     {
         GameObject arrow = new GameObject("PiercingArrow");
         arrow.transform.position = transform.position;
+        arrow.transform.localScale = new Vector3(0.2f, 0.6f, 1f);
 
         SpriteRenderer sr = arrow.AddComponent<SpriteRenderer>();
+        sr.sprite = SpriteHelper.CreateCircle();
         sr.color = new Color(0.4f, 1f, 0.4f);
-        arrow.transform.localScale = new Vector3(0.15f, 0.5f, 1f);
+        sr.sortingOrder = 2;
 
         Rigidbody2D rb = arrow.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0f;

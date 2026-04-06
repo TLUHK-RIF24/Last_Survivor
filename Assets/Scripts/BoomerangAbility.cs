@@ -43,9 +43,12 @@ public class BoomerangAbility : MonoBehaviour
 
             GameObject boomerang = new GameObject("Boomerang");
             boomerang.transform.position = transform.position;
+            boomerang.transform.localScale = new Vector3(0.4f, 0.4f, 1f);
 
             SpriteRenderer sr = boomerang.AddComponent<SpriteRenderer>();
+            sr.sprite = SpriteHelper.CreateCircle();
             sr.color = new Color(1f, 0.8f, 0.2f);
+            sr.sortingOrder = 2;
 
             Rigidbody2D rb = boomerang.AddComponent<Rigidbody2D>();
             rb.gravityScale = 0f;

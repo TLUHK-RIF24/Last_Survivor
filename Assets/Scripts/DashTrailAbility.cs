@@ -7,13 +7,11 @@ public class DashTrailAbility : MonoBehaviour
     private float trailInterval = 0.15f;
     private float trailTimer = 0f;
     private float trailRadius = 0.8f;
-    private Vector2 lastPosition;
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        lastPosition = transform.position;
     }
 
     public void LevelUp(int level)
@@ -25,7 +23,6 @@ public class DashTrailAbility : MonoBehaviour
 
     void Update()
     {
-        // only spawn trail if player is moving
         if (rb == null || rb.linearVelocity.magnitude < 0.5f) return;
 
         trailTimer += Time.deltaTime;
@@ -40,14 +37,16 @@ public class DashTrailAbility : MonoBehaviour
     {
         GameObject patch = new GameObject("TrailPatch");
         patch.transform.position = transform.position;
+        patch.transform.localScale = Vector3.one * trailRadius * 2f;
 
         SpriteRenderer sr = patch.AddComponent<SpriteRenderer>();
+        sr.sprite = SpriteHelper.CreateCircle();
         sr.color = new Color(0.8f, 0.2f, 0.2f, 0.5f);
-        patch.transform.localScale = Vector3.one * trailRadius * 2f;
+        sr.sortingOrder = 1;
 
         CircleCollider2D col = patch.AddComponent<CircleCollider2D>();
         col.isTrigger = true;
-        col.radius = trailRadius;
+        col.radius = 0.5f;
 
         TrailPatch tp = patch.AddComponent<TrailPatch>();
         tp.Initialize(damage, trailDuration);
