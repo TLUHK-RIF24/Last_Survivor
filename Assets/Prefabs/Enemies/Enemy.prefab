@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 434456583681872882}
   - component: {fileID: 1787786088639898898}
-  - component: {fileID: 432632893289445858}
   - component: {fileID: 6025219141120002331}
   - component: {fileID: 7710187277090701131}
-  - component: {fileID: 1251557611184196766}
   - component: {fileID: 4085764172356757811}
   m_Layer: 0
   m_Name: Enemy
@@ -96,19 +94,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &432632893289445858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6921906802517932801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0179d92db3f30d46a7f37785f6d63d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 20
 --- !u!61 &6025219141120002331
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -182,19 +167,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1251557611184196766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6921906802517932801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23601baf8ca869844ac604b837e60e9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  moveSpeed: 2
 --- !u!95 &4085764172356757811
 Animator:
   serializedVersion: 7
