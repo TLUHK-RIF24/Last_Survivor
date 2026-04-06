@@ -7,17 +7,37 @@ public class GameManager : MonoBehaviour
 
     private int currentLevel = 1;
 
+    [Header("XP Settings")]
+    private float currentXP = 0f;
+    private float xpToNextLevel = 100f;
+    [SerializeField] private float baseXP = 100f;
+    [SerializeField] private float xpScaling = 1.4f;
+
     void Awake()
     {
         Instance = this;
     }
-    // TESTIMISEKS, VAJUTADES L, NAITAB LEVEL UP EKRAANI UI'D
+
     void Update()
     {
         if (Keyboard.current.lKey.wasPressedThisFrame)
-            TriggerLevelUp();
+            AddXP(xpToNextLevel); // testimiseks täidab kohe XP bari
     }
-    // DENISSI XP SUSTEEM CALLIB SELLE KUI MANGIJA SAAB LEVEL UPI
+
+    public void AddXP(float amount)
+    {
+        currentXP += amount;
+
+        if (currentXP >= xpToNextLevel)
+        {
+            currentXP -= xpToNextLevel;
+            xpToNextLevel = Mathf.Round(baseXP * Mathf.Pow(xpScaling, currentLevel));
+            TriggerLevelUp();
+        }
+
+        XPBarUI.Instance?.UpdateBar(currentXP, xpToNextLevel);
+    }
+
     public void TriggerLevelUp()
     {
         currentLevel++;
@@ -25,6 +45,6 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetCurrentLevel() => currentLevel;
-
-    
+    public float GetCurrentXP() => currentXP;
+    public float GetXPToNextLevel() => xpToNextLevel;
 }
