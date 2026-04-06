@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
+    [SerializeField] private float xpReward = 10f;
     private float currentHealth;
 
     void Start()
@@ -22,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+    GameManager.Instance.AddXP(xpReward);
+    Destroy(gameObject);
     }
 }
