@@ -3,27 +3,23 @@ using System.Collections.Generic;
 
 public class LightningChainAbility : MonoBehaviour
 {
-    private float damage = 25f;
-    private int chainJumps = 2;
+    private float damage     = 25f;
+    private int   chainJumps = 2;
     private float chainRange = 4f;
-    private float cooldown = 2.5f;
-    private float timer = 0f;
+    private float cooldown   = 2.5f;
+    private float timer      = 0f;
 
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= cooldown)
-        {
-            timer = 0f;
-            TriggerLightning();
-        }
+        if (timer >= cooldown) { timer = 0f; TriggerLightning(); }
     }
 
     public void LevelUp(int level)
     {
-        damage = 25f + (level - 1) * 15f;
+        damage     = 25f + (level - 1) * 15f;
         chainJumps = 1 + level;
-        cooldown = Mathf.Max(0.8f, 2.5f - (level - 1) * 0.2f);
+        cooldown   = Mathf.Max(0.8f, 2.5f - (level - 1) * 0.2f);
     }
 
     void TriggerLightning()
@@ -31,8 +27,8 @@ public class LightningChainAbility : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemies.Length == 0) return;
 
-        GameObject first = null;
-        float minDist = Mathf.Infinity;
+        GameObject first   = null;
+        float      minDist = Mathf.Infinity;
         foreach (GameObject e in enemies)
         {
             float d = Vector2.Distance(transform.position, e.transform.position);
@@ -40,9 +36,7 @@ public class LightningChainAbility : MonoBehaviour
         }
 
         if (first == null) return;
-
-        List<GameObject> hit = new List<GameObject>();
-        ChainLightning(first, hit, chainJumps, damage, transform.position);
+        ChainLightning(first, new List<GameObject>(), chainJumps, damage, transform.position);
     }
 
     void ChainLightning(GameObject target, List<GameObject> alreadyHit, int jumpsLeft, float currentDamage, Vector3 fromPos)
@@ -59,8 +53,8 @@ public class LightningChainAbility : MonoBehaviour
         if (jumpsLeft <= 0) return;
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject next = null;
-        float minDist = Mathf.Infinity;
+        GameObject   next    = null;
+        float        minDist = Mathf.Infinity;
 
         foreach (GameObject e in enemies)
         {
@@ -76,18 +70,17 @@ public class LightningChainAbility : MonoBehaviour
     void SpawnLightningVisual(Vector3 fromPos, Vector3 toPos)
     {
         GameObject flash = new GameObject("LightningFlash");
+        Vector3    diff  = toPos - fromPos;
+        float      dist  = diff.magnitude;
+        float      angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
-        Vector3 diff = toPos - fromPos;
-        float dist = diff.magnitude;
-        float angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-
-        flash.transform.position = fromPos + diff * 0.5f;
-        flash.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        flash.transform.position   = fromPos + diff * 0.5f;
+        flash.transform.rotation   = Quaternion.AngleAxis(angle, Vector3.forward);
         flash.transform.localScale = new Vector3(dist, 0.15f, 1f);
 
         SpriteRenderer sr = flash.AddComponent<SpriteRenderer>();
-        sr.sprite = SpriteHelper.CreateSquare();
-        sr.color = new Color(0.6f, 0.8f, 1f, 0.9f);
+        sr.sprite       = SpriteHelper.CreateSquare();
+        sr.color        = new Color(0.6f, 0.8f, 1f, 0.9f);
         sr.sortingOrder = 2;
 
         Destroy(flash, 0.12f);

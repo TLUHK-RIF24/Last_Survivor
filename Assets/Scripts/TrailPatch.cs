@@ -12,9 +12,9 @@ public class TrailPatch : MonoBehaviour
 
     public void Initialize(float dmg, float dur)
     {
-        damage = dmg;
+        damage   = dmg;
         duration = dur;
-        sr = GetComponent<SpriteRenderer>();
+        sr       = GetComponent<SpriteRenderer>();
         Destroy(gameObject, dur);
     }
 
@@ -32,7 +32,7 @@ public class TrailPatch : MonoBehaviour
         if (sr != null)
         {
             Color c = sr.color;
-            c.a = Mathf.Lerp(0.5f, 0f, elapsed / duration);
+            c.a     = Mathf.Lerp(0.5f, 0f, elapsed / duration);
             sr.color = c;
         }
     }
