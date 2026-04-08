@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: sand_end_0
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
   m_Sprite: {fileID: 5043100387208184895, guid: 02125a56b3aa70341a03243130a63335, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.57254905}
   m_Transform:
     e00: 1
     e01: 0
