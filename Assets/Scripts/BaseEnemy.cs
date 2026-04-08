@@ -1,7 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Replaces both EnemyHealth and EnemyMovement.
 /// Do NOT attach this directly to prefabs — attach one of the EnemyAI_X subclasses.
-
+/// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class BaseEnemy : MonoBehaviour
 {
@@ -11,16 +13,21 @@ public class BaseEnemy : MonoBehaviour
     public float baseDamage    = 10f;
     public float baseXPValue   = 5f;
 
+    [Header("XP Drop")]
+    [SerializeField] private GameObject xpOrbPrefab;
+
     [Header("Hit Flash")]
     public SpriteRenderer spriteRenderer;
     public Color  damageFlashColor = Color.red;
     public float  damageFlashTime  = 0.08f;
 
+    // ── Set by the pool on every spawn ───────────────────────────────────────
     [HideInInspector] public float maxHealth;
     [HideInInspector] public float moveSpeed;
     [HideInInspector] public float damage;
     [HideInInspector] public float xpValue;
 
+    // ── Internals ────────────────────────────────────────────────────────────
     protected float       currentHealth;
     protected Transform   player;
     protected Rigidbody2D rb;
@@ -32,6 +39,9 @@ public class BaseEnemy : MonoBehaviour
     private float contactDamageTimer;
     private const float CONTACT_INTERVAL = 0.5f;
 
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Called by EnemyPool every time this object is pulled from the pool
+    // ─────────────────────────────────────────────────────────────────────────
     public virtual void OnSpawn(float hpMult, float speedMult, float damageMult)
     {
         maxHealth  = baseMaxHealth * hpMult;
@@ -57,9 +67,12 @@ public class BaseEnemy : MonoBehaviour
         OnSpawnExtra();
     }
 
+    /// <summary>Override in subclass for per-type spawn init.</summary>
     protected virtual void OnSpawnExtra() { }
 
-
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Unity lifecycle
+    // ─────────────────────────────────────────────────────────────────────────
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -75,11 +88,17 @@ public class BaseEnemy : MonoBehaviour
         UpdateAI();
     }
 
+    // ─────────────────────────────────────────────────────────────────────────
+    //  AI hook — override in subclasses
+    // ─────────────────────────────────────────────────────────────────────────
     protected virtual void UpdateAI()
     {
         MoveTowardsPlayer();
     }
 
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Shared movement helpers for subclasses
+    // ─────────────────────────────────────────────────────────────────────────
     protected void MoveTowardsPlayer()
     {
         if (player == null) return;
@@ -99,6 +118,9 @@ public class BaseEnemy : MonoBehaviour
         return Vector2.Distance(rb.position, player.position);
     }
 
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Health / damage
+    // ─────────────────────────────────────────────────────────────────────────
     public void TakeDamage(float amount)
     {
         if (!gameObject.activeSelf) return;
@@ -109,11 +131,16 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void Die()
     {
+        // Tell the spawner so kill-rate tracking stays accurate
         if (EnemySpawner.Instance != null)
             EnemySpawner.Instance.OnEnemyDied(this);
 
-        // ── Hook your XP / loot system here ──
-        // XPManager.Instance?.SpawnGem(transform.position, xpValue);
+        // Spawn XP orb — xpValue scales automatically with game time
+        if (xpOrbPrefab != null)
+        {
+            GameObject orb = Instantiate(xpOrbPrefab, transform.position, Quaternion.identity);
+            orb.GetComponent<XPOrb>()?.SetXPValue(xpValue);
+        }
 
         ReturnToPool();
     }
@@ -124,16 +151,22 @@ public class BaseEnemy : MonoBehaviour
         EnemyPool.Instance?.Return(this);
     }
 
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Contact damage to player
+    // ─────────────────────────────────────────────────────────────────────────
     protected virtual void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
         if (contactDamageTimer < CONTACT_INTERVAL) return;
         contactDamageTimer = 0f;
 
-        // ── Hook your player health system here ──
+        // Hook your player health system here:
         // PlayerHealth.Instance?.TakeDamage(damage);
     }
 
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Damage flash
+    // ─────────────────────────────────────────────────────────────────────────
     private void TriggerFlash()
     {
         if (spriteRenderer == null) return;
