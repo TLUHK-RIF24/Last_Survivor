@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,7 +22,14 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Keyboard.current.lKey.wasPressedThisFrame)
-            AddXP(xpToNextLevel); // testimiseks täidab kohe XP bari
+            AddXP(xpToNextLevel);
+
+        // TESTIMISEKS
+        if (Keyboard.current.hKey.wasPressedThisFrame)
+            PlayerHealth.Instance?.TakeDamage(25f);
+
+        if (Keyboard.current.kKey.wasPressedThisFrame)
+            PlayerHealth.Instance?.TakeDamage(999f);
     }
 
     public void AddXP(float amount)
@@ -42,6 +50,12 @@ public class GameManager : MonoBehaviour
     {
         currentLevel++;
         LevelUpUI.Instance.Show(UpgradeManager.Instance.GetUpgradeChoices());
+    }
+
+    public void ResetGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public int GetCurrentLevel() => currentLevel;
