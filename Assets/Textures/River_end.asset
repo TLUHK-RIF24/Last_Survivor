@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: River_end
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 2856026943716158582, guid: b9a313795c1813749b2312540f69a0b2, type: 3}
+  - {fileID: 248597480, guid: b9a313795c1813749b2312540f69a0b2, type: 3}
+  - {fileID: -1847063534, guid: b9a313795c1813749b2312540f69a0b2, type: 3}
+  - {fileID: -1280373090, guid: b9a313795c1813749b2312540f69a0b2, type: 3}
+  - {fileID: -1635781500, guid: b9a313795c1813749b2312540f69a0b2, type: 3}
+  - {fileID: 1970881574, guid: b9a313795c1813749b2312540f69a0b2, type: 3}
+  - {fileID: -1387881719, guid: b9a313795c1813749b2312540f69a0b2, type: 3}
+  - {fileID: -797123613, guid: b9a313795c1813749b2312540f69a0b2, type: 3}
+  m_MinSpeed: 10
+  m_MaxSpeed: 10
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
