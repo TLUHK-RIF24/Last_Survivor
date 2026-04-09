@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 public class BouncingBullet : MonoBehaviour
 {
-    private float damage;
-    private int bouncesLeft;
-    private float bounceRange = 6f;
-    private List<GameObject> hitEnemies = new List<GameObject>();
-    private Rigidbody2D rb;
+    private float            damage;
+    private int              bouncesLeft;
+    private float            bounceRange = 6f;
+    private List<GameObject> hitEnemies  = new List<GameObject>();
+    private Rigidbody2D      rb;
 
     public void Initialize(float dmg, int bounces)
     {
-        damage = dmg;
+        damage      = dmg;
         bouncesLeft = bounces;
-        rb = GetComponent<Rigidbody2D>();
+        rb          = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 5f);
     }
 
@@ -24,25 +24,18 @@ public class BouncingBullet : MonoBehaviour
 
         hitEnemies.Add(other.gameObject);
 
-        EnemyHealth health = other.GetComponent<EnemyHealth>();
-        if (health != null) health.TakeDamage(damage);
+        BaseEnemy enemy = other.GetComponent<BaseEnemy>();
+        if (enemy != null) enemy.TakeDamage(damage);
 
-        if (bouncesLeft > 0)
-        {
-            bouncesLeft--;
-            BounceToNextEnemy(other.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (bouncesLeft > 0) { bouncesLeft--; BounceToNextEnemy(other.gameObject); }
+        else Destroy(gameObject);
     }
 
     void BounceToNextEnemy(GameObject justHit)
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject next = null;
-        float minDist = Mathf.Infinity;
+        GameObject   next    = null;
+        float        minDist = Mathf.Infinity;
 
         foreach (GameObject e in enemies)
         {
@@ -56,9 +49,6 @@ public class BouncingBullet : MonoBehaviour
             Vector2 newDir = (next.transform.position - transform.position).normalized;
             rb.linearVelocity = newDir * PlayerStats.Instance.projectileSpeed;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        else Destroy(gameObject);
     }
 }
