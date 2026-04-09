@@ -5,14 +5,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    private int currentLevel = 1;
+
     [Header("XP Settings")]
+    private float currentXP = 0f;
+    private float xpToNextLevel = 100f;
     [SerializeField] private float baseXP = 100f;
     [SerializeField] private float xpScaling = 1.4f;
-    [SerializeField] private float xpScalingPerLevel = 50f;
-
-    private int currentLevel = 1;
-    private float currentXP = 0f;
-    private float xpToNextLevel;
 
     void Awake()
     {
@@ -23,7 +22,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Keyboard.current.lKey.wasPressedThisFrame)
-            AddXP(xpToNextLevel);
+            AddXP(xpToNextLevel); // testimiseks täidab kohe XP bari
     }
 
     public void AddXP(float amount)
