@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6732282908260001647}
   - component: {fileID: 1358003923763591656}
   - component: {fileID: 8623824667153851049}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyAI_Projector
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -179,8 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eecc9bf6f936ad46918f6490c4fd3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Projector
-  baseMaxHealth: 70
-  baseMoveSpeed: 2
+  baseMaxHealth: 25
+  baseMoveSpeed: 1.2
   baseDamage: 8
   baseXPValue: 6
   xpOrbPrefab: {fileID: 3607475533658753199, guid: a7d67cb173a2bf9409f147b6d2e5854f, type: 3}

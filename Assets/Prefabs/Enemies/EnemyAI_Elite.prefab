@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3316978836744439141}
   - component: {fileID: 7113164449952946533}
   - component: {fileID: -2137823209469427638}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyAI_Elite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -179,8 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33e481e7d79ed747ba5e9f3b0a76f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Elite
-  baseMaxHealth: 1200
-  baseMoveSpeed: 1
+  baseMaxHealth: 400
+  baseMoveSpeed: 0.7
   baseDamage: 40
   baseXPValue: 50
   xpOrbPrefab: {fileID: 3607475533658753199, guid: a7d67cb173a2bf9409f147b6d2e5854f, type: 3}

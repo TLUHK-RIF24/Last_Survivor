@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7391437580838972866}
   - component: {fileID: 2529859784123817797}
   - component: {fileID: 5058336570348405767}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyAI_Charger
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -179,8 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a7bf33d73132c439ecefca2620c8b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Charger
-  baseMaxHealth: 120
-  baseMoveSpeed: 3
+  baseMaxHealth: 40
+  baseMoveSpeed: 1.8
   baseDamage: 20
   baseXPValue: 8
   xpOrbPrefab: {fileID: 3607475533658753199, guid: a7d67cb173a2bf9409f147b6d2e5854f, type: 3}

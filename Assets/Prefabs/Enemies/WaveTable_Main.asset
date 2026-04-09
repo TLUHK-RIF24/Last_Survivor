@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a4ab5a8ec997047b148914e6b3a48e, type: 3}
   m_Name: WaveTable_Main
   m_EditorClassIdentifier: Assembly-CSharp::WaveTable
-  startEnemyCap: 60
-  maxEnemyCap: 500
+  startEnemyCap: 40
+  maxEnemyCap: 400
   capRampTime: 900
-  baseSpawnInterval: 1
-  minSpawnInterval: 0.15
+  baseSpawnInterval: 1.8
+  minSpawnInterval: 0.2
   intervalRampTime: 600
   hpScaleTime: 600
   speedScaleFactor: 0.3
@@ -144,14 +144,14 @@ MonoBehaviour:
     enemyPrefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
     enemyCount: 80
     ringRadius: 0
-    triggered: 0
+    triggered: 1
   - eventType: 3
     triggerTime: 240
     duration: 5
     enemyPrefab: {fileID: 6424925252929009345, guid: 1dbdae990bf5e694fbe6570d3d67588f, type: 3}
     enemyCount: 12
     ringRadius: 7
-    triggered: 0
+    triggered: 1
   - eventType: 0
     triggerTime: 420
     duration: 30

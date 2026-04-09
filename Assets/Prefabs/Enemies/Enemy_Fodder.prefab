@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 227824030935629603}
   - component: {fileID: 2956920631654081219}
   - component: {fileID: 3316740838799934204}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy_Fodder
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -179,8 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f1817b1933332409dcc845a02b690b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Fodder
-  baseMaxHealth: 80
-  baseMoveSpeed: 2.8
+  baseMaxHealth: 20
+  baseMoveSpeed: 1.5
   baseDamage: 10
   baseXPValue: 5
   xpOrbPrefab: {fileID: 3607475533658753199, guid: a7d67cb173a2bf9409f147b6d2e5854f, type: 3}

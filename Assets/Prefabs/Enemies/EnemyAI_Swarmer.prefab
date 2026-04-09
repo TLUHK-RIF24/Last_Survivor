@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4732887510981870917}
   - component: {fileID: 7750390426732976293}
   - component: {fileID: 5675618388842098092}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyAI_Swarmer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -179,8 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60cb73c9f5e963e46bbe5a68fff87b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Swarmer
-  baseMaxHealth: 25
-  baseMoveSpeed: 5.5
+  baseMaxHealth: 8
+  baseMoveSpeed: 2.5
   baseDamage: 5
   baseXPValue: 3
   xpOrbPrefab: {fileID: 3607475533658753199, guid: a7d67cb173a2bf9409f147b6d2e5854f, type: 3}
