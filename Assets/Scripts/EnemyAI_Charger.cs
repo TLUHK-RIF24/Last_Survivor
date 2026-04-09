@@ -16,8 +16,6 @@ public class EnemyAI_Charger : BaseEnemy
     private Vector2 dashDir;
     private Color   baseColor;
 
-    private static readonly int enemyLayer = -1;   // cached at first use
-
     protected override void OnSpawnExtra()
     {
         state      = State.Approach;
