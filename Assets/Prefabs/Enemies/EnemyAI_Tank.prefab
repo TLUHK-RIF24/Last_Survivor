@@ -183,7 +183,7 @@ MonoBehaviour:
   baseMoveSpeed: 1.2
   baseDamage: 25
   baseXPValue: 15
-  xpOrbPrefab: {fileID: 0}
+  xpOrbPrefab: {fileID: 3607475533658753199, guid: a7d67cb173a2bf9409f147b6d2e5854f, type: 3}
   spriteRenderer: {fileID: 0}
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashTime: 0.08
