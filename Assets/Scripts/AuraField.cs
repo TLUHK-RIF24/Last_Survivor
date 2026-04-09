@@ -2,18 +2,25 @@ using UnityEngine;
 
 public class AuraField : MonoBehaviour
 {
-    private float damage         = 10f;
+    private float damage = 10f;
     private float damageInterval = 1f;
-    private float radius         = 1.2f;
-    private float timer          = 0f;
+    private float radius = 1.2f;
+    private float timer = 0f;
     private GameObject auraVisual;
 
-    void Start() => CreateVisual();
+    void Start()
+    {
+        CreateVisual();
+    }
 
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= damageInterval) { timer = 0f; DamageNearbyEnemies(); }
+        if (timer >= damageInterval)
+        {
+            timer = 0f;
+            DamageNearbyEnemies();
+        }
     }
 
     public void LevelUp(int level)
@@ -29,8 +36,9 @@ public class AuraField : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             if (!hit.CompareTag("Enemy")) continue;
-            BaseEnemy enemy = hit.GetComponent<BaseEnemy>();
-            if (enemy != null) enemy.TakeDamage(damage);
+                        BaseEnemy enemy = hit.GetComponent<BaseEnemy>();
+                        if (enemy != null) enemy.TakeDamage(damage);
+            }
         }
     }
 
@@ -41,8 +49,8 @@ public class AuraField : MonoBehaviour
         auraVisual.transform.localPosition = Vector3.zero;
 
         SpriteRenderer sr = auraVisual.AddComponent<SpriteRenderer>();
-        sr.sprite       = SpriteHelper.CreateCircle(128);
-        sr.color        = new Color(0.5f, 0f, 1f, 0.25f);
+        sr.sprite = SpriteHelper.CreateCircle(128);
+        sr.color = new Color(0.5f, 0f, 1f, 0.25f);
         sr.sortingOrder = 1;
 
         UpdateVisual();
@@ -53,4 +61,3 @@ public class AuraField : MonoBehaviour
         if (auraVisual != null)
             auraVisual.transform.localScale = Vector3.one * radius * 2f;
     }
-}
