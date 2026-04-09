@@ -32,12 +32,27 @@ public class BaseEnemy : MonoBehaviour
     protected Transform   player;
     protected Rigidbody2D rb;
 
-    private Color originalColor;
+    private Color originalColor;   // set once in Awake, never overwritten
     private float flashTimer;
     private bool  isFlashing;
 
     private float contactDamageTimer;
     private const float CONTACT_INTERVAL = 0.5f;
+
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Awake — runs ONCE when the prefab instance is first created by the pool
+    //  Store originalColor here so it never gets corrupted by a flash state
+    // ─────────────────────────────────────────────────────────────────────────
+    protected virtual void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Store the true prefab color here — this only runs once per instance
+        if (spriteRenderer != null)
+            originalColor = spriteRenderer.color;
+    }
 
     // ─────────────────────────────────────────────────────────────────────────
     //  Called by EnemyPool every time this object is pulled from the pool
@@ -54,11 +69,9 @@ public class BaseEnemy : MonoBehaviour
         flashTimer         = 0f;
         isFlashing         = false;
 
+        // Always restore to the true original color on every spawn
         if (spriteRenderer != null)
-        {
-            originalColor        = spriteRenderer.color;
             spriteRenderer.color = originalColor;
-        }
 
         player = EnemySpawner.Instance != null
             ? EnemySpawner.Instance.PlayerTransform
@@ -73,13 +86,6 @@ public class BaseEnemy : MonoBehaviour
     // ─────────────────────────────────────────────────────────────────────────
     //  Unity lifecycle
     // ─────────────────────────────────────────────────────────────────────────
-    protected virtual void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
     protected virtual void Update()
     {
         if (player == null) return;
@@ -131,11 +137,9 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void Die()
     {
-        // Tell the spawner so kill-rate tracking stays accurate
         if (EnemySpawner.Instance != null)
             EnemySpawner.Instance.OnEnemyDied(this);
 
-        // Spawn XP orb — xpValue scales automatically with game time
         if (xpOrbPrefab != null)
         {
             GameObject orb = Instantiate(xpOrbPrefab, transform.position, Quaternion.identity);

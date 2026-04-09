@@ -73,11 +73,25 @@ public class EnemyAI_Charger : BaseEnemy
         state      = State.Dash;
         stateTimer = 0f;
         if (spriteRenderer != null) spriteRenderer.color = baseColor;
+
+        // Ignore enemy-enemy collisions during dash so nothing blocks it
+        Physics2D.IgnoreLayerCollision(
+            LayerMask.NameToLayer("Enemy"),
+            LayerMask.NameToLayer("Enemy"),
+            true
+        );
     }
 
     private void EnterCooldown()
     {
         state      = State.Cooldown;
         stateTimer = 0f;
+
+        // Re-enable enemy-enemy collisions after dash
+        Physics2D.IgnoreLayerCollision(
+            LayerMask.NameToLayer("Enemy"),
+            LayerMask.NameToLayer("Enemy"),
+            false
+        );
     }
 }
