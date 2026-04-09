@@ -16,6 +16,8 @@ public class EnemyAI_Charger : BaseEnemy
     private Vector2 dashDir;
     private Color   baseColor;
 
+    private static readonly int enemyLayer = -1;   // cached at first use
+
     protected override void OnSpawnExtra()
     {
         state      = State.Approach;
@@ -74,12 +76,9 @@ public class EnemyAI_Charger : BaseEnemy
         stateTimer = 0f;
         if (spriteRenderer != null) spriteRenderer.color = baseColor;
 
-        // Ignore enemy-enemy collisions during dash so nothing blocks it
-        Physics2D.IgnoreLayerCollision(
-            LayerMask.NameToLayer("Enemy"),
-            LayerMask.NameToLayer("Enemy"),
-            true
-        );
+        // Ignore enemy-enemy collisions during the dash so nothing blocks it
+        int layer = LayerMask.NameToLayer("Enemy");
+        Physics2D.IgnoreLayerCollision(layer, layer, true);
     }
 
     private void EnterCooldown()
@@ -87,11 +86,16 @@ public class EnemyAI_Charger : BaseEnemy
         state      = State.Cooldown;
         stateTimer = 0f;
 
-        // Re-enable enemy-enemy collisions after dash
-        Physics2D.IgnoreLayerCollision(
-            LayerMask.NameToLayer("Enemy"),
-            LayerMask.NameToLayer("Enemy"),
-            false
-        );
+        // Re-enable enemy-enemy collisions after the dash
+        int layer = LayerMask.NameToLayer("Enemy");
+        Physics2D.IgnoreLayerCollision(layer, layer, false);
+    }
+
+    // Make sure collisions are always restored if this enemy is recycled mid-dash
+    public override void OnSpawn(float hpMult, float speedMult, float damageMult)
+    {
+        int layer = LayerMask.NameToLayer("Enemy");
+        Physics2D.IgnoreLayerCollision(layer, layer, false);
+        base.OnSpawn(hpMult, speedMult, damageMult);
     }
 }
