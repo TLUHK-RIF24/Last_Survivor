@@ -5,8 +5,8 @@ public class TrailPatch : MonoBehaviour
 {
     private float damage;
     private float duration;
-    private float elapsed = 0f;
-    private float damageCooldown = 0.5f;
+    private float elapsed      = 0f;
+    private float damageCooldown = 1.0f;   // increased from 0.5 — one hit per second max per enemy
     private Dictionary<GameObject, float> hitCooldowns = new Dictionary<GameObject, float>();
     private SpriteRenderer sr;
 
@@ -32,7 +32,7 @@ public class TrailPatch : MonoBehaviour
         if (sr != null)
         {
             Color c = sr.color;
-            c.a     = Mathf.Lerp(0.5f, 0f, elapsed / duration);
+            c.a     = Mathf.Lerp(0.4f, 0f, elapsed / duration);
             sr.color = c;
         }
     }
