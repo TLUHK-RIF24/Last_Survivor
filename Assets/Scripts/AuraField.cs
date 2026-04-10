@@ -36,9 +36,8 @@ public class AuraField : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             if (!hit.CompareTag("Enemy")) continue;
-                        BaseEnemy enemy = hit.GetComponent<BaseEnemy>();
-                        if (enemy != null) enemy.TakeDamage(damage);
-            }
+            BaseEnemy enemy = hit.GetComponent<BaseEnemy>();
+            if (enemy != null) enemy.TakeDamage(damage);
         }
     }
 
@@ -61,3 +60,4 @@ public class AuraField : MonoBehaviour
         if (auraVisual != null)
             auraVisual.transform.localScale = Vector3.one * radius * 2f;
     }
+}
