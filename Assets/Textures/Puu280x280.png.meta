@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 00de4ccb696c5f34c8b5aa0ebb281728
+guid: 34fb36e6cf86c774ea86047b20e36c94
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1418597029773126200
-    second: tree_top_0
+      213: 992699148252842700
+    second: Puu280x280_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,11 +100,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tree_top_0
+      name: Puu280x280_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 10
+        y: 18
         width: 256
         height: 256
       alignment: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c5d2f87481205ce0800000000000000
-      internalID: -1418597029773126200
+      spriteID: cca8174ad96c6cd00800000000000000
+      internalID: 992699148252842700
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7837a9921a59067489e1b4087fafd173
+    spriteID: cbffb8b10340d854e957e0f676c290ad
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tree_top_0: -1418597029773126200
+      Puu280x280_0: 992699148252842700
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
