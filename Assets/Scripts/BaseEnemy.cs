@@ -164,8 +164,8 @@ public class BaseEnemy : MonoBehaviour
         if (contactDamageTimer < CONTACT_INTERVAL) return;
         contactDamageTimer = 0f;
 
-        // Hook your player health system here:
-        // PlayerHealth.Instance?.TakeDamage(damage);
+        
+        PlayerHealth.Instance?.TakeDamage(damage);
     }
 
     // ─────────────────────────────────────────────────────────────────────────
