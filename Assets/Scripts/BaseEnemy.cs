@@ -74,8 +74,14 @@ public class BaseEnemy : MonoBehaviour
             spriteRenderer.color = originalColor;
 
         player = EnemySpawner.Instance != null
-            ? EnemySpawner.Instance.PlayerTransform
-            : GameObject.FindGameObjectWithTag("Player")?.transform;
+        ? EnemySpawner.Instance.PlayerTransform
+        : GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        rb.simulated = true;
+
+        Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach (Collider2D col in colliders)
+            col.enabled = true;
 
         OnSpawnExtra();
     }
@@ -99,7 +105,26 @@ public class BaseEnemy : MonoBehaviour
     // ─────────────────────────────────────────────────────────────────────────
     protected virtual void UpdateAI()
     {
+        Separate();
         MoveTowardsPlayer();
+    }
+
+    private void Separate()
+    {
+        Collider2D[] neighbours = Physics2D.OverlapCircleAll(
+            rb.position, 0.5f, LayerMask.GetMask("Enemy"));
+        
+        foreach (Collider2D neighbour in neighbours)
+        {
+            if (neighbour.gameObject == gameObject) continue;
+            
+            Vector2 pushDir = rb.position - (Vector2)neighbour.transform.position;
+            float distance = pushDir.magnitude;
+            
+            if (distance < 0.01f) pushDir = Random.insideUnitCircle;
+            
+            rb.position += pushDir.normalized * 0.02f;
+        }
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -132,7 +157,17 @@ public class BaseEnemy : MonoBehaviour
         if (!gameObject.activeSelf) return;
         currentHealth -= amount;
         TriggerFlash();
-        if (currentHealth <= 0f) Die();
+        if (currentHealth <= 0f)
+        {
+            rb.simulated = false;
+            rb.linearVelocity = Vector2.zero;
+
+            Collider2D[] colliders = GetComponents<Collider2D>();
+            foreach (Collider2D col in colliders)
+                col.enabled = false;
+
+            Die();
+        }
     }
 
     protected virtual void Die()
@@ -152,6 +187,12 @@ public class BaseEnemy : MonoBehaviour
     public void ReturnToPool()
     {
         rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
+
+        Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach (Collider2D col in colliders)
+            col.enabled = false;
+
         EnemyPool.Instance?.Return(this);
     }
 
