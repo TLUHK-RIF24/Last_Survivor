@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a8b4e1aeabd15c74e839b921d8b9ccc2
+guid: 8efb328716a8ceb44969b46ded5dfdc7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8667466294985060184
-    second: tree_0
+      213: 509427558573157820
+    second: grass_edge_1a_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tree_top
+      name: grass_edge_1a_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 256
-        height: 192
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8a09eb0b359f6b780800000000000000
-      internalID: -8667466294985060184
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tree_trunk
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1
-        width: 256
-        height: 63
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8cd3f10b7ead8d84b92cb0419029131f
-      internalID: -1536153167
+      spriteID: cbd2c8b5aa9d11700800000000000000
+      internalID: 509427558573157820
       vertices: []
       indices: 
       edges: []
@@ -147,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f78b149b34db54f4782ff96a32e2df12
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -155,14 +133,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":4.0},"gridSpriteSize":{"x":256.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      tree_1: -1958392203
-      tree_2: -221141802
-      tree_top: -8667466294985060184
-      tree_trunk: -1536153167
+      grass_edge_1a_0: 509427558573157820
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

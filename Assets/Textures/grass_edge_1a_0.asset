@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: grass_edge_1_0
+  m_Name: grass_edge_1a_0
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 6059986810470457442, guid: 39bf7cfb06604ea4bad070a343c93567, type: 3}
+  m_Sprite: {fileID: 509427558573157820, guid: 8efb328716a8ceb44969b46ded5dfdc7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

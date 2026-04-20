@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 39bf7cfb06604ea4bad070a343c93567
+guid: 6eecc69cbc140c843b12082722b5fa03
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6059986810470457442
-    second: grass_edge_1_0
+      213: 7304656816005591558
+    second: grass_corner_a_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -47,7 +47,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grass_edge_1_0
+      name: grass_corner_a_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 260e4ad95e5691450800000000000000
-      internalID: 6059986810470457442
+      spriteID: 60236242caa5f5560800000000000000
+      internalID: 7304656816005591558
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      grass_edge_1_0: 6059986810470457442
+      grass_corner_a_0: 7304656816005591558
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
