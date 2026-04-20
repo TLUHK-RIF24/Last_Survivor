@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Riverside_2
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 799621821076290963, guid: d24d1f4b6eb7e3f4e8ac142328c1cde5, type: 3}
+  - {fileID: 2033935028, guid: d24d1f4b6eb7e3f4e8ac142328c1cde5, type: 3}
+  - {fileID: 373045814, guid: d24d1f4b6eb7e3f4e8ac142328c1cde5, type: 3}
+  - {fileID: 30709784, guid: d24d1f4b6eb7e3f4e8ac142328c1cde5, type: 3}
+  - {fileID: 1420287543, guid: d24d1f4b6eb7e3f4e8ac142328c1cde5, type: 3}
+  - {fileID: 456179154, guid: d24d1f4b6eb7e3f4e8ac142328c1cde5, type: 3}
+  - {fileID: 2031789207, guid: d24d1f4b6eb7e3f4e8ac142328c1cde5, type: 3}
+  - {fileID: 816004861, guid: d24d1f4b6eb7e3f4e8ac142328c1cde5, type: 3}
+  m_MinSpeed: 5
+  m_MaxSpeed: 5
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
