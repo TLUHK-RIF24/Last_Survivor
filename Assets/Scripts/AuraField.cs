@@ -35,11 +35,9 @@ public class AuraField : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach (Collider2D hit in hits)
         {
-            if (hit.CompareTag("Enemy"))
-            {
-                EnemyHealth health = hit.GetComponent<EnemyHealth>();
-                if (health != null) health.TakeDamage(damage);
-            }
+            if (!hit.CompareTag("Enemy")) continue;
+            BaseEnemy enemy = hit.GetComponent<BaseEnemy>();
+            if (enemy != null) enemy.TakeDamage(damage);
         }
     }
 

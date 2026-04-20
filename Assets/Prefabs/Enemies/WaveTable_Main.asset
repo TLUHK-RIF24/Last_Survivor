@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a4ab5a8ec997047b148914e6b3a48e, type: 3}
+  m_Name: WaveTable_Main
+  m_EditorClassIdentifier: Assembly-CSharp::WaveTable
+  startEnemyCap: 40
+  maxEnemyCap: 400
+  capRampTime: 900
+  baseSpawnInterval: 1.8
+  minSpawnInterval: 0.2
+  intervalRampTime: 600
+  hpScaleTime: 600
+  speedScaleFactor: 0.3
+  speedScaleTime: 600
+  damageScaleTime: 480
+  wallTriggerKillRate: 8
+  wallSpawnCooldown: 20
+  despawnDistance: 22
+  teleportScanInterval: 2
+  windows:
+  - startTime: 0
+    endTime: 60
+    label: 0-1min
+    rules:
+    - enemyPrefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
+      spawnWeight: 100
+      spawnInClusters: 1
+      minClusterSize: 3
+      maxClusterSize: 5
+      clusterSpread: 1.5
+  - startTime: 60
+    endTime: 180
+    label: 1-3min
+    rules:
+    - enemyPrefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
+      spawnWeight: 70
+      spawnInClusters: 1
+      minClusterSize: 3
+      maxClusterSize: 6
+      clusterSpread: 1.5
+    - enemyPrefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
+      spawnWeight: 30
+      spawnInClusters: 1
+      minClusterSize: 8
+      maxClusterSize: 14
+      clusterSpread: 2.5
+  - startTime: 180
+    endTime: 300
+    label: 3-5min
+    rules:
+    - enemyPrefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
+      spawnWeight: 50
+      spawnInClusters: 1
+      minClusterSize: 4
+      maxClusterSize: 8
+      clusterSpread: 1.5
+    - enemyPrefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
+      spawnWeight: 30
+      spawnInClusters: 1
+      minClusterSize: 10
+      maxClusterSize: 18
+      clusterSpread: 2.5
+    - enemyPrefab: {fileID: 3294526708094241870, guid: 1ffdbee5b5aa0f54eb3687f314c4eedd, type: 3}
+      spawnWeight: 20
+      spawnInClusters: 0
+      minClusterSize: 0
+      maxClusterSize: 0
+      clusterSpread: 0
+  - startTime: 300
+    endTime: 480
+    label: 5-8min
+    rules:
+    - enemyPrefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
+      spawnWeight: 40
+      spawnInClusters: 1
+      minClusterSize: 4
+      maxClusterSize: 8
+      clusterSpread: 0
+    - enemyPrefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
+      spawnWeight: 25
+      spawnInClusters: 1
+      minClusterSize: 10
+      maxClusterSize: 18
+      clusterSpread: 0
+    - enemyPrefab: {fileID: 3294526708094241870, guid: 1ffdbee5b5aa0f54eb3687f314c4eedd, type: 3}
+      spawnWeight: 20
+      spawnInClusters: 0
+      minClusterSize: 0
+      maxClusterSize: 0
+      clusterSpread: 0
+    - enemyPrefab: {fileID: 6424925252929009345, guid: 1dbdae990bf5e694fbe6570d3d67588f, type: 3}
+      spawnWeight: 15
+      spawnInClusters: 0
+      minClusterSize: 0
+      maxClusterSize: 0
+      clusterSpread: 0
+  - startTime: 480
+    endTime: 0
+    label: 8min+
+    rules:
+    - enemyPrefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
+      spawnWeight: 30
+      spawnInClusters: 1
+      minClusterSize: 4
+      maxClusterSize: 8
+      clusterSpread: 0
+    - enemyPrefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
+      spawnWeight: 25
+      spawnInClusters: 1
+      minClusterSize: 12
+      maxClusterSize: 20
+      clusterSpread: 0
+    - enemyPrefab: {fileID: 3294526708094241870, guid: 1ffdbee5b5aa0f54eb3687f314c4eedd, type: 3}
+      spawnWeight: 20
+      spawnInClusters: 0
+      minClusterSize: 0
+      maxClusterSize: 0
+      clusterSpread: 0
+    - enemyPrefab: {fileID: 6424925252929009345, guid: 1dbdae990bf5e694fbe6570d3d67588f, type: 3}
+      spawnWeight: 15
+      spawnInClusters: 0
+      minClusterSize: 0
+      maxClusterSize: 0
+      clusterSpread: 0
+    - enemyPrefab: {fileID: 9123483832259158770, guid: 0fbe6e6071273204588efb2cbc80f8bc, type: 3}
+      spawnWeight: 10
+      spawnInClusters: 0
+      minClusterSize: 0
+      maxClusterSize: 0
+      clusterSpread: 0
+  specialEvents:
+  - eventType: 0
+    triggerTime: 90
+    duration: 25
+    enemyPrefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
+    enemyCount: 80
+    ringRadius: 0
+    triggered: 1
+  - eventType: 3
+    triggerTime: 240
+    duration: 5
+    enemyPrefab: {fileID: 6424925252929009345, guid: 1dbdae990bf5e694fbe6570d3d67588f, type: 3}
+    enemyCount: 12
+    ringRadius: 7
+    triggered: 1
+  - eventType: 0
+    triggerTime: 420
+    duration: 30
+    enemyPrefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
+    enemyCount: 120
+    ringRadius: 0
+    triggered: 0
+  - eventType: 1
+    triggerTime: 600
+    duration: 20
+    enemyPrefab: {fileID: 733373330187717797, guid: 0b99695fe1a0b274ebe68263dbe60776, type: 3}
+    enemyCount: 8
+    ringRadius: 8
+    triggered: 0
+  - eventType: 2
+    triggerTime: 300
+    duration: 60
+    enemyPrefab: {fileID: 733373330187717797, guid: 0b99695fe1a0b274ebe68263dbe60776, type: 3}
+    enemyCount: 1
+    ringRadius: 0
+    triggered: 0

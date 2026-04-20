@@ -3,22 +3,22 @@ using System.Collections.Generic;
 
 public class BoomerangProjectile : MonoBehaviour
 {
-    private Transform player;
-    private Vector2 direction;
-    private float damage;
-    private float speed;
-    private bool returning = false;
-    private float maxDistance = 8f;
-    private Vector3 startPos;
+    private Transform       player;
+    private Vector2         direction;
+    private float           damage;
+    private float           speed;
+    private bool            returning = false;
+    private float           maxDistance = 8f;
+    private Vector3         startPos;
     private List<GameObject> hitEnemies = new List<GameObject>();
 
     public void Initialize(Transform playerTransform, Vector2 dir, float dmg, float spd)
     {
-        player = playerTransform;
+        player    = playerTransform;
         direction = dir;
-        damage = dmg;
-        speed = spd;
-        startPos = transform.position;
+        damage    = dmg;
+        speed     = spd;
+        startPos  = transform.position;
     }
 
     void Update()
@@ -51,7 +51,7 @@ public class BoomerangProjectile : MonoBehaviour
         if (hitEnemies.Contains(other.gameObject)) return;
 
         hitEnemies.Add(other.gameObject);
-        EnemyHealth health = other.GetComponent<EnemyHealth>();
-        if (health != null) health.TakeDamage(damage);
+        BaseEnemy enemy = other.GetComponent<BaseEnemy>();
+        if (enemy != null) enemy.TakeDamage(damage);
     }
 }
