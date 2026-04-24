@@ -64,12 +64,12 @@ Koosolekuteks koguneme Discordi-is.
 </tr>
 <tr>
  <td>Rico Rimm</td>
- <td>Disain, arendaja abi</td>
+ <td>Disain</td>
  <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/2)</td>
 </tr>
 <tr>
  <td>Kaarel Kallas</td>
- <td>Arendaja, disain</td>
+ <td>Arendaja, disaini abi</td>
  <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/3)</td>
 </tr>
 <tr>
