@@ -1,12 +1,13 @@
-![Last_Survivor](Ideed/Last survivor.png)
+<img width="747" height="150" alt="Last survivor" src="https://github.com/user-attachments/assets/8ab13a36-c349-450e-bd69-101fbe2dda17" />
 
-## Documentation
 
-Learn how to play **Last Survivor** from the [official documentation](https://github.com/TLUHK-RIF24/Last_Survivor/wiki).
+## Dokumentatsioon
 
-- [Installation](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
-- [Usage](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
-- [Configuration](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
+Õpi, kuidas mängida **Last Survivor** mängut [official documentation](https://github.com/TLUHK-RIF24/Last_Survivor/wiki).
+
+- [Paigaldamine](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
+- [Kasutus](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
+- [Konfiguratsioon](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
 
 Kanban tahvel leiad siin [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/).
 
@@ -50,21 +51,47 @@ Koosolekuteks koguneme Discordi-is.
 
 ## Kaastöölised, nende roolid ja päevikud
 
-Suur tänu neile suurepärastele inimestele::
 
 <a href="https://github.com/TLUHK-RIF24/Last_Survivor/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=TLUHK-RIF24/Last_Survivor" />
 </a>
 
-- Deniss Stepanov - Projektijuht, dokumentatsioon, arendaja [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/1)
-- Rico Rimm - Disain, arendaja abi [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/2)
-- Kaarel Kallas - Arendaja, disain [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/3)
-- Johann Vink - Arendaja, disain [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/4)
+<table border=1 width=50%>
+<tr>
+ <td>Deniss Stepanov</td>
+ <td>Projektijuht, dokumentatsioon, arendaja</td>
+ <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/1)</td>
+</tr>
+<tr>
+ <td>Rico Rimm</td>
+ <td>Disain, arendaja abi</td>
+ <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/2)</td>
+</tr>
+<tr>
+ <td>Kaarel Kallas</td>
+ <td>Arendaja, disain</td>
+ <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/3)</td>
+</tr>
+<tr>
+ <td>Johann Vink</td>
+ <td>Arendaja, disain</td>
+ <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/4)</td>
+</tr>
+</table>
 
 
-## License
+## Litsents
 
-Licensed under [The MIT License](./LICENSE-MIT).
+<table border=1 width=100%>
+<tr>
+ <td><a href="https://creativecommons.org/licenses/by-sa/4.0"><img src="https://raw.github.com/FreezingMoon/AncientBeast-Website/master/images/cc-by-sa.png" alt="CC-BY-SA 4.0"></a></td>
+ <td><a href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA 4.0</a>: Artwork and audio can be remixed and shared under the same license,<br>provided you credit and link the project, as well as the author(s) of the respective works.</td>
+</tr>
+<tr>
+ <td><a href="https://gnu.org/licenses/agpl-3.0.html"><img src="https://raw.github.com/FreezingMoon/AncientBeast-Website/master/images/agpl.png" alt="AGPL 3.0"></a></td>
+ <td><a href="https://gnu.org/licenses/agpl-3.0.html">AGPL 3.0</a>: The codebase or parts of it can be remixed and shared under the same license, provided you credit and link the project.</td>
+</tr>
+</table>
 
 ## Copyright
 
