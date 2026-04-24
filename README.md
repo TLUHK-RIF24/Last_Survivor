@@ -1,12 +1,14 @@
-# Last Survivor
+![Last_Survivor](Ideed/Last survivor.png)
 
-#### Projekti osalejad, nende roolid ja päevikud
-- Deniss Stepanov - Projektijuht, dokumentatsioon, arendaja [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/1)
-- Rico Rimm - Disain, arendaja abi [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/2)
-- Kaarel Kallas - Arendaja, disain [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/3)
-- Johann Vink - Arendaja, disain [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/4)
+## Documentation
 
-Kanban tahvel [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/).
+Learn how to play **Last Survivor** from the [official documentation](https://github.com/TLUHK-RIF24/Last_Survivor/wiki).
+
+- [Installation](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
+- [Usage](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
+- [Configuration](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
+
+Kanban tahvel leiad siin [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/).
 
 # Idee kirjeldus ja ülevaade
 
@@ -45,3 +47,25 @@ Koosolekuteks koguneme Discordi-is.
 # Videotükikeste kaust
 
 [Kaust](https://drive.google.com/drive/folders/11NwVq1rIIpjQuZyjQvQLYjXcTtTNrRxM?usp=sharing).
+
+## Kaastöölised, nende roolid ja päevikud
+
+Suur tänu neile suurepärastele inimestele::
+
+<a href="https://github.com/TLUHK-RIF24/Last_Survivor/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=TLUHK-RIF24/Last_Survivor" />
+</a>
+
+- Deniss Stepanov - Projektijuht, dokumentatsioon, arendaja [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/1)
+- Rico Rimm - Disain, arendaja abi [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/2)
+- Kaarel Kallas - Arendaja, disain [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/3)
+- Johann Vink - Arendaja, disain [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/4)
+
+
+## License
+
+Licensed under [The MIT License](./LICENSE-MIT).
+
+## Copyright
+
+Copyright © 2026, [Tallinna Ülikool Haapsalu kolledž](mailto:kolledz@hk.tlu.ee)
