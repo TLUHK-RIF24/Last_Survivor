@@ -1,4 +1,4 @@
-<img width="747" height="150" alt="Last survivor" src="https://github.com/user-attachments/assets/8ab13a36-c349-450e-bd69-101fbe2dda17" />
+<img width="747" height="150" alt="Last survivor-2" src="https://github.com/user-attachments/assets/63c46440-c1f0-4c95-82ed-fa69680d4bc0" />
 
 
 ## Dokumentatsioon
@@ -9,7 +9,7 @@
 - [Kasutus](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
 - [Konfiguratsioon](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
 
-Kanban tahvel leiad siin [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/).
+Kanban tahvli leiad siit [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/).
 
 # Idee kirjeldus ja ülevaade
 
@@ -38,6 +38,7 @@ Riskide maandamiseks keskendume minimaalse töötava versiooni loomisele, regula
 
 Inspiratsiooni kaust on [siin](https://github.com/TLUHK-RIF24/Last_Survivor/tree/main/Ideed).
 Figma inspiratsiooni board on [siin](https://www.figma.com/design/6iQ9S2FoqQhSoNVS1AwYKh/Last-Survivor?node-id=0-1&t=TtJexrWOAQZ0W6AL-1).
+Figma board, kust leiab spraitid, map layouti, UI jne [siin](https://www.figma.com/design/gZa0XiEuZp3VBFJMsfWMEd/Tegelased-Last_Survivor?node-id=326-625&t=UT7RNOHzZTjzUUkH-1)
 
 # Tegevusplaan ja umbkaudne ajakava
 
@@ -49,7 +50,7 @@ Koosolekuteks koguneme Discordi-is.
 
 [Kaust](https://drive.google.com/drive/folders/11NwVq1rIIpjQuZyjQvQLYjXcTtTNrRxM?usp=sharing).
 
-## Kaastöölised, nende roolid ja päevikud
+## Kaastöölised, nende rollid ja päevikud
 
 
 <a href="https://github.com/TLUHK-RIF24/Last_Survivor/graphs/contributors">
