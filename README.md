@@ -64,7 +64,7 @@ Koosolekuteks koguneme Discordi-is.
 </tr>
 <tr>
  <td>Rico Rimm</td>
- <td>Disain</td>
+ <td>Disain, arendaja abi</td>
  <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/2)</td>
 </tr>
 <tr>
