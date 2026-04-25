@@ -38,9 +38,6 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private float statFadeDelay    = 0.35f;
     [SerializeField] private float statFadeDuration = 0.4f;
 
-    [Header("Ambient Particles")]
-    [SerializeField] private ParticleSystem ambientParticles;
-
     // ── Runtime data ─────────────────────────────────────────────────────────
     private int   finalLevel;
     private float finalTime;
@@ -73,9 +70,6 @@ public class GameOverUI : MonoBehaviour
         gameOverPanel.SetActive(true);
         resultsPanel.SetActive(false);
 
-        if (ambientParticles != null)
-            ambientParticles.Play();
-
         StartCoroutine(FadeInGameOverPanel());
     }
 
@@ -86,7 +80,6 @@ public class GameOverUI : MonoBehaviour
         gameOverPanel.SetActive(false);
         resultsPanel.SetActive(true);
 
-        // Deactivate all stat rows — they activate and fade in one by one
         SetRowActive(levelLabel, levelValue, false);
         SetRowActive(timeLabel,  timeValue,  false);
         SetRowActive(xpLabel,    xpValue,    false);
@@ -114,7 +107,6 @@ public class GameOverUI : MonoBehaviour
 
     private IEnumerator FadeInResults()
     {
-        // Load previous records
         int   bestLevel = PlayerPrefs.GetInt(PREF_BEST_LEVEL, 0);
         float bestTime  = PlayerPrefs.GetFloat(PREF_BEST_TIME, 0f);
         float bestXP    = PlayerPrefs.GetFloat(PREF_BEST_XP,   0f);
@@ -123,23 +115,19 @@ public class GameOverUI : MonoBehaviour
         bool newBestTime  = finalTime  > bestTime;
         bool newBestXP    = finalXP    > bestXP;
 
-        // Save new records
         if (newBestLevel) PlayerPrefs.SetInt(PREF_BEST_LEVEL, finalLevel);
         if (newBestTime)  PlayerPrefs.SetFloat(PREF_BEST_TIME, finalTime);
         if (newBestXP)    PlayerPrefs.SetFloat(PREF_BEST_XP,   finalXP);
         PlayerPrefs.Save();
 
-        // Set text content
         levelValue.text = finalLevel.ToString();
         timeValue.text  = FormatTime(finalTime);
         xpValue.text    = Mathf.RoundToInt(finalXP).ToString();
 
-        // Apply record highlight colors
         ApplyRowColor(levelLabel, levelValue, newBestLevel ? recordStatColor : normalStatColor);
         ApplyRowColor(timeLabel,  timeValue,  newBestTime  ? recordStatColor : normalStatColor);
         ApplyRowColor(xpLabel,    xpValue,    newBestXP    ? recordStatColor : normalStatColor);
 
-        // Fade each row in one at a time
         yield return FadeStatRowUnscaled(levelLabel, levelValue, statFadeDuration);
         yield return new WaitForSecondsRealtime(statFadeDelay);
 
@@ -153,7 +141,6 @@ public class GameOverUI : MonoBehaviour
 
     private IEnumerator FadeStatRowUnscaled(TMP_Text label, TMP_Text value, float duration)
     {
-        // Activate then immediately set invisible before first render
         SetRowActive(label, value, true);
         SetStatAlpha(label, 0f);
         SetStatAlpha(value, 0f);
@@ -162,7 +149,7 @@ public class GameOverUI : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
+            float t  = Mathf.Clamp01(elapsed / duration);
             SetStatAlpha(label, t);
             SetStatAlpha(value, t);
             yield return new WaitForEndOfFrame();
@@ -180,14 +167,14 @@ public class GameOverUI : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
+            float t  = Mathf.Clamp01(elapsed / duration);
             SetImageAlpha(img, Mathf.Lerp(from, to, t));
             yield return new WaitForEndOfFrame();
         }
         SetImageAlpha(img, to);
     }
 
-    // ── Small helpers ─────────────────────────────────────────────────────────
+    // ── Helpers ───────────────────────────────────────────────────────────────
 
     private void SetRowActive(TMP_Text label, TMP_Text value, bool active)
     {
