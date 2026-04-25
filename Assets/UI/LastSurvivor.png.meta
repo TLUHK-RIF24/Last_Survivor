@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: dafd998888ab6a540ac3c0fc38a773d9
+guid: 3f79ec22f6db5e7418987a3164a28d1a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6193017752021988066
-    second: GAME OVER_0
+      213: -8267193020089338752
+    second: LastSurvivor_0
   - first:
-      213: 5820961295702938671
-    second: GAME OVER_1
+      213: 5878863789045664228
+    second: LastSurvivor_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GAME OVER_0
+      name: LastSurvivor_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 271
-        height: 93
+        width: 208
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1d8a03aa2bfd0aa0800000000000000
-      internalID: -6193017752021988066
+      spriteID: 0847cfbefb7054d80800000000000000
+      internalID: -8267193020089338752
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GAME OVER_1
+      name: LastSurvivor_1
       rect:
         serializedVersion: 2
-        x: 296
+        x: 231
         y: 0
-        width: 255
-        height: 93
+        width: 434
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f24dba9257538c050800000000000000
-      internalID: 5820961295702938671
+      spriteID: 4e949f4f77be59150800000000000000
+      internalID: 5878863789045664228
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GAME OVER_0: -6193017752021988066
-      GAME OVER_1: 5820961295702938671
+      LastSurvivor_0: -8267193020089338752
+      LastSurvivor_1: 5878863789045664228
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
