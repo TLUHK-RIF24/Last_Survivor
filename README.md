@@ -1,12 +1,15 @@
-# Last Survivor
+<img width="747" height="150" alt="Last survivor-2" src="https://github.com/user-attachments/assets/63c46440-c1f0-4c95-82ed-fa69680d4bc0" />
 
-#### Projekti osalejad, nende roolid ja päevikud
-- Deniss Stepanov - Projektijuht, dokumentatsioon, arendaja [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/1)
-- Rico Rimm - Disain, arendaja abi [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/2)
-- Kaarel Kallas - Arendaja, disain [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/3)
-- Johann Vink - Arendaja, disain [Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/4)
 
-Kanban tahvel [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/).
+## Dokumentatsioon
+
+Õpi, kuidas mängida **Last Survivor** mängut [official documentation](https://github.com/TLUHK-RIF24/Last_Survivor/wiki).
+
+- [Paigaldamine](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
+- [Kasutus](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
+- [Konfiguratsioon](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
+
+Kanban tahvli leiad siit [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/).
 
 # Idee kirjeldus ja ülevaade
 
@@ -35,6 +38,7 @@ Riskide maandamiseks keskendume minimaalse töötava versiooni loomisele, regula
 
 Inspiratsiooni kaust on [siin](https://github.com/TLUHK-RIF24/Last_Survivor/tree/main/Ideed).
 Figma inspiratsiooni board on [siin](https://www.figma.com/design/6iQ9S2FoqQhSoNVS1AwYKh/Last-Survivor?node-id=0-1&t=TtJexrWOAQZ0W6AL-1).
+Figma board, kust leiab spraitid, map layouti, UI jne [siin](https://www.figma.com/design/gZa0XiEuZp3VBFJMsfWMEd/Tegelased-Last_Survivor?node-id=326-625&t=UT7RNOHzZTjzUUkH-1)
 
 # Tegevusplaan ja umbkaudne ajakava
 
@@ -45,3 +49,51 @@ Koosolekuteks koguneme Discordi-is.
 # Videotükikeste kaust
 
 [Kaust](https://drive.google.com/drive/folders/11NwVq1rIIpjQuZyjQvQLYjXcTtTNrRxM?usp=sharing).
+
+## Kaastöölised, nende rollid ja päevikud
+
+
+<a href="https://github.com/TLUHK-RIF24/Last_Survivor/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=TLUHK-RIF24/Last_Survivor" />
+</a>
+
+<table border=1 width=50%>
+<tr>
+ <td>Deniss Stepanov</td>
+ <td>Projektijuht, dokumentatsioon, arendaja</td>
+ <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/1)</td>
+</tr>
+<tr>
+ <td>Rico Rimm</td>
+ <td>Disain, arendaja abi</td>
+ <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/2)</td>
+</tr>
+<tr>
+ <td>Kaarel Kallas</td>
+ <td>Arendaja, disaini abi</td>
+ <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/3)</td>
+</tr>
+<tr>
+ <td>Johann Vink</td>
+ <td>Arendaja, disain</td>
+ <td>[Päevik](https://github.com/TLUHK-RIF24/Last_Survivor/issues/4)</td>
+</tr>
+</table>
+
+
+## Litsents
+
+<table border=1 width=100%>
+<tr>
+ <td><a href="https://creativecommons.org/licenses/by-sa/4.0"><img src="https://raw.github.com/FreezingMoon/AncientBeast-Website/master/images/cc-by-sa.png" alt="CC-BY-SA 4.0"></a></td>
+ <td><a href="https://creativecommons.org/licenses/by-sa/4.0">CC-BY-SA 4.0</a>: Artwork and audio can be remixed and shared under the same license,<br>provided you credit and link the project, as well as the author(s) of the respective works.</td>
+</tr>
+<tr>
+ <td><a href="https://gnu.org/licenses/agpl-3.0.html"><img src="https://raw.github.com/FreezingMoon/AncientBeast-Website/master/images/agpl.png" alt="AGPL 3.0"></a></td>
+ <td><a href="https://gnu.org/licenses/agpl-3.0.html">AGPL 3.0</a>: The codebase or parts of it can be remixed and shared under the same license, provided you credit and link the project.</td>
+</tr>
+</table>
+
+## Copyright
+
+Copyright © 2026, [Tallinna Ülikool Haapsalu kolledž](mailto:kolledz@hk.tlu.ee)

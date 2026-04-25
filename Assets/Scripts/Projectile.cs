@@ -13,14 +13,11 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            EnemyHealth health = other.GetComponent<EnemyHealth>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
-            Destroy(gameObject);
-        }
+        if (!other.CompareTag("Enemy")) return;
+
+        BaseEnemy enemy = other.GetComponent<BaseEnemy>();
+        if (enemy != null) enemy.TakeDamage(damage);
+
+        Destroy(gameObject);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class OrbDamager : MonoBehaviour
 {
-    public float damage = 15f;
+    public float damage         = 15f;
     public float damageCooldown = 0.5f;
     private Dictionary<GameObject, float> hitCooldowns = new Dictionary<GameObject, float>();
 
@@ -22,10 +22,10 @@ public class OrbDamager : MonoBehaviour
         if (!other.CompareTag("Enemy")) return;
         if (hitCooldowns.ContainsKey(other.gameObject)) return;
 
-        EnemyHealth health = other.GetComponent<EnemyHealth>();
-        if (health != null)
+        BaseEnemy enemy = other.GetComponent<BaseEnemy>();
+        if (enemy != null)
         {
-            health.TakeDamage(damage);
+            enemy.TakeDamage(damage);
             hitCooldowns[other.gameObject] = damageCooldown;
         }
     }
