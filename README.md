@@ -3,7 +3,7 @@
 
 ## Dokumentatsioon
 
-Õpi, kuidas mängida **Last Survivor** mängut [official documentation](https://github.com/TLUHK-RIF24/Last_Survivor/wiki).
+Õpi, kuidas mängida **Last Survivor** mängu [official documentation](https://github.com/TLUHK-RIF24/Last_Survivor/wiki).
 
 - [Paigaldamine](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
 - [Kasutus](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
