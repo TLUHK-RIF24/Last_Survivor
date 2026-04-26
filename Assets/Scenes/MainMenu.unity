@@ -1040,8 +1040,8 @@ MonoBehaviour:
   characterSprites: []
   characterNameImages:
   - {fileID: 21300000, guid: cea16be4a5d944f46ba6e8d0148e5f0c, type: 3}
-  - {fileID: -6259993259701962660, guid: 95c2ecfde1aa74c90a1b698bbe95cf4b, type: 3}
-  - {fileID: 4033480223859415963, guid: 9443d3cb9bc75419a9e6e17fff882280, type: 3}
+  - {fileID: 21300000, guid: 95c2ecfde1aa74c90a1b698bbe95cf4b, type: 3}
+  - {fileID: 21300000, guid: 9443d3cb9bc75419a9e6e17fff882280, type: 3}
   playButton: {fileID: 2036721260}
   optionsButton: {fileID: 1480110898}
   helpButton: {fileID: 714188817}
