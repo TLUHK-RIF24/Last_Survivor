@@ -12,9 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
   m_Name: Seaside
   m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites: []
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
+  m_AnimatedSprites:
+  - {fileID: -814834293710012457, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  - {fileID: 837992025, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  - {fileID: -309855990, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  - {fileID: 1570714665, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  - {fileID: -1278479334, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  - {fileID: -1092281450, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  - {fileID: -1815449845, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  - {fileID: 648024745, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  - {fileID: -582477143, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  - {fileID: 1136573655, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  - {fileID: 380882455, guid: 6f11fe0ddf5b4fe4b9dd1842fbfb0c41, type: 3}
+  m_MinSpeed: 5
+  m_MaxSpeed: 5
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
