@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
     [Header("Health Settings")]
     public float maxHealth = 100f;
     private float currentHealth;
+    private float timeSurvived = 0f;
+    private bool  isDead       = false;
 
     void Awake()
     {
@@ -19,10 +21,18 @@ public class PlayerHealth : MonoBehaviour
         UpdateUI();
     }
 
+    void Update()
+    {
+        if (!isDead)
+            timeSurvived += Time.deltaTime;
+    }
+
     public void TakeDamage(float amount)
     {
+        if (isDead) return;
+
         currentHealth -= amount;
-        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        currentHealth  = Mathf.Clamp(currentHealth, 0f, maxHealth);
         UpdateUI();
 
         if (currentHealth <= 0f)
@@ -31,11 +41,17 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        GameManager.Instance.ResetGame();
+        isDead = true;
+
+        int   level = GameManager.Instance.GetCurrentLevel();
+        float xp    = GameManager.Instance.GetCurrentXP();
+
+        GameOverUI.Instance?.ShowGameOver(level, timeSurvived, xp);
     }
 
     public void Heal(float amount)
     {
+        if (isDead) return;
         currentHealth = Mathf.Clamp(currentHealth + amount, 0f, maxHealth);
         UpdateUI();
     }
@@ -46,5 +62,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public float GetCurrentHealth() => currentHealth;
-    public float GetMaxHealth() => maxHealth;
+    public float GetMaxHealth()     => maxHealth;
+    public float GetTimeSurvived()  => timeSurvived;
 }
