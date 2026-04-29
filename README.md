@@ -3,7 +3,7 @@
 
 ## Dokumentatsioon
 
-Õpi, kuidas mängida **Last Survivor** mängut [official documentation](https://github.com/TLUHK-RIF24/Last_Survivor/wiki).
+Õpi, kuidas mängida **Last Survivor** mängu [official documentation](https://github.com/TLUHK-RIF24/Last_Survivor/wiki).
 
 - [Paigaldamine](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
 - [Kasutus](https://github.com/TLUHK-RIF24/Last_Survivor/wiki)
@@ -16,7 +16,7 @@ Kanban tahvli leiad siit [siin](https://github.com/orgs/TLUHK-RIF24/projects/13/
 Arendame 2D roguelike wave-survivor tüüpi mängu Unity mängumootoris.
 Mängu inspiratsiooniks on sarnased mängud nagu Vampire Survivors, kus mängija peab ellu jääma järjest raskemaks muutuvates vaenlaste lainetes.
 Täpse kirjelduse leiad [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/main/Projekti%20dokumentatsioon/Projekti_%C3%BClevaade.md).
-Stsenaariumi leaid [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/02-homework/Projekti%20dokumentatsioon/Stsenaarium.md)
+Stsenaariumi leiad [siin](https://github.com/TLUHK-RIF24/Last_Survivor/blob/02-homework/Projekti%20dokumentatsioon/Stsenaarium.md)
 
 # Mängumehhaanika
 
