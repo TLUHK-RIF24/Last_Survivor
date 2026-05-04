@@ -103,12 +103,12 @@ TextureImporter:
       name: bush_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 2
-        width: 56
-        height: 48
+        x: 0
+        y: 0
+        width: 64
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 38cd1720414ea7c4fabe5c12c2825ccd
     internalID: 0
     vertices: []
     indices: 
