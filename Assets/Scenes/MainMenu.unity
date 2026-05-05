@@ -672,10 +672,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   mainMenuMusic: {fileID: 8300000, guid: 8f9d7610aa0fe0b4ebebb998c9d56c97, type: 3}
   gameplayMusic: {fileID: 8300000, guid: b0350fa472bb65b43b3950fc09d5792f, type: 3}
-  musicVolume: 0.2
+  musicVolume: 0.08
   hoverSound: {fileID: 8300000, guid: 9440c85853e3d104895a51e7e7005fa6, type: 3}
   clickSound: {fileID: 8300000, guid: 806e2bb1c1db65d488067fd105217df7, type: 3}
-  sfxVolume: 0.6
+  sfxVolume: 0.5
   mainMenuSceneName: MainMenu
   gameSceneName: Scene1
 --- !u!4 &1278345191
