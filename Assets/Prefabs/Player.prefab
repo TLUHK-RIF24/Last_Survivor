@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930139f52df94104fbe016c8389e331a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  movespeed: 5
   rb: {fileID: 2303626709988552008}
 --- !u!114 &972784820206495798
 MonoBehaviour:
@@ -147,6 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58f8c58def98b34fb86b9e745520b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooter
-  fireRate: 1.5
-  projectileSpeed: 10
   projectilePrefab: {fileID: 7437541770981918102, guid: c1fcb02c1aa0b2447b46a5d00d6c8109, type: 3}
