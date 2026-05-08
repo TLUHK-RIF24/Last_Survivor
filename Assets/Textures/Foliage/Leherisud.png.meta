@@ -115,12 +115,12 @@ TextureImporter:
       name: Leherisud_0
       rect:
         serializedVersion: 2
-        x: 27
-        y: 48
-        width: 96
-        height: 64
+        x: 0
+        y: 15
+        width: 123
+        height: 102
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
