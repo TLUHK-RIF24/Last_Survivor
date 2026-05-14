@@ -8,8 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
     private float currentHealth;
     private float timeSurvived = 0f;
-    private bool  isDead       = false;
-
+    private bool isDead = false;
+    public GameObject floatingTextPrefab;   // Assign the prefab here
     void Awake()
     {
         Instance = this;
@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= amount;
-        currentHealth  = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         UpdateUI();
 
         if (currentHealth <= 0f)
@@ -43,8 +43,8 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        int   level = GameManager.Instance.GetCurrentLevel();
-        float xp    = GameManager.Instance.GetCurrentXP();
+        int level = GameManager.Instance.GetCurrentLevel();
+        float xp = GameManager.Instance.GetCurrentXP();
 
         GameOverUI.Instance?.ShowGameOver(level, timeSurvived, xp);
     }
@@ -54,6 +54,21 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;
         currentHealth = Mathf.Clamp(currentHealth + amount, 0f, maxHealth);
         UpdateUI();
+
+    if (floatingTextPrefab != null)
+            {
+                Vector3 spawnPos = transform.position + new Vector3(0, 1.2f, 0); // Adjust height here
+
+                GameObject textObj = Instantiate(floatingTextPrefab, spawnPos, Quaternion.identity);
+
+                FloatingText ft = textObj.GetComponent<FloatingText>();
+                if (ft != null)
+                {
+                    ft.Setup("+" + amount, Color.green);
+                }
+            }
+
+        Debug.Log($"Healed +{amount} HP!");
     }
 
     void UpdateUI()
@@ -62,6 +77,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public float GetCurrentHealth() => currentHealth;
-    public float GetMaxHealth()     => maxHealth;
-    public float GetTimeSurvived()  => timeSurvived;
+    public float GetMaxHealth() => maxHealth;
+    public float GetTimeSurvived() => timeSurvived;
 }
