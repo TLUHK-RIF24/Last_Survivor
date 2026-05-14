@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 874567099466556351}
   - component: {fileID: 827475214248677522}
   - component: {fileID: 2971570050746057460}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FloatingHealText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

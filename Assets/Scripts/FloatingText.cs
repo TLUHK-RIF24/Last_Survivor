@@ -7,7 +7,6 @@ public class FloatingText : MonoBehaviour
     public float floatSpeed = 2f;
     public float fadeDuration = 1.2f;
     public float lifeTime = 1.8f;
-    public float scaleUpAmount = 1.3f;
 
     private TextMeshPro tmp;
     private Vector3 startPosition;
@@ -15,6 +14,9 @@ public class FloatingText : MonoBehaviour
     private void Awake()
     {
         tmp = GetComponent<TextMeshPro>();
+
+        // Force it to top
+        tmp.sortingOrder = 200;
     }
 
     public void Setup(string text, Color color)
@@ -23,8 +25,7 @@ public class FloatingText : MonoBehaviour
         tmp.color = color;
         startPosition = transform.position;
 
-        // Optional: Start a bit bigger then shrink
-        transform.localScale = Vector3.one * scaleUpAmount;
+        transform.localScale = Vector3.one * 1.4f;
 
         StartCoroutine(AnimateAndDestroy());
     }
@@ -37,11 +38,9 @@ public class FloatingText : MonoBehaviour
         {
             elapsed += Time.deltaTime;
 
-            // Float upward
             transform.position = startPosition + new Vector3(0, elapsed * floatSpeed, 0);
 
-            // Gentle scale down
-            float scale = Mathf.Lerp(scaleUpAmount, 1f, elapsed / lifeTime);
+            float scale = Mathf.Lerp(1.4f, 1f, elapsed / lifeTime);
             transform.localScale = Vector3.one * scale;
 
             // Fade out
