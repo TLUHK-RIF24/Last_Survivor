@@ -1,19 +1,32 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [Header("Character Selection")]
-    [SerializeField] private Image   characterImage;     
-    [SerializeField] private Image   characterNameImage;  
-    [SerializeField] private Button  arrowLeft;
-    [SerializeField] private Button  arrowRight;
+    [Header("Screens")]
+    [SerializeField] private GameObject mainPanel;
+    [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject helpPanel;
 
-    [Header("Character Data")]
-    [SerializeField] private Sprite[] characterSprites;   
-    [SerializeField] private Sprite[] characterNameImages; 
+    [Header("Character Selection")]
+    [SerializeField] private Image             characterImage;
+    [SerializeField] private Image             characterNameImage;
+    [SerializeField] private CharacterAnimator characterAnimator;
+    [SerializeField] private Button            arrowLeft;
+    [SerializeField] private Button            arrowRight;
+
+    [System.Serializable]
+    public class CharacterData
+    {
+        public string   name;
+        public Sprite[] animationFrames;   
+        public Sprite   nameImage;         
+        public Sprite   tbaImage;          
+    }
+
+    [Header("Characters")]
+    [SerializeField] private CharacterData[] characters;
 
     [Header("Buttons")]
     [SerializeField] private Button playButton;
@@ -21,53 +34,82 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button helpButton;
     [SerializeField] private Button quitButton;
 
-    [Header("Scene To Load")]
+    [Header("Scene")]
     [SerializeField] private string gameSceneName = "Scene1";
 
+    
     private int characterIndex = 0;
-    private int characterCount = 3; 
 
 
     void Start()
     {
+        ShowMain();
         UpdateCharacterDisplay();
+    }
+
+
+    public void ShowMain()
+    {
+        mainPanel.SetActive(true);
+        if (optionsPanel != null) optionsPanel.SetActive(false);
+        if (helpPanel    != null) helpPanel.SetActive(false);
+    }
+
+    public void ShowOptions()
+    {
+        mainPanel.SetActive(false);
+        if (optionsPanel != null) optionsPanel.SetActive(true);
+        if (helpPanel    != null) helpPanel.SetActive(false);
+    }
+
+    public void ShowHelp()
+    {
+        mainPanel.SetActive(false);
+        if (optionsPanel != null) optionsPanel.SetActive(false);
+        if (helpPanel    != null) helpPanel.SetActive(true);
     }
 
 
     public void OnArrowLeft()
     {
         characterIndex--;
-        if (characterIndex < 0) characterIndex = characterCount - 1;
+        if (characterIndex < 0) characterIndex = characters.Length - 1;
         UpdateCharacterDisplay();
     }
 
     public void OnArrowRight()
     {
         characterIndex++;
-        if (characterIndex >= characterCount) characterIndex = 0;
+        if (characterIndex >= characters.Length) characterIndex = 0;
         UpdateCharacterDisplay();
     }
 
     private void UpdateCharacterDisplay()
     {
-        // Update character sprite (Siis kui sprited olemas)
-        if (characterImage != null && characterSprites != null
-            && characterIndex < characterSprites.Length
-            && characterSprites[characterIndex] != null)
-        {
-            characterImage.sprite  = characterSprites[characterIndex];
-            characterImage.enabled = true;
-        }
-        else if (characterImage != null)
-        {
-            characterImage.enabled = false; 
-        }
+        if (characters == null || characters.Length == 0) return;
 
-        // Update name + shadow image
-        if (characterNameImage != null && characterNameImages != null
-            && characterIndex < characterNameImages.Length)
+        CharacterData data = characters[characterIndex];
+
+        if (characterNameImage != null && data.nameImage != null)
+            characterNameImage.sprite = data.nameImage;
+
+        if (characterAnimator != null)
         {
-            characterNameImage.sprite = characterNameImages[characterIndex];
+            if (data.animationFrames != null && data.animationFrames.Length > 0)
+            {
+                characterImage.enabled = true;
+                characterAnimator.SetFrames(data.animationFrames);
+            }
+            else if (data.tbaImage != null)
+            {
+                characterAnimator.Stop();
+                characterImage.enabled = true;
+                characterImage.sprite  = data.tbaImage;
+            }
+            else
+            {
+                characterImage.enabled = false;
+            }
         }
     }
 
@@ -79,15 +121,8 @@ public class MainMenuUI : MonoBehaviour
         SceneManager.LoadScene(gameSceneName);
     }
 
-    public void OnOptionsClicked()
-    {
-        Debug.Log("[MainMenu] Options — not implemented yet");
-    }
-
-    public void OnHelpClicked()
-    {
-        Debug.Log("[MainMenu] Help — not implemented yet");
-    }
+    public void OnOptionsClicked() => ShowOptions();
+    public void OnHelpClicked()    => ShowHelp();
 
     public void OnQuitClicked()
     {
