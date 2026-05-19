@@ -4,7 +4,7 @@ public class PlayerShooter : MonoBehaviour
 {
     [Header("Shooting Settings")]
     public GameObject projectilePrefab;
-
+    public PlayerAnimatorHandler animatorHandler;
     private float fireTimer = 0f;
     private ShotgunAbility shotgun;
     private PiercingArrowAbility piercing;
@@ -19,11 +19,14 @@ public class PlayerShooter : MonoBehaviour
 
     void Update()
     {
+
         fireTimer += Time.deltaTime;
         if (fireTimer >= PlayerStats.Instance.fireRate)
         {
+
             fireTimer = 0f;
             TryShoot();
+
         }
 
         if (shotgun == null) shotgun = GetComponent<ShotgunAbility>();
@@ -33,11 +36,12 @@ public class PlayerShooter : MonoBehaviour
 
     void TryShoot()
     {
+
         GameObject nearest = FindNearestEnemy();
         if (nearest == null) return;
-
+        if (animatorHandler != null)
+            animatorHandler.PlayAttackAnimation();
         Vector2 direction = (nearest.transform.position - transform.position).normalized;
-
         if (shotgun != null) shotgun.FireShotgun(direction, projectilePrefab);
         else if (piercing != null) piercing.FirePiercingArrow(direction);
         else if (bouncing != null) bouncing.FireBouncingShot(direction);
@@ -46,6 +50,7 @@ public class PlayerShooter : MonoBehaviour
 
     void FireSingleBullet(Vector2 direction)
     {
+
         GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;

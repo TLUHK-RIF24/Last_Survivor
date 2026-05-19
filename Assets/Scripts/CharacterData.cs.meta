@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 12430fcf28801a542830361c422f7c1e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - animatorController: {fileID: 9100000, guid: f3c4a36149e2811408947507524191b8, type: 2}
+  - idleClip: {fileID: 7400000, guid: 7bcb70a9d93eeb0479064d34bfd0fa51, type: 2}
+  - runClip: {fileID: 7400000, guid: 339aa7ff9ea83484c90df75e6d29bf98, type: 2}
+  - combatClip: {fileID: 7400000, guid: 2766c4560a66cd84287f4fd197a7511e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
