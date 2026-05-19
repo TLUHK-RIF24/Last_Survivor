@@ -1079,7 +1079,23 @@ MonoBehaviour:
   characterAnimator: {fileID: 2118884726}
   arrowLeft: {fileID: 413782752}
   arrowRight: {fileID: 1795704314}
-  characters: []
+  characters:
+  - name: Archer
+    animationFrames:
+    - {fileID: 2255728260789944643, guid: 1babfeec1061231468ac670d45cf30a2, type: 3}
+    - {fileID: -8524728372725821223, guid: 29f6cefaf08cabe418cefbfdd199c8ca, type: 3}
+    nameImage: {fileID: 21300000, guid: cea16be4a5d944f46ba6e8d0148e5f0c, type: 3}
+    tbaImage: {fileID: 0}
+  - name: Mage
+    animationFrames:
+    - {fileID: 1725744770949595696, guid: 313316528ca290940bdc4de9935d2349, type: 3}
+    - {fileID: -7443268028379092608, guid: 845ad6f0284106148ab7bd5342f99cda, type: 3}
+    nameImage: {fileID: 21300000, guid: 95c2ecfde1aa74c90a1b698bbe95cf4b, type: 3}
+    tbaImage: {fileID: 0}
+  - name: Knight
+    animationFrames: []
+    nameImage: {fileID: 21300000, guid: 9443d3cb9bc75419a9e6e17fff882280, type: 3}
+    tbaImage: {fileID: -7770779667425933262, guid: 625c0e15b5050354ebe785b211095ac7, type: 3}
   playButton: {fileID: 2036721260}
   optionsButton: {fileID: 1480110898}
   helpButton: {fileID: 714188817}
