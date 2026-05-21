@@ -7,7 +7,7 @@ public class PlayerShooter : MonoBehaviour
 
     [Header("Character Projectile Sprites")]
     [Tooltip("Knight uses the default projectile prefab sprite — leave empty")]
-    public Sprite   knightProjectileSprite;  
+    public Sprite   knightProjectileSprite;
     [Tooltip("Mage fireball frame 1")]
     public Sprite   mageFireball1;
     [Tooltip("Mage fireball frame 2")]
@@ -15,16 +15,13 @@ public class PlayerShooter : MonoBehaviour
     [Tooltip("Archer arrow sprite")]
     public Sprite   archerArrow;
 
-    // ── Cached refs ───────────────────────────────────────────────────────────
-    private float            fireTimer  = 0f;
-    private ShotgunAbility   shotgun;
+    private float                fireTimer  = 0f;
+    private ShotgunAbility       shotgun;
     private PiercingArrowAbility piercing;
     private BouncingShotAbility  bouncing;
 
     private int      selectedCharacter = 0;
     private Sprite[] mageFrames;
-
-    // ─────────────────────────────────────────────────────────────────────────
 
     void Start()
     {
@@ -70,42 +67,40 @@ public class PlayerShooter : MonoBehaviour
     void FireSingleBullet(Vector2 direction)
     {
         GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-
-        // Apply character-specific sprite
         ApplyProjectileVisual(bullet, direction);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
-
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     public void ApplyProjectileVisual(GameObject bullet, Vector2 direction)
     {
-        SpriteRenderer sr = bullet.GetComponent<SpriteRenderer>();
+        SpriteRenderer     sr   = bullet.GetComponentInChildren<SpriteRenderer>();
+        ProjectileAnimator anim = bullet.GetComponentInChildren<ProjectileAnimator>();
 
         switch (selectedCharacter)
         {
-            case 0:
+            case 0: 
                 if (sr != null && archerArrow != null)
                     sr.sprite = archerArrow;
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-                bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                float arrowAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                bullet.transform.rotation = Quaternion.AngleAxis(arrowAngle, Vector3.forward);
                 break;
 
-            case 1:
-                ProjectileAnimator anim = bullet.GetComponentInChildren<ProjectileAnimator>();
+            case 1: 
                 if (anim != null && mageFrames != null)
                     anim.SetFrames(mageFrames);
                 else if (sr != null && mageFireball1 != null)
                     sr.sprite = mageFireball1;
-                bullet.transform.rotation = Quaternion.identity;
+                float fireAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
+                bullet.transform.rotation = Quaternion.AngleAxis(fireAngle, Vector3.forward);
                 break;
 
             default:
                 if (knightProjectileSprite != null && sr != null)
                     sr.sprite = knightProjectileSprite;
+                float knightAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+                bullet.transform.rotation = Quaternion.AngleAxis(knightAngle, Vector3.forward);
                 break;
         }
     }
