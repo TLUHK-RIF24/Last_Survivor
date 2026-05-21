@@ -1,11 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-/// <summary>
-/// Pre-allocates all enemy instances at startup.
-/// The spawner calls Get() / Return() instead of Instantiate / Destroy.
-/// Attach this to an empty GameObject called "EnemyPool" in your scene.
-/// </summary>
 public class EnemyPool : MonoBehaviour
 {
     public static EnemyPool Instance { get; private set; }
@@ -28,15 +23,14 @@ public class EnemyPool : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-
         foreach (var entry in poolEntries)
             PreWarm(entry.prefab, entry.preWarmCount);
     }
 
-    public BaseEnemy Get(GameObject prefab, Vector2 position, float hpMult, float speedMult, float damageMult)
+    public BaseEnemy Get(GameObject prefab, Vector2 position, int playerLevel,
+                         float speedMult = 1f, float damageMult = 1f)
     {
         string key = prefab.name;
-
         if (!available.ContainsKey(key) || available[key].Count == 0)
             Grow(prefab, 10);
 
@@ -44,15 +38,15 @@ public class EnemyPool : MonoBehaviour
         enemy.transform.position = position;
         enemy.gameObject.SetActive(true);
         activeKey[enemy] = key;
-        enemy.OnSpawn(hpMult, speedMult, damageMult);
+        enemy.OnSpawn(playerLevel, speedMult, damageMult);
         return enemy;
     }
 
+    /// <summary>Return an enemy to the pool.</summary>
     public void Return(BaseEnemy enemy)
     {
         if (enemy == null) return;
         enemy.gameObject.SetActive(false);
-
         if (activeKey.TryGetValue(enemy, out string key))
         {
             activeKey.Remove(enemy);
@@ -74,16 +68,14 @@ public class EnemyPool : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             GameObject go = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
-            go.name = key;   
-
+            go.name = key;
             BaseEnemy enemy = go.GetComponent<BaseEnemy>();
             if (enemy == null)
             {
-                Debug.LogError($"[EnemyPool] '{key}' has no BaseEnemy component! Remove it from the pool.");
+                Debug.LogError($"[EnemyPool] '{key}' has no BaseEnemy component!");
                 Destroy(go);
                 continue;
             }
-
             go.SetActive(false);
             available[key].Push(enemy);
         }
