@@ -87,24 +87,20 @@ public class PlayerShooter : MonoBehaviour
 
         switch (selectedCharacter)
         {
-            case 1:
-                ProjectileAnimator anim = bullet.GetComponent<ProjectileAnimator>();
-                if (anim != null && mageFrames != null)
-                {
-                    anim.SetFrames(mageFrames);
-                }
-                else if (sr != null && mageFireball1 != null)
-                {
-                    sr.sprite = mageFireball1;
-                }
-                bullet.transform.rotation = Quaternion.identity;
-                break;
-
-            case 2:
+            case 0:
                 if (sr != null && archerArrow != null)
                     sr.sprite = archerArrow;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
                 bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                break;
+
+            case 1:
+                ProjectileAnimator anim = bullet.GetComponentInChildren<ProjectileAnimator>();
+                if (anim != null && mageFrames != null)
+                    anim.SetFrames(mageFrames);
+                else if (sr != null && mageFireball1 != null)
+                    sr.sprite = mageFireball1;
+                bullet.transform.rotation = Quaternion.identity;
                 break;
 
             default:
