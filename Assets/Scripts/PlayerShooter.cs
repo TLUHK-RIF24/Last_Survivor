@@ -63,17 +63,20 @@ public class PlayerShooter : MonoBehaviour
 
         Vector2 direction = (nearest.transform.position - transform.position).normalized;
 
-        if      (shotgun  != null) shotgun.FireShotgun(direction, projectilePrefab);
-        else if (piercing != null) piercing.FirePiercingArrow(direction);
-        else if (bouncing != null) bouncing.FireBouncingShot(direction);
-        else    FireSingleBullet(direction);
+        if (shotgun != null)
+            shotgun.FireShotgun(direction, projectilePrefab, bouncing, this);
+        else if (piercing != null)
+            piercing.FirePiercingArrow(direction);
+        else if (bouncing != null)
+            bouncing.FireBouncingShot(direction, projectilePrefab, this);
+        else
+            FireSingleBullet(direction);
     }
 
     void FireSingleBullet(Vector2 direction)
     {
         GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         ApplyProjectileVisual(bullet, direction);
-
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
     }
@@ -97,7 +100,7 @@ public class PlayerShooter : MonoBehaviour
                     anim.SetFrames(mageFrames);
                 else if (sr != null && mageFireball1 != null)
                     sr.sprite = mageFireball1;
-                float fireAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
+                float fireAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
                 bullet.transform.rotation = Quaternion.AngleAxis(fireAngle, Vector3.forward);
                 break;
 

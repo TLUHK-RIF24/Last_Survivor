@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 public class LightningChainAbility : MonoBehaviour
 {
-    private float damage     = 25f;
-    private int   chainJumps = 2;
-    private float chainRange = 4f;
-    private float cooldown   = 2.5f;
-    private float timer      = 0f;
+    private float damageMultiplier = 2.0f; 
+    private int   chainJumps       = 2;
+    private float chainRange       = 4f;
+    private float cooldown         = 2.5f;
+    private float timer            = 0f;
 
     void Update()
     {
@@ -17,9 +17,10 @@ public class LightningChainAbility : MonoBehaviour
 
     public void LevelUp(int level)
     {
-        damage     = 25f + (level - 1) * 15f;
-        chainJumps = 1 + level;
-        cooldown   = Mathf.Max(0.8f, 2.5f - (level - 1) * 0.2f);
+        damageMultiplier = 2.0f + (level - 1) * 0.5f;    // 2.0, 2.5, 3.0, 3.5...
+        chainJumps       = 2 + level;                      // 2, 3, 4, 5...
+        chainRange       = 4f + (level - 1) * 0.5f;
+        cooldown         = Mathf.Max(0.8f, 2.5f - (level - 1) * 0.25f);
     }
 
     void TriggerLightning()
@@ -36,26 +37,26 @@ public class LightningChainAbility : MonoBehaviour
         }
 
         if (first == null) return;
+
+        float damage = PlayerStats.Instance.damage * damageMultiplier;
         ChainLightning(first, new List<GameObject>(), chainJumps, damage, transform.position);
     }
 
-    void ChainLightning(GameObject target, List<GameObject> alreadyHit, int jumpsLeft, float currentDamage, Vector3 fromPos)
+    void ChainLightning(GameObject target, List<GameObject> alreadyHit, int jumpsLeft,
+                        float currentDamage, Vector3 fromPos)
     {
         if (target == null) return;
-
         alreadyHit.Add(target);
 
         BaseEnemy enemy = target.GetComponent<BaseEnemy>();
         if (enemy != null) enemy.TakeDamage(currentDamage);
 
         SpawnLightningVisual(fromPos, target.transform.position);
-
         if (jumpsLeft <= 0) return;
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject   next    = null;
         float        minDist = Mathf.Infinity;
-
         foreach (GameObject e in enemies)
         {
             if (alreadyHit.Contains(e)) continue;
@@ -64,7 +65,8 @@ public class LightningChainAbility : MonoBehaviour
         }
 
         if (next != null)
-            ChainLightning(next, alreadyHit, jumpsLeft - 1, currentDamage * 0.7f, target.transform.position);
+            ChainLightning(next, alreadyHit, jumpsLeft - 1, currentDamage * 0.7f,
+                           target.transform.position);
     }
 
     void SpawnLightningVisual(Vector3 fromPos, Vector3 toPos)
