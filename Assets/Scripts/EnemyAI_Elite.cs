@@ -10,13 +10,12 @@ public class EnemyAI_Elite : BaseEnemy
     {
         if (spriteRenderer != null)
             spriteRenderer.color = eliteColor;
-
         transform.localScale = Vector3.one * 1.6f;
     }
 
     protected override void Die()
     {
-        transform.localScale = Vector3.one;   // reset scale before returning to pool
-        base.Die();                           // base.Die() handles XP drop + pool return
+        transform.localScale = Vector3.one;
+        base.Die();
     }
 }
