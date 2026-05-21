@@ -5,16 +5,39 @@ public class PlayerShooter : MonoBehaviour
     [Header("Shooting Settings")]
     public GameObject projectilePrefab;
 
-    private float fireTimer = 0f;
-    private ShotgunAbility shotgun;
+    [Header("Character Projectile Sprites")]
+    [Tooltip("Knight uses the default projectile prefab sprite — leave empty")]
+    public Sprite   knightProjectileSprite;  
+    [Tooltip("Mage fireball frame 1")]
+    public Sprite   mageFireball1;
+    [Tooltip("Mage fireball frame 2")]
+    public Sprite   mageFireball2;
+    [Tooltip("Archer arrow sprite")]
+    public Sprite   archerArrow;
+
+    // ── Cached refs ───────────────────────────────────────────────────────────
+    private float            fireTimer  = 0f;
+    private ShotgunAbility   shotgun;
     private PiercingArrowAbility piercing;
-    private BouncingShotAbility bouncing;
+    private BouncingShotAbility  bouncing;
+
+    private int      selectedCharacter = 0;
+    private Sprite[] mageFrames;
+
+    // ─────────────────────────────────────────────────────────────────────────
 
     void Start()
     {
-        shotgun = GetComponent<ShotgunAbility>();
+        shotgun  = GetComponent<ShotgunAbility>();
         piercing = GetComponent<PiercingArrowAbility>();
         bouncing = GetComponent<BouncingShotAbility>();
+
+        selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter", 0);
+
+        if (mageFireball1 != null && mageFireball2 != null)
+            mageFrames = new Sprite[] { mageFireball1, mageFireball2 };
+        else if (mageFireball1 != null)
+            mageFrames = new Sprite[] { mageFireball1 };
     }
 
     void Update()
@@ -26,7 +49,7 @@ public class PlayerShooter : MonoBehaviour
             TryShoot();
         }
 
-        if (shotgun == null) shotgun = GetComponent<ShotgunAbility>();
+        if (shotgun  == null) shotgun  = GetComponent<ShotgunAbility>();
         if (piercing == null) piercing = GetComponent<PiercingArrowAbility>();
         if (bouncing == null) bouncing = GetComponent<BouncingShotAbility>();
     }
@@ -38,26 +61,65 @@ public class PlayerShooter : MonoBehaviour
 
         Vector2 direction = (nearest.transform.position - transform.position).normalized;
 
-        if (shotgun != null) shotgun.FireShotgun(direction, projectilePrefab);
+        if      (shotgun  != null) shotgun.FireShotgun(direction, projectilePrefab);
         else if (piercing != null) piercing.FirePiercingArrow(direction);
         else if (bouncing != null) bouncing.FireBouncingShot(direction);
-        else FireSingleBullet(direction);
+        else    FireSingleBullet(direction);
     }
 
     void FireSingleBullet(Vector2 direction)
     {
         GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+
+        // Apply character-specific sprite
+        ApplyProjectileVisual(bullet, direction);
+
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
+        if (rb != null) rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    public void ApplyProjectileVisual(GameObject bullet, Vector2 direction)
+    {
+        SpriteRenderer sr = bullet.GetComponent<SpriteRenderer>();
+
+        switch (selectedCharacter)
+        {
+            case 1:
+                ProjectileAnimator anim = bullet.GetComponent<ProjectileAnimator>();
+                if (anim != null && mageFrames != null)
+                {
+                    anim.SetFrames(mageFrames);
+                }
+                else if (sr != null && mageFireball1 != null)
+                {
+                    sr.sprite = mageFireball1;
+                }
+                bullet.transform.rotation = Quaternion.identity;
+                break;
+
+            case 2:
+                if (sr != null && archerArrow != null)
+                    sr.sprite = archerArrow;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+                bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                break;
+
+            default:
+                if (knightProjectileSprite != null && sr != null)
+                    sr.sprite = knightProjectileSprite;
+                break;
+        }
     }
 
     public GameObject FindNearestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject nearest = null;
-        float minDist = Mathf.Infinity;
+        GameObject   nearest = null;
+        float        minDist = Mathf.Infinity;
+
         foreach (GameObject enemy in enemies)
         {
             float dist = Vector2.Distance(transform.position, enemy.transform.position);
