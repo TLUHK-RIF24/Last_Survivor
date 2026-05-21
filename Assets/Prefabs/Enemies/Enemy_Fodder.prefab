@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Fodder
   baseMaxHealth: 10
-  baseMoveSpeed: 2.8
+  baseMoveSpeed: 2
   baseDamage: 10
   baseXPValue: 1
   hpScalesWithLevel: 0

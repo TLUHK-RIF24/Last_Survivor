@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Projector
   baseMaxHealth: 8
-  baseMoveSpeed: 5.5
+  baseMoveSpeed: 3
   baseDamage: 5
   baseXPValue: 2
   hpScalesWithLevel: 0

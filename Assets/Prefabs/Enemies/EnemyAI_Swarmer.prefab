@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Swarmer
   baseMaxHealth: 5
-  baseMoveSpeed: 5
+  baseMoveSpeed: 3
   baseDamage: 5
   baseXPValue: 1
   hpScalesWithLevel: 0
