@@ -23,6 +23,9 @@ public class BouncingShotAbility : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
 
+        Projectile proj = bullet.GetComponent<Projectile>();
+        if (proj != null) proj.enabled = false;
+
         BouncingBullet bb = bullet.AddComponent<BouncingBullet>();
         bb.Initialize(damage, bounceCount);
     }
