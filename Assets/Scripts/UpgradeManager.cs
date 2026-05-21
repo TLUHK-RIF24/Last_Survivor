@@ -64,7 +64,7 @@ public class UpgradeManager : MonoBehaviour
         switch (upgrade.statToUpgrade)
         {
             case StatType.Damage:          stats.damage          += upgrade.bonusPerLevel; break;
-            case StatType.FireRate:        stats.fireRate        = Mathf.Max(0.05f, stats.fireRate - upgrade.bonusPerLevel); break;
+            case StatType.FireRate:        stats.fireRate        = Mathf.Max(0.15f, stats.fireRate - upgrade.bonusPerLevel); break;
             case StatType.MoveSpeed:       stats.moveSpeed       += upgrade.bonusPerLevel; break;
             case StatType.ProjectileSpeed: stats.projectileSpeed += upgrade.bonusPerLevel; break;
         }

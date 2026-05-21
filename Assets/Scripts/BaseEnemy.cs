@@ -1,17 +1,17 @@
 using UnityEngine;
 
-/// <summary>
-/// Replaces both EnemyHealth and EnemyMovement.
-/// Do NOT attach this directly to prefabs — attach one of the EnemyAI_X subclasses.
-/// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class BaseEnemy : MonoBehaviour
 {
     [Header("Base Stats  (set on each prefab)")]
-    public float baseMaxHealth = 80f;
+    public float baseMaxHealth = 10f;
     public float baseMoveSpeed = 2.8f;
     public float baseDamage    = 10f;
-    public float baseXPValue   = 5f;
+    public float baseXPValue   = 1f;
+
+    [Header("HP x Level")]
+    [Tooltip("If true, finalHP = baseHP × playerLevel at spawn time (VS mechanic).")]
+    public bool hpScalesWithLevel = false;
 
     [Header("XP Drop")]
     [SerializeField] private GameObject xpOrbPrefab;
@@ -21,77 +21,60 @@ public class BaseEnemy : MonoBehaviour
     public Color  damageFlashColor = Color.red;
     public float  damageFlashTime  = 0.08f;
 
-    // ── Set by the pool on every spawn ───────────────────────────────────────
     [HideInInspector] public float maxHealth;
     [HideInInspector] public float moveSpeed;
     [HideInInspector] public float damage;
     [HideInInspector] public float xpValue;
 
-    // ── Internals ────────────────────────────────────────────────────────────
     protected float       currentHealth;
     protected Transform   player;
     protected Rigidbody2D rb;
 
-    private Color originalColor;   // set once in Awake, never overwritten
+    private Color originalColor;
     private float flashTimer;
     private bool  isFlashing;
 
     private float contactDamageTimer;
     private const float CONTACT_INTERVAL = 0.5f;
 
-    // ─────────────────────────────────────────────────────────────────────────
-    //  Awake — runs ONCE when the prefab instance is first created by the pool
-    //  Store originalColor here so it never gets corrupted by a flash state
-    // ─────────────────────────────────────────────────────────────────────────
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
-
-        // Store the true prefab color here — this only runs once per instance
         if (spriteRenderer != null)
             originalColor = spriteRenderer.color;
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    //  Called by EnemyPool every time this object is pulled from the pool
-    // ─────────────────────────────────────────────────────────────────────────
-    public virtual void OnSpawn(float hpMult, float speedMult, float damageMult)
+    public virtual void OnSpawn(int playerLevel, float speedMult = 1f, float damageMult = 1f)
     {
-        maxHealth  = baseMaxHealth * hpMult;
+        float hpLevel = hpScalesWithLevel ? Mathf.Max(1, playerLevel) : 1f;
+        maxHealth  = baseMaxHealth * hpLevel;
         moveSpeed  = baseMoveSpeed * speedMult;
         damage     = baseDamage    * damageMult;
-        xpValue    = baseXPValue   * Mathf.Sqrt(hpMult);
+        xpValue    = baseXPValue;
 
         currentHealth      = maxHealth;
         contactDamageTimer = 0f;
         flashTimer         = 0f;
         isFlashing         = false;
 
-        // Always restore to the true original color on every spawn
         if (spriteRenderer != null)
             spriteRenderer.color = originalColor;
 
         player = EnemySpawner.Instance != null
-        ? EnemySpawner.Instance.PlayerTransform
-        : GameObject.FindGameObjectWithTag("Player")?.transform;
+            ? EnemySpawner.Instance.PlayerTransform
+            : GameObject.FindGameObjectWithTag("Player")?.transform;
 
         rb.simulated = true;
-
-        Collider2D[] colliders = GetComponents<Collider2D>();
-        foreach (Collider2D col in colliders)
-            col.enabled = true;
+        Collider2D[] cols = GetComponents<Collider2D>();
+        foreach (var c in cols) c.enabled = true;
 
         OnSpawnExtra();
     }
 
-    /// <summary>Override in subclass for per-type spawn init.</summary>
     protected virtual void OnSpawnExtra() { }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    //  Unity lifecycle
-    // ─────────────────────────────────────────────────────────────────────────
     protected virtual void Update()
     {
         if (player == null) return;
@@ -100,36 +83,11 @@ public class BaseEnemy : MonoBehaviour
         UpdateAI();
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    //  AI hook — override in subclasses
-    // ─────────────────────────────────────────────────────────────────────────
     protected virtual void UpdateAI()
     {
-        Separate();
         MoveTowardsPlayer();
     }
 
-    private void Separate()
-    {
-        Collider2D[] neighbours = Physics2D.OverlapCircleAll(
-            rb.position, 0.5f, LayerMask.GetMask("Enemy"));
-        
-        foreach (Collider2D neighbour in neighbours)
-        {
-            if (neighbour.gameObject == gameObject) continue;
-            
-            Vector2 pushDir = rb.position - (Vector2)neighbour.transform.position;
-            float distance = pushDir.magnitude;
-            
-            if (distance < 0.01f) pushDir = Random.insideUnitCircle;
-            
-            rb.position += pushDir.normalized * 0.02f;
-        }
-    }
-
-    // ─────────────────────────────────────────────────────────────────────────
-    //  Shared movement helpers for subclasses
-    // ─────────────────────────────────────────────────────────────────────────
     protected void MoveTowardsPlayer()
     {
         if (player == null) return;
@@ -149,24 +107,36 @@ public class BaseEnemy : MonoBehaviour
         return Vector2.Distance(rb.position, player.position);
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    //  Health / damage
-    // ─────────────────────────────────────────────────────────────────────────
+    protected virtual void Separate()
+    {
+        Collider2D[] neighbours = Physics2D.OverlapCircleAll(
+            rb.position, 0.5f, LayerMask.GetMask("Enemy"));
+        foreach (Collider2D n in neighbours)
+        {
+            if (n.gameObject == gameObject) continue;
+            Vector2 push = rb.position - (Vector2)n.transform.position;
+            if (push.magnitude < 0.01f) push = Random.insideUnitCircle;
+            rb.position += push.normalized * 0.02f;
+        }
+    }
+
     public void TakeDamage(float amount)
     {
         if (!gameObject.activeSelf) return;
+
+        rb.simulated = false;
+        rb.linearVelocity = Vector2.zero;
+        Collider2D[] cols = GetComponents<Collider2D>();
+        foreach (var c in cols) c.enabled = false;
+
         currentHealth -= amount;
         TriggerFlash();
-        if (currentHealth <= 0f)
+        if (currentHealth <= 0f) Die();
+        else
         {
-            rb.simulated = false;
-            rb.linearVelocity = Vector2.zero;
-
-            Collider2D[] colliders = GetComponents<Collider2D>();
-            foreach (Collider2D col in colliders)
-                col.enabled = false;
-
-            Die();
+            // Re-enable if not dead
+            rb.simulated = true;
+            foreach (var c in cols) c.enabled = true;
         }
     }
 
@@ -188,30 +158,19 @@ public class BaseEnemy : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
-
-        Collider2D[] colliders = GetComponents<Collider2D>();
-        foreach (Collider2D col in colliders)
-            col.enabled = false;
-
+        Collider2D[] cols = GetComponents<Collider2D>();
+        foreach (var c in cols) c.enabled = false;
         EnemyPool.Instance?.Return(this);
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    //  Contact damage to player
-    // ─────────────────────────────────────────────────────────────────────────
     protected virtual void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
         if (contactDamageTimer < CONTACT_INTERVAL) return;
         contactDamageTimer = 0f;
-
-        
         PlayerHealth.Instance?.TakeDamage(damage);
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    //  Damage flash
-    // ─────────────────────────────────────────────────────────────────────────
     private void TriggerFlash()
     {
         if (spriteRenderer == null) return;

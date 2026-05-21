@@ -1,20 +1,19 @@
 using UnityEngine;
 
-// Keeps its distance and fires projectiles at the player
 public class EnemyAI_Projector : BaseEnemy
 {
     [Header("Projector Settings")]
     public GameObject projectilePrefab;
     public float preferredRange   = 7f;
-    public float fireRate         = 1.5f;
-    public float projectileSpeed  = 5f;
-    public float projectileDamage = 8f;
+    public float fireRate         = 0.25f; 
+    public float projectileSpeed  = 3f;     
+    public float projectileDamage = 20f;    
 
     private float shootTimer;
 
     protected override void OnSpawnExtra()
     {
-        shootTimer = 1f / fireRate;   // start ready to fire immediately
+        shootTimer = -Random.Range(1f, 6f);
     }
 
     protected override void UpdateAI()
@@ -22,16 +21,11 @@ public class EnemyAI_Projector : BaseEnemy
         float dist = DistanceToPlayer();
 
         if (dist < preferredRange - 1f)
-        {
-            rb.linearVelocity = -DirectionToPlayer() * moveSpeed;         // back away
-        }
+            rb.linearVelocity = -DirectionToPlayer() * moveSpeed;
         else if (dist > preferredRange + 1f)
-        {
-            rb.linearVelocity = DirectionToPlayer() * moveSpeed * 0.6f;   // close in slowly
-        }
+            rb.linearVelocity = DirectionToPlayer() * moveSpeed * 0.6f;
         else
         {
-            // In sweet spot — strafe sideways
             Vector2 perp = new Vector2(-DirectionToPlayer().y, DirectionToPlayer().x);
             rb.linearVelocity = perp * moveSpeed * 0.4f;
         }

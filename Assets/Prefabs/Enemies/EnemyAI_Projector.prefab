@@ -180,10 +180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eecc9bf6f936ad46918f6490c4fd3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Projector
-  baseMaxHealth: 25
-  baseMoveSpeed: 1.2
-  baseDamage: 8
-  baseXPValue: 6
+  baseMaxHealth: 8
+  baseMoveSpeed: 3
+  baseDamage: 5
+  baseXPValue: 2
+  hpScalesWithLevel: 0
   xpOrbPrefab: {fileID: 3607475533658753199, guid: a7d67cb173a2bf9409f147b6d2e5854f, type: 3}
   spriteRenderer: {fileID: 0}
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
@@ -196,7 +197,7 @@ MonoBehaviour:
   preferredRange: 7
   fireRate: 1.5
   projectileSpeed: 5
-  projectileDamage: 8
+  projectileDamage: 5
 --- !u!58 &-8659370905885529700
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -2,33 +2,29 @@ using UnityEngine;
 
 public class BouncingShotAbility : MonoBehaviour
 {
-    private int bounceCount = 2;
-    private float damage = 15f;
+    private int   bounceCount      = 2;
+    private float damageMultiplier = 1.2f; 
 
     public void LevelUp(int level)
     {
-        bounceCount = 1 + level;
-        damage = 15f + (level - 1) * 10f;
+        bounceCount      = 1 + level;                  // 2, 3, 4, 5...
+        damageMultiplier = 1.2f + (level - 1) * 0.15f; // 1.2, 1.35, 1.5, 1.65...
     }
 
-    public void FireBouncingShot(Vector2 direction)
+    public int GetBounceCount() => bounceCount;
+
+    public void FireBouncingShot(Vector2 direction, GameObject projectilePrefab, PlayerShooter shooter)
     {
-        GameObject bullet = new GameObject("BouncingBullet");
-        bullet.transform.position = transform.position;
-        bullet.transform.localScale = new Vector3(0.3f, 0.3f, 1f);
+        float damage = PlayerStats.Instance.damage * damageMultiplier;
 
-        SpriteRenderer sr = bullet.AddComponent<SpriteRenderer>();
-        sr.sprite = SpriteHelper.CreateCircle();
-        sr.color = new Color(0.3f, 0.8f, 1f);
-        sr.sortingOrder = 2;
+        GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        shooter.ApplyProjectileVisual(bullet, direction);
 
-        Rigidbody2D rb = bullet.AddComponent<Rigidbody2D>();
-        rb.gravityScale = 0f;
-        rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb != null) rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
 
-        CircleCollider2D col = bullet.AddComponent<CircleCollider2D>();
-        col.isTrigger = true;
-        col.radius = 0.15f;
+        Projectile proj = bullet.GetComponent<Projectile>();
+        if (proj != null) proj.enabled = false;
 
         BouncingBullet bb = bullet.AddComponent<BouncingBullet>();
         bb.Initialize(damage, bounceCount);

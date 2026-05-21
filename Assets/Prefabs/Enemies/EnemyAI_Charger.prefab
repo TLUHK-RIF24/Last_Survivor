@@ -180,10 +180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a7bf33d73132c439ecefca2620c8b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Charger
-  baseMaxHealth: 40
-  baseMoveSpeed: 1.8
+  baseMaxHealth: 20
+  baseMoveSpeed: 3
   baseDamage: 20
-  baseXPValue: 8
+  baseXPValue: 2
+  hpScalesWithLevel: 0
   xpOrbPrefab: {fileID: 3607475533658753199, guid: a7d67cb173a2bf9409f147b6d2e5854f, type: 3}
   spriteRenderer: {fileID: 0}
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}

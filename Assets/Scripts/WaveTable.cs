@@ -1,134 +1,81 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-// ═════════════════════════════════════════════════════════════════════════════
-//  SpawnRule  —  one enemy type inside a MinuteWindow
-//  (replaces the old standalone SpawnRule.cs ScriptableObject)
-// ═════════════════════════════════════════════════════════════════════════════
 [System.Serializable]
-public class SpawnRule
+public class WaveEnemyEntry
 {
-    [Tooltip("Enemy prefab — must have a BaseEnemy subclass on it")]
-    public GameObject enemyPrefab;
+    [Tooltip("Enemy prefab for this type")]
+    public GameObject prefab;
 
-    [Range(0f, 100f)]
-    [Tooltip("Higher = more likely to be picked within this window")]
-    public float spawnWeight = 10f;
-
-    [Tooltip("Fire several at once instead of one at a time")]
-    public bool  spawnInClusters = false;
-    public int   minClusterSize  = 3;
-    public int   maxClusterSize  = 8;
-    public float clusterSpread   = 1.5f;
-}
-
-// ═════════════════════════════════════════════════════════════════════════════
-//  MinuteWindow  —  which enemies are active during a time band
-// ═════════════════════════════════════════════════════════════════════════════
-[System.Serializable]
-public class MinuteWindow
-{
-    [Tooltip("Window becomes active at this many seconds into the run")]
-    public float startTime = 0f;
-
-    [Tooltip("Window ends at this many seconds. Set to 0 to run until the end")]
-    public float endTime   = 60f;
-
-    [Tooltip("Label shown in the Inspector only — has no effect on gameplay")]
-    public string label    = "Minute 1";
-
-    public List<SpawnRule> rules = new List<SpawnRule>();
-}
-
-// ═════════════════════════════════════════════════════════════════════════════
-//  SpecialEvent  —  timed interventions that break the normal spawn loop
-// ═════════════════════════════════════════════════════════════════════════════
-public enum SpecialEventType
-{
-    SwarmRush,   // continuous flood from one screen edge for N seconds
-    ArenaRing,   // ring of enemies spawns around the player instantly
-    Stalker,     // one very tanky enemy that never stops following the player
-    WallSpawn,   // ring of tough enemies — the DPS counter-measure
+    [Tooltip("Minimum alive count. Spawner fills to this quota every tick.")]
+    public int minimumAlive = 10;
 }
 
 [System.Serializable]
-public class SpecialEvent
+public class WaveDefinition
 {
-    public SpecialEventType eventType   = SpecialEventType.SwarmRush;
-    public float            triggerTime = 120f;
-    public float            duration    = 30f;
-    public GameObject       enemyPrefab;
-    public int              enemyCount  = 40;
-    public float            ringRadius  = 6f;
+    [Tooltip("Human-readable label — no effect on gameplay")]
+    public string label = "Minute 0";
+
+    [Tooltip("Enemy types active this minute and their minimum alive quotas")]
+    public List<WaveEnemyEntry> enemies = new List<WaveEnemyEntry>();
+
+    [Tooltip("How often (seconds) the spawner checks and fills quotas")]
+    public float spawnInterval = 1.0f;
+}
+
+public enum MapEventType
+{
+    SwarmRush,    // flood from one screen edge
+    WallSpawn,    // ring around the player
+    ArenaRing,    // closing ring
+}
+
+[System.Serializable]
+public class MapEvent
+{
+    public string       label        = "Event";
+    public MapEventType eventType    = MapEventType.SwarmRush;
+
+    [Tooltip("Seconds into the run when this fires (e.g. 150 = minute 2 second 30)")]
+    public float        triggerTime  = 60f;
+
+    public GameObject   enemyPrefab;
+    public int          enemyCount   = 30;
+    public float        ringRadius   = 7f;
+
+    [Tooltip("Duration in seconds (only used for SwarmRush)")]
+    public float        duration     = 20f;
+
     [HideInInspector] public bool triggered = false;
 }
 
 [CreateAssetMenu(fileName = "WaveTable", menuName = "Enemies/Wave Table")]
 public class WaveTable : ScriptableObject
 {
-    [Header("Enemy Cap  (how many can be alive at once)")]
-    public int   startEnemyCap = 60;
-    public int   maxEnemyCap   = 500;
-    [Tooltip("Seconds to grow from startEnemyCap to maxEnemyCap")]
-    public float capRampTime   = 900f;
+    [Header("Hard Cap")]
+    [Tooltip("No regular spawns above this count — mirrors the VS 300 cap")]
+    public int hardCap = 300;
 
-    [Header("Spawn Pulse Speed")]
-    [Tooltip("Seconds between spawn pulses at the very start")]
-    public float baseSpawnInterval = 1.0f;
-    [Tooltip("Fastest the pulse can ever get")]
-    public float minSpawnInterval  = 0.15f;
-    [Tooltip("Seconds for the pulse to reach its fastest")]
-    public float intervalRampTime  = 600f;
-
-    [Header("Stat Scaling  (enemies get tougher over time)")]
-    [Tooltip("HP doubles after this many seconds")]
-    public float hpScaleTime      = 600f;
-    [Tooltip("How much speed grows (fraction of base per scaleTime)")]
-    public float speedScaleFactor = 0.3f;
-    public float speedScaleTime   = 600f;
-    [Tooltip("Damage doubles after this many seconds")]
-    public float damageScaleTime  = 480f;
-
-    [Header("DPS Wall  (fires when the player kills too fast)")]
-    [Tooltip("Kills per second needed to trigger a wall spawn")]
-    public float wallTriggerKillRate = 8f;
-    [Tooltip("Minimum seconds between wall spawns")]
-    public float wallSpawnCooldown   = 20f;
-
-    [Header("Off-Screen Recycling")]
+    [Header("Despawn / Teleport")]
     [Tooltip("Enemies beyond this distance from the player get teleported to the spawn ring")]
     public float despawnDistance      = 22f;
-    [Tooltip("Seconds between teleport scans (lower = more accurate but more CPU)")]
     public float teleportScanInterval = 2f;
 
-    [Header("Minute Windows")]
-    public List<MinuteWindow> windows = new List<MinuteWindow>();
+    [Header("Wave Schedule  (one entry per minute, index 0 = minute 0)")]
+    public List<WaveDefinition> waves = new List<WaveDefinition>();
 
-    [Header("Special Events")]
-    public List<SpecialEvent> specialEvents = new List<SpecialEvent>();
+    [Header("Map Events")]
+    public List<MapEvent> mapEvents = new List<MapEvent>();
 
-    public int GetEnemyCap(float t)
+    public WaveDefinition GetWave(float gameTime)
     {
-        float pct = Mathf.Clamp01(t / capRampTime);
-        return Mathf.RoundToInt(Mathf.Lerp(startEnemyCap, maxEnemyCap, pct));
+        if (waves == null || waves.Count == 0) return null;
+        int index = Mathf.FloorToInt(gameTime / 60f);
+        index = Mathf.Clamp(index, 0, waves.Count - 1);
+        return waves[index];
     }
 
-    public float GetSpawnInterval(float t)
-    {
-        float pct = Mathf.Clamp01(t / intervalRampTime);
-        return Mathf.Lerp(baseSpawnInterval, minSpawnInterval, pct);
-    }
-
-    public float GetHPMultiplier(float t)     => 1f + (t / hpScaleTime);
-    public float GetSpeedMultiplier(float t)  => 1f + (t / speedScaleTime) * speedScaleFactor;
-    public float GetDamageMultiplier(float t) => 1f + (t / damageScaleTime);
-
-    public MinuteWindow GetActiveWindow(float t)
-    {
-        MinuteWindow best = null;
-        foreach (var w in windows)
-            if (t >= w.startTime && (w.endTime <= 0f || t < w.endTime))
-                best = w;
-        return best;
-    }
+    public int GetWaveIndex(float gameTime)
+        => Mathf.Clamp(Mathf.FloorToInt(gameTime / 60f), 0, Mathf.Max(0, waves.Count - 1));
 }
