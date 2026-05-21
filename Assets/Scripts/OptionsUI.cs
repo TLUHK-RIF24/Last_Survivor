@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class OptionsUI : MonoBehaviour
 {
@@ -11,7 +10,9 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] private Slider sfxSlider;
 
     [Header("Fullscreen Toggle")]
-    [SerializeField] private TMP_Text fullscreenValueText;
+    [SerializeField] private Image  fullscreenButtonImage;
+    [SerializeField] private Sprite fullscreenOnSprite;
+    [SerializeField] private Sprite fullscreenOffSprite;
 
     private const string PREF_MUSIC      = "MusicVolume";
     private const string PREF_SFX        = "SFXVolume";
@@ -59,8 +60,9 @@ public class OptionsUI : MonoBehaviour
 
     private void UpdateFullscreenDisplay(bool isFullscreen)
     {
-        if (fullscreenValueText != null)
-            fullscreenValueText.text = isFullscreen ? "ON" : "OFF";
+        if (fullscreenButtonImage == null) return;
+        fullscreenButtonImage.sprite = isFullscreen ? fullscreenOnSprite : fullscreenOffSprite;
+        fullscreenButtonImage.SetNativeSize();
     }
 
 
