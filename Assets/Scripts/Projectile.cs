@@ -10,7 +10,9 @@ public class Projectile : MonoBehaviour
     {
         if (!damageSet)
             damage = PlayerStats.Instance.damage;
-        Destroy(gameObject, lifetime);
+
+        if (enabled)
+            Destroy(gameObject, lifetime);
     }
 
     public void SetDamage(float value)
