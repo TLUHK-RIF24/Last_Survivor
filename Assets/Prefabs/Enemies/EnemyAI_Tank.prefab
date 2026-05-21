@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506ce27f2cc85cb49815dbfe6ac27d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Tank
-  baseMaxHealth: 100
+  baseMaxHealth: 250
   baseMoveSpeed: 1
   baseDamage: 40
   baseXPValue: 10
