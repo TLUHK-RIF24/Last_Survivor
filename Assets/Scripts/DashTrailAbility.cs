@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class DashTrailAbility : MonoBehaviour
 {
-    private float damage        = 3f;    // reduced from 8 — trail should chip, not one-shot
-    private float trailDuration = 1.2f;
-    private float trailInterval = 0.2f;  // slightly less frequent patches
-    private float trailRadius   = 0.6f;  // slightly smaller radius
-    private float trailTimer    = 0f;
+    private float damageMultiplier = 0.3f; 
+    private float trailDuration    = 1.2f;
+    private float trailInterval    = 0.2f;
+    private float trailRadius      = 0.6f;
+    private float trailTimer       = 0f;
     private Rigidbody2D rb;
 
     void Start()
@@ -16,15 +16,14 @@ public class DashTrailAbility : MonoBehaviour
 
     public void LevelUp(int level)
     {
-        damage        = 3f  + (level - 1) * 3f;   // grows to 18 at level 6
-        trailDuration = 1.2f + (level - 1) * 0.2f;
-        trailRadius   = 0.6f + (level - 1) * 0.1f;
+        damageMultiplier = 0.3f + (level - 1) * 0.2f;   // 0.3, 0.4, 0.5, 0.6...
+        trailDuration    = 1.2f + (level - 1) * 0.2f;
+        trailRadius      = 0.6f + (level - 1) * 0.1f;
     }
 
     void Update()
     {
         if (rb == null || rb.linearVelocity.magnitude < 0.5f) return;
-
         trailTimer += Time.deltaTime;
         if (trailTimer >= trailInterval)
         {
@@ -35,6 +34,8 @@ public class DashTrailAbility : MonoBehaviour
 
     void SpawnTrailPatch()
     {
+        float damage = PlayerStats.Instance.damage * damageMultiplier;
+
         GameObject patch = new GameObject("TrailPatch");
         patch.transform.position   = transform.position;
         patch.transform.localScale = Vector3.one * trailRadius * 2f;
