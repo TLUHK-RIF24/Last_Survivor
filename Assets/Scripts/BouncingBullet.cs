@@ -6,7 +6,7 @@ public class BouncingBullet : MonoBehaviour
 {
     private float            damage;
     private int              bouncesLeft;
-    private float            bounceRange  = 6f;
+    private float            bounceRange  = 3f;
     private List<GameObject> hitEnemies   = new List<GameObject>();
     private Rigidbody2D      rb;
     private Collider2D       myCollider;
@@ -33,11 +33,13 @@ public class BouncingBullet : MonoBehaviour
         if (bouncesLeft > 0)
         {
             bouncesLeft--;
+            // Temporarily ignore the collider we just hit so we can move away from it
             if (myCollider != null)
                 Physics2D.IgnoreCollision(myCollider, other, true);
 
             BounceToNextEnemy(other.gameObject);
 
+            // Re-enable collision after a short delay
             StartCoroutine(ReEnableCollision(other));
         }
         else
