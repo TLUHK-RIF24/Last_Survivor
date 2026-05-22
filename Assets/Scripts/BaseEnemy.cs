@@ -85,6 +85,7 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void UpdateAI()
     {
+        Separate();
         MoveTowardsPlayer();
     }
 
