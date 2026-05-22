@@ -16,7 +16,7 @@ public class DashTrailAbility : MonoBehaviour
 
     public void LevelUp(int level)
     {
-        damageMultiplier = 0.3f + (level - 1) * 0.2f;   // 0.3, 0.4, 0.5, 0.6...
+        damageMultiplier = 0.3f + (level - 1) * 0.1f;   // 0.3, 0.4, 0.5, 0.6...
         trailDuration    = 1.2f + (level - 1) * 0.2f;
         trailRadius      = 0.6f + (level - 1) * 0.1f;
     }
