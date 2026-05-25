@@ -42,10 +42,9 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         isDead = true;
-
+        XPBarUI.Instance?.StopTimer();
         int level = GameManager.Instance.GetCurrentLevel();
         float xp = GameManager.Instance.GetCurrentXP();
-
         GameOverUI.Instance?.ShowGameOver(level, timeSurvived, xp);
     }
 
