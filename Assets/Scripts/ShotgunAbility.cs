@@ -34,7 +34,7 @@ public class ShotgunAbility : MonoBehaviour
             if (bouncing != null)
             {
                 Projectile proj = bullet.GetComponent<Projectile>();
-                if (proj != null) proj.enabled = false;
+                if (proj != null) Destroy(proj);
 
                 BouncingBullet bb = bullet.AddComponent<BouncingBullet>();
                 bb.Initialize(damage, bouncing.GetBounceCount());

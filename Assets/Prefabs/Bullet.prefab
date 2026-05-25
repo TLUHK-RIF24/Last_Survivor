@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9083322645235214623}
   - component: {fileID: 9222959663798405585}
   - component: {fileID: 8945602857098415150}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
 --- !u!114 &9222959663798405585
 MonoBehaviour:

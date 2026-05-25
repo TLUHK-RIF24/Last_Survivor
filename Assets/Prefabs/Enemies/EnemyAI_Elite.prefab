@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7113164449952946533}
   - component: {fileID: -2137823209469427638}
   - component: {fileID: -1073860826954083558}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: EnemyAI_Elite
   m_TagString: Enemy
   m_Icon: {fileID: 0}

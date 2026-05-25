@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7750390426732976293}
   - component: {fileID: 5675618388842098092}
   - component: {fileID: -2881092156926116010}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: EnemyAI_Swarmer
   m_TagString: Enemy
   m_Icon: {fileID: 0}

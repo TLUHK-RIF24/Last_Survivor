@@ -3,12 +3,12 @@ using UnityEngine;
 public class BouncingShotAbility : MonoBehaviour
 {
     private int   bounceCount      = 2;
-    private float damageMultiplier = 1.2f; 
+    private float damageMultiplier = 1.2f;
 
     public void LevelUp(int level)
     {
-        bounceCount      = 1 + level;                  // 2, 3, 4, 5...
-        damageMultiplier = 1.2f + (level - 1) * 0.15f; // 1.2, 1.35, 1.5, 1.65...
+        bounceCount      = 1 + level;                   // 2, 3, 4, 5...
+        damageMultiplier = 1.2f + (level - 1) * 0.15f;  // 1.2, 1.35, 1.5, 1.65...
     }
 
     public int GetBounceCount() => bounceCount;
@@ -24,7 +24,7 @@ public class BouncingShotAbility : MonoBehaviour
         if (rb != null) rb.linearVelocity = direction * PlayerStats.Instance.projectileSpeed;
 
         Projectile proj = bullet.GetComponent<Projectile>();
-        if (proj != null) proj.enabled = false;
+        if (proj != null) Destroy(proj);
 
         BouncingBullet bb = bullet.AddComponent<BouncingBullet>();
         bb.Initialize(damage, bounceCount);
