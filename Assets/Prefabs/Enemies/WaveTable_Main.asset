@@ -198,25 +198,41 @@ MonoBehaviour:
   mapEvents:
   - label: First Swarm
     eventType: 0
-    triggerTime: 150
+    triggerTime: 120
     enemyPrefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
-    enemyCount: 40
+    enemyCount: 25
+    ringRadius: 0
+    duration: 15
+    triggered: 0
+  - label: Big Swarm
+    eventType: 0
+    triggerTime: 300
+    enemyPrefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
+    enemyCount: 35
     ringRadius: 0
     duration: 20
     triggered: 0
   - label: Wall
     eventType: 1
-    triggerTime: 360
+    triggerTime: 480
     enemyPrefab: {fileID: 6424925252929009345, guid: 1dbdae990bf5e694fbe6570d3d67588f, type: 3}
-    enemyCount: 10
+    enemyCount: 8
     ringRadius: 7
     duration: 0
     triggered: 0
-  - label: Big Swarm
+  - label: Bigger Swarm
     eventType: 0
-    triggerTime: 540
+    triggerTime: 600
     enemyPrefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
-    enemyCount: 60
+    enemyCount: 45
     ringRadius: 0
-    duration: 25
+    duration: 20
+    triggered: 0
+  - label: ArenaRing
+    eventType: 2
+    triggerTime: 780
+    enemyPrefab: {fileID: 733373330187717797, guid: 0b99695fe1a0b274ebe68263dbe60776, type: 3}
+    enemyCount: 5
+    ringRadius: 8
+    duration: 0
     triggered: 0
