@@ -42,7 +42,7 @@ MonoBehaviour:
     - prefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
       minimumAlive: 12
     - prefab: {fileID: 3294526708094241870, guid: 1ffdbee5b5aa0f54eb3687f314c4eedd, type: 3}
-      minimumAlive: 3
+      minimumAlive: 2
     spawnInterval: 0.9
   - label: Minute 4
     enemies:
@@ -51,7 +51,7 @@ MonoBehaviour:
     - prefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
       minimumAlive: 15
     - prefab: {fileID: 3294526708094241870, guid: 1ffdbee5b5aa0f54eb3687f314c4eedd, type: 3}
-      minimumAlive: 5
+      minimumAlive: 4
     spawnInterval: 0.9
   - label: Minute 5
     enemies:
@@ -62,7 +62,7 @@ MonoBehaviour:
     - prefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
       minimumAlive: 15
     - prefab: {fileID: 3294526708094241870, guid: 1ffdbee5b5aa0f54eb3687f314c4eedd, type: 3}
-      minimumAlive: 6
+      minimumAlive: 5
     spawnInterval: 0.9
   - label: Minute 6
     enemies:
@@ -203,7 +203,7 @@ MonoBehaviour:
     enemyCount: 25
     ringRadius: 0
     duration: 15
-    triggered: 0
+    triggered: 1
   - label: Big Swarm
     eventType: 0
     triggerTime: 300
