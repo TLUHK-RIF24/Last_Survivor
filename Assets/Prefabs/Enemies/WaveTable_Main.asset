@@ -19,29 +19,31 @@ MonoBehaviour:
   - label: Minute 0
     enemies:
     - prefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
-      minimumAlive: 15
+      minimumAlive: 12
     spawnInterval: 1
   - label: Minute 1
     enemies:
     - prefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
-      minimumAlive: 20
+      minimumAlive: 15
     - prefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
-      minimumAlive: 10
+      minimumAlive: 8
     spawnInterval: 1
   - label: Minute 2
     enemies:
     - prefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
-      minimumAlive: 25
-    - prefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
       minimumAlive: 15
+    - prefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
+      minimumAlive: 12
     spawnInterval: 1
   - label: Minute 3
     enemies:
     - prefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
-      minimumAlive: 25
+      minimumAlive: 15
     - prefab: {fileID: 8885661568427781882, guid: 69a029533d8714d4e9d055c2f7274f52, type: 3}
-      minimumAlive: 20
-    spawnInterval: 1
+      minimumAlive: 12
+    - prefab: {fileID: 3294526708094241870, guid: 1ffdbee5b5aa0f54eb3687f314c4eedd, type: 3}
+      minimumAlive: 3
+    spawnInterval: 0.9
   - label: Minute 4
     enemies:
     - prefab: {fileID: 4168022889002980508, guid: 75402789e29c0ce4bac233cbef81f5a1, type: 3}
