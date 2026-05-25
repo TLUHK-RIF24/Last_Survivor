@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7876944634663580131, guid: b7bb7d1b96fc9c949a7f0534dd4bfe88, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.7149544, a: 1}
+  m_Color: {r: 1, g: 0.025235765, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   baseMoveSpeed: 3
   baseDamage: 20
   baseXPValue: 2
-  hpScalesWithLevel: 1
+  hpScalesWithLevel: 0
   xpOrbPrefab: {fileID: 3607475533658753199, guid: a7d67cb173a2bf9409f147b6d2e5854f, type: 3}
   spriteRenderer: {fileID: 0}
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
@@ -197,7 +197,7 @@ MonoBehaviour:
   dashSpeed: 10
   dashDuration: 0.4
   cooldownDuration: 1.2
-  telegraphColor: {r: 0.97293264, g: 0.25943398, b: 1, a: 1}
+  telegraphColor: {r: 0.2588235, g: 1, b: 0.61370414, a: 1}
 --- !u!58 &-2214848260376292380
 CircleCollider2D:
   m_ObjectHideFlags: 0
