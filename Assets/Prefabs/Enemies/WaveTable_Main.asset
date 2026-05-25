@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaveTable_Main
   m_EditorClassIdentifier: Assembly-CSharp::WaveTable
   hardCap: 300
-  despawnDistance: 22
+  despawnDistance: 28
   teleportScanInterval: 2
   waves:
   - label: Minute 0
