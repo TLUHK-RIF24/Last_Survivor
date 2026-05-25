@@ -13,10 +13,10 @@ public class BouncingBullet : MonoBehaviour
 
     public void Initialize(float dmg, int bounces)
     {
-        damage       = dmg;
-        bouncesLeft  = bounces;
-        rb           = GetComponent<Rigidbody2D>();
-        myCollider   = GetComponent<Collider2D>();
+        damage      = dmg;
+        bouncesLeft = bounces;
+        rb          = GetComponent<Rigidbody2D>();
+        myCollider  = GetComponent<Collider2D>();
         Destroy(gameObject, 6f);
     }
 
@@ -33,13 +33,12 @@ public class BouncingBullet : MonoBehaviour
         if (bouncesLeft > 0)
         {
             bouncesLeft--;
-            // Temporarily ignore the collider we just hit so we can move away from it
+
             if (myCollider != null)
                 Physics2D.IgnoreCollision(myCollider, other, true);
 
-            BounceToNextEnemy(other.gameObject);
+            BounceToNextEnemy();
 
-            // Re-enable collision after a short delay
             StartCoroutine(ReEnableCollision(other));
         }
         else
@@ -48,7 +47,7 @@ public class BouncingBullet : MonoBehaviour
         }
     }
 
-    void BounceToNextEnemy(GameObject justHit)
+    void BounceToNextEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject   next    = null;
@@ -63,7 +62,17 @@ public class BouncingBullet : MonoBehaviour
 
         if (next != null)
         {
-            Vector2 newDir = (next.transform.position - transform.position).normalized;
+            Rigidbody2D enemyRb   = next.GetComponent<Rigidbody2D>();
+            Vector2     targetPos = (Vector2)next.transform.position;
+
+            if (enemyRb != null)
+            {
+                float travelTime = Vector2.Distance(transform.position, targetPos)
+                                   / PlayerStats.Instance.projectileSpeed;
+                targetPos += enemyRb.linearVelocity * travelTime;
+            }
+
+            Vector2 newDir = (targetPos - (Vector2)transform.position).normalized;
             rb.linearVelocity = newDir * PlayerStats.Instance.projectileSpeed;
         }
         else
