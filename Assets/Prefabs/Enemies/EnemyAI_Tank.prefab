@@ -180,11 +180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506ce27f2cc85cb49815dbfe6ac27d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Tank
-  baseMaxHealth: 250
+  baseMaxHealth: 20
   baseMoveSpeed: 1
   baseDamage: 40
   baseXPValue: 10
-  hpScalesWithLevel: 0
+  hpScalesWithLevel: 1
   xpOrbPrefab: {fileID: 3607475533658753199, guid: a7d67cb173a2bf9409f147b6d2e5854f, type: 3}
   spriteRenderer: {fileID: 0}
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}

@@ -63,7 +63,7 @@ MonoBehaviour:
     - prefab: {fileID: 6424925252929009345, guid: 1dbdae990bf5e694fbe6570d3d67588f, type: 3}
       minimumAlive: 15
     - prefab: {fileID: 9123483832259158770, guid: 0fbe6e6071273204588efb2cbc80f8bc, type: 3}
-      minimumAlive: 15
+      minimumAlive: 10
     spawnInterval: 0.9
   - label: Minute 7
     enemies:
