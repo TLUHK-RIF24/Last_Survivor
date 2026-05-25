@@ -21,7 +21,7 @@ public class XPBarUI : MonoBehaviour
     void Update()
     {
         if (!running) return;
-        if (Time.timescale == 0f) return;
+        if (Time.timeScale == 0f) return;
         elapsedTime += Time.deltaTime;
         UpdateTimer();
     }
