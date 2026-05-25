@@ -5,9 +5,9 @@ public class EnemyAI_Projector : BaseEnemy
     [Header("Projector Settings")]
     public GameObject projectilePrefab;
     public float preferredRange   = 7f;
-    public float fireRate         = 0.25f; 
-    public float projectileSpeed  = 3f;     
-    public float projectileDamage = 20f;    
+    public float fireRate         = 0.15f; 
+    public float projectileSpeed  = 2.5f;     
+    public float projectileDamage = 30f;    
 
     private float shootTimer;
 
