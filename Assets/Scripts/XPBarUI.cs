@@ -32,7 +32,7 @@ public class XPBarUI : MonoBehaviour
             xpFillImage.fillAmount = Mathf.Clamp01(currentXP / maxXP);
 
         if (levelText != null && GameManager.Instance != null)
-            levelText.text = $"LV {GameManager.Instance.GetCurrentLevel()}";
+            levelText.text = $"LVL {GameManager.Instance.GetCurrentLevel()}";
     }
 
     private void UpdateTimer()
