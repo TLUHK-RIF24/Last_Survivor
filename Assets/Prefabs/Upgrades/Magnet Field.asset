@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magnet Field
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDefinition
   upgradeName: Magnet Field
-  description: Pulls XP orbs towards you automatically
+  description: Pull XP Orbs towards you from even further away
   icon: {fileID: 0}
   rarity: 0
   upgradeType: 1
