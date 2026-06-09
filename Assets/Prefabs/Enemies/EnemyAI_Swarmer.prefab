@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7750390426732976293}
   - component: {fileID: 5675618388842098092}
   - component: {fileID: -2881092156926116010}
+  - component: {fileID: 2763246565141520295}
   m_Layer: 9
   m_Name: EnemyAI_Swarmer
   m_TagString: Enemy
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.76, y: 0.187, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -181,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Swarmer
   baseMaxHealth: 5
-  baseMoveSpeed: 3
+  baseMoveSpeed: 2.7
   baseDamage: 5
   baseXPValue: 1
   hpScalesWithLevel: 0
@@ -231,3 +232,20 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.25
+--- !u!114 &2763246565141520295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8885661568427781882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f14939bd8f215e459c38869000a5324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpriteAnimator
+  spriteRenderer: {fileID: 0}
+  frames:
+  - {fileID: 3518035393227297419, guid: 31bbfbb3ea6a803479cc08eb67b7bcf2, type: 3}
+  - {fileID: 1801776599720749704, guid: 31bbfbb3ea6a803479cc08eb67b7bcf2, type: 3}
+  frameInterval: 0.15
