@@ -4,16 +4,16 @@ public class EnemyAI_Projector : BaseEnemy
 {
     [Header("Projector Settings")]
     public GameObject projectilePrefab;
-    public float preferredRange   = 7f;
-    public float fireRate         = 0.25f; 
-    public float projectileSpeed  = 3f;     
-    public float projectileDamage = 20f;    
+    public float preferredRange   = 9f;
+    public float fireRate         = 0.15f;  
+    public float projectileSpeed  = 3f;
+    public float projectileDamage = 20f;
 
     private float shootTimer;
 
     protected override void OnSpawnExtra()
     {
-        shootTimer = -Random.Range(1f, 6f);
+        shootTimer = -Random.Range(3f, 10f);
     }
 
     protected override void UpdateAI()
