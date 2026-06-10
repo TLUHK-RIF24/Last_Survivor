@@ -100,7 +100,7 @@ public class PlayerShooter : MonoBehaviour
                     anim.SetFrames(mageFrames);
                 else if (sr != null && mageFireball1 != null)
                     sr.sprite = mageFireball1;
-                float fireAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+                float fireAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
                 bullet.transform.rotation = Quaternion.AngleAxis(fireAngle, Vector3.forward);
                 break;
 

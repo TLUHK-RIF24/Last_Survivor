@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1358003923763591656}
   - component: {fileID: 8623824667153851049}
   - component: {fileID: -8659370905885529700}
+  - component: {fileID: 4569352677100858663}
   m_Layer: 9
   m_Name: EnemyAI_Projector
   m_TagString: Enemy
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.826, y: 1.089, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,8 +86,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7876944634663580131, guid: b7bb7d1b96fc9c949a7f0534dd4bfe88, type: 3}
-  m_Color: {r: 0, g: 0.9263358, b: 1, a: 1}
+  m_Sprite: {fileID: -8494359675984348897, guid: 856d7768926b2fc4598da4a267cefc01, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -160,7 +161,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 2.1875, y: 2}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -234,3 +235,24 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &4569352677100858663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9123483832259158770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f14939bd8f215e459c38869000a5324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpriteAnimator
+  spriteRenderer: {fileID: 4887376304905489504}
+  frames: []
+  leftFrames:
+  - {fileID: -8494359675984348897, guid: 856d7768926b2fc4598da4a267cefc01, type: 3}
+  - {fileID: 5151780522144841220, guid: 856d7768926b2fc4598da4a267cefc01, type: 3}
+  rightFrames:
+  - {fileID: 8538961891574444891, guid: 856d7768926b2fc4598da4a267cefc01, type: 3}
+  - {fileID: 5539552776496107271, guid: 856d7768926b2fc4598da4a267cefc01, type: 3}
+  frameInterval: 0.2

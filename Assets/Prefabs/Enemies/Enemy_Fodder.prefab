@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.83895, y: 0.14961, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Fodder
   baseMaxHealth: 10
-  baseMoveSpeed: 2
+  baseMoveSpeed: 1.5
   baseDamage: 10
   baseXPValue: 1
   hpScalesWithLevel: 0
@@ -245,9 +245,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5545272565010294194}
   frames: []
   leftFrames:
-  - {fileID: -1668098442272780175, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
-  - {fileID: -8816524809491542770, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
-  rightFrames:
   - {fileID: 211516700807622084, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
   - {fileID: -6098891198150602, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
+  rightFrames:
+  - {fileID: -1668098442272780175, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
+  - {fileID: -8816524809491542770, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
   frameInterval: 0.15
