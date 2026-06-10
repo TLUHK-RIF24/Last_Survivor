@@ -231,7 +231,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.25
+  m_Radius: 0.1
 --- !u!114 &2763246565141520295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,4 +248,6 @@ MonoBehaviour:
   frames:
   - {fileID: 3518035393227297419, guid: 31bbfbb3ea6a803479cc08eb67b7bcf2, type: 3}
   - {fileID: 1801776599720749704, guid: 31bbfbb3ea6a803479cc08eb67b7bcf2, type: 3}
+  leftFrames: []
+  rightFrames: []
   frameInterval: 0.15
