@@ -245,9 +245,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5545272565010294194}
   frames: []
   leftFrames:
-  - {fileID: 211516700807622084, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
-  - {fileID: -6098891198150602, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
-  rightFrames:
   - {fileID: -1668098442272780175, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
   - {fileID: -8816524809491542770, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
+  rightFrames:
+  - {fileID: 211516700807622084, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
+  - {fileID: -6098891198150602, guid: 2ca29b49d4547b54faeff64cd3a848a5, type: 3}
   frameInterval: 0.15
