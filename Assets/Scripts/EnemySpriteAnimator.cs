@@ -13,10 +13,14 @@ public class EnemySpriteAnimator : MonoBehaviour
 
     [SerializeField] private float frameInterval = 0.15f;
 
-    private int         currentFrame   = 0;
-    private float       timer          = 0f;
+    private int         currentFrame     = 0;
+    private float       timer            = 0f;
     private bool        usingDirectional = false;
     private Rigidbody2D rb;
+
+    private bool  facingRight    = false;
+    private float directionTimer = 0f;
+    private const float DIR_CHANGE_DELAY = 0.15f;
 
     void Awake()
     {
@@ -45,12 +49,32 @@ public class EnemySpriteAnimator : MonoBehaviour
 
     void UpdateDirectional()
     {
-        bool movingRight = rb != null && rb.linearVelocity.x > 0.1f;
-        Sprite[] activeFrames = movingRight ? rightFrames : leftFrames;
+        if (rb != null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                bool wantsRight = player.transform.position.x > transform.position.x;
+                if (wantsRight != facingRight)
+                {
+                    directionTimer += Time.deltaTime;
+                    if (directionTimer >= DIR_CHANGE_DELAY)
+                    {
+                        facingRight    = wantsRight;
+                        directionTimer = 0f;
+                    }
+                }
+                else
+                {
+                    directionTimer = 0f;
+                }
+            }
+        }
 
+        Sprite[] activeFrames = facingRight ? rightFrames : leftFrames;
         if (activeFrames == null || activeFrames.Length == 0) return;
 
-        currentFrame = currentFrame % activeFrames.Length;
+        currentFrame          = currentFrame % activeFrames.Length;
         spriteRenderer.sprite = activeFrames[currentFrame];
         spriteRenderer.flipX  = false;
     }
@@ -59,7 +83,7 @@ public class EnemySpriteAnimator : MonoBehaviour
     {
         if (frames == null || frames.Length == 0) return;
 
-        currentFrame = currentFrame % frames.Length;
+        currentFrame          = currentFrame % frames.Length;
         spriteRenderer.sprite = frames[currentFrame];
 
         if (rb != null && Mathf.Abs(rb.linearVelocity.x) > 0.1f)
