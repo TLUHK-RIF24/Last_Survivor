@@ -71,7 +71,7 @@ public class EnemySpriteAnimator : MonoBehaviour
             }
         }
 
-        Sprite[] activeFrames = facingRight ? rightFrames : leftFrames;
+        Sprite[] activeFrames = facingRight ? leftFrames : rightFrames;
         if (activeFrames == null || activeFrames.Length == 0) return;
 
         currentFrame          = currentFrame % activeFrames.Length;
