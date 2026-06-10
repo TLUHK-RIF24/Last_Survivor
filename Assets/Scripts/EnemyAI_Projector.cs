@@ -13,7 +13,7 @@ public class EnemyAI_Projector : BaseEnemy
 
     protected override void OnSpawnExtra()
     {
-        shootTimer = -Random.Range(3f, 10f);
+        shootTimer = -Random.Range(2f, 5f);
     }
 
     protected override void UpdateAI()
