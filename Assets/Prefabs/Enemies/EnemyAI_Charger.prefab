@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI_Charger
   baseMaxHealth: 20
-  baseMoveSpeed: 3
+  baseMoveSpeed: 2.3
   baseDamage: 20
   baseXPValue: 2
   hpScalesWithLevel: 0
@@ -195,8 +195,8 @@ MonoBehaviour:
   damage: 0
   xpValue: 0
   telegraphDuration: 0.9
-  dashSpeed: 18
-  dashDuration: 0.25
+  dashSpeed: 13
+  dashDuration: 0.4
   cooldownDuration: 1.2
   telegraphColor: {r: 1, g: 0.4, b: 0, a: 1}
 --- !u!58 &-2214848260376292380
@@ -250,9 +250,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6053335030285184529}
   frames: []
   leftFrames:
-  - {fileID: 1573806505871848827, guid: 56d5d56eb3526b44186b92b6a35f4a86, type: 3}
-  - {fileID: -3043352262724684534, guid: 56d5d56eb3526b44186b92b6a35f4a86, type: 3}
-  rightFrames:
   - {fileID: -8269183060749905171, guid: 56d5d56eb3526b44186b92b6a35f4a86, type: 3}
   - {fileID: -658000933695497658, guid: 56d5d56eb3526b44186b92b6a35f4a86, type: 3}
+  rightFrames:
+  - {fileID: 1573806505871848827, guid: 56d5d56eb3526b44186b92b6a35f4a86, type: 3}
+  - {fileID: -3043352262724684534, guid: 56d5d56eb3526b44186b92b6a35f4a86, type: 3}
   frameInterval: 0.12

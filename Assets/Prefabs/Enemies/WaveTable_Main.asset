@@ -108,7 +108,7 @@ MonoBehaviour:
     enemyCount: 40
     ringRadius: 0
     duration: 20
-    triggered: 0
+    triggered: 1
   - label: Wall
     eventType: 1
     triggerTime: 360
@@ -116,7 +116,7 @@ MonoBehaviour:
     enemyCount: 10
     ringRadius: 7
     duration: 0
-    triggered: 0
+    triggered: 1
   - label: Big Swarm
     eventType: 0
     triggerTime: 540

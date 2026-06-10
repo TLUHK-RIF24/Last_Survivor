@@ -196,7 +196,7 @@ MonoBehaviour:
   xpValue: 0
   projectilePrefab: {fileID: 2834043512782717801, guid: e3838375d3708fb4ebd4ba576e7c9c27, type: 3}
   preferredRange: 7
-  fireRate: 1.5
+  fireRate: 0.12
   projectileSpeed: 5
   projectileDamage: 5
 --- !u!58 &-8659370905885529700
