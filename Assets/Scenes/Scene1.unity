@@ -239791,6 +239791,7 @@ MonoBehaviour:
   leaveGameButton: {fileID: 635890972}
   confirmYesButton: {fileID: 260973370}
   confirmNoButton: {fileID: 570214440}
+  mainMenuSceneName: MainMenu
 --- !u!114 &1083974729
 MonoBehaviour:
   m_ObjectHideFlags: 0

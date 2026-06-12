@@ -26,6 +26,9 @@ public class PauseMenuUI : MonoBehaviour
     [SerializeField] private Button confirmYesButton;
     [SerializeField] private Button confirmNoButton;
 
+    [Header("Scene")]
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
+
     private bool isPaused = false;
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -110,8 +113,9 @@ public class PauseMenuUI : MonoBehaviour
 
     public void OnConfirmYes()
     {
+        isPaused = false;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void OnConfirmNo()
