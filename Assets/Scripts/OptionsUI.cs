@@ -22,6 +22,7 @@ public class OptionsUI : MonoBehaviour
     private const string PREF_SFX        = "SFXVolume";
     private const string PREF_FULLSCREEN = "Fullscreen";
     private const string PREF_LANGUAGE   = "Language";
+    private const float DEFAULT_SFX_ON_VOLUME = 0.8f;
 
     void OnEnable()
     {
@@ -37,6 +38,10 @@ public class OptionsUI : MonoBehaviour
 
         if (musicSlider != null) musicSlider.value = music;
         if (sfxSlider   != null) sfxSlider.value   = sfx;
+
+        AudioManager.Instance?.SetMusicVolume(music);
+        AudioManager.Instance?.SetSFXVolume(sfx);
+        Screen.fullScreen = full;
 
         UpdateFullscreenDisplay(full);
         UpdateLanguageDisplay();
@@ -54,6 +59,28 @@ public class OptionsUI : MonoBehaviour
         PlayerPrefs.SetFloat(PREF_SFX, value);
     }
 
+    public void OnSFXOnClicked()
+    {
+        SetSFXEnabled(true);
+    }
+
+    public void OnSFXOffClicked()
+    {
+        SetSFXEnabled(false);
+    }
+
+    private void SetSFXEnabled(bool enabled)
+    {
+        float volume = enabled ? DEFAULT_SFX_ON_VOLUME : 0f;
+
+        if (sfxSlider != null)
+            sfxSlider.value = volume;
+
+        AudioManager.Instance?.SetSFXVolume(volume);
+        PlayerPrefs.SetFloat(PREF_SFX, volume);
+        PlayerPrefs.Save();
+    }
+
     public void OnFullscreenLeftArrow()  => CycleFullscreen();
     public void OnFullscreenRightArrow() => CycleFullscreen();
 
@@ -69,6 +96,24 @@ public class OptionsUI : MonoBehaviour
     {
         if (fullscreenValueText != null)
             fullscreenValueText.text = isFullscreen ? "ON" : "OFF";
+    }
+
+    public void OnFullscreenOnClicked()
+    {
+        SetFullscreen(true);
+    }
+
+    public void OnFullscreenOffClicked()
+    {
+        SetFullscreen(false);
+    }
+
+    private void SetFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+        PlayerPrefs.SetInt(PREF_FULLSCREEN, isFullscreen ? 1 : 0);
+        UpdateFullscreenDisplay(isFullscreen);
+        PlayerPrefs.Save();
     }
 
     public void OnLanguageLeftArrow()
@@ -93,10 +138,26 @@ public class OptionsUI : MonoBehaviour
             languageText.text = languages[languageIndex];
     }
 
+    public void OnEnglishClicked()
+    {
+        languageIndex = 0;
+        UpdateLanguageDisplay();
+        PlayerPrefs.SetInt(PREF_LANGUAGE, languageIndex);
+        PlayerPrefs.Save();
+    }
+
     public void OnBackClicked()
     {
         PlayerPrefs.Save();
+
         MainMenuUI menu = FindFirstObjectByType<MainMenuUI>();
-        if (menu != null) menu.ShowMain();
+        if (menu != null)
+        {
+            menu.ShowMain();
+            return;
+        }
+
+        if (PauseMenuUI.Instance != null)
+            PauseMenuUI.Instance.OnOptionsBackClicked();
     }
 }

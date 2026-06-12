@@ -13,6 +13,14 @@ public class PauseMenuUI : MonoBehaviour
 
     [Header("Main Pause Panel")]
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject pauseFrame;
+    [SerializeField] private GameObject pauseTitle;
+
+    [Header("Help Panel")]
+    [SerializeField] private GameObject helpPanel;
+
+    [Header("Options Panel")]
+    [SerializeField] private GameObject optionsPanel;
 
     [Header("Confirmation Popup")]
     [SerializeField] private GameObject confirmPopup;
@@ -42,6 +50,12 @@ public class PauseMenuUI : MonoBehaviour
     {
         pauseScreen.SetActive(false);
         confirmPopup.SetActive(false);
+
+        if (helpPanel != null)
+            helpPanel.SetActive(false);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
     }
 
     void Update()
@@ -51,6 +65,14 @@ public class PauseMenuUI : MonoBehaviour
             if (confirmPopup.activeSelf)
             {
                 OnConfirmNo();
+            }
+            else if (helpPanel != null && helpPanel.activeSelf)
+            {
+                OnHelpBackClicked();
+            }
+            else if (optionsPanel != null && optionsPanel.activeSelf)
+            {
+                OnOptionsBackClicked();
             }
             else if (isPaused)
             {
@@ -72,6 +94,13 @@ public class PauseMenuUI : MonoBehaviour
         pauseScreen.SetActive(true);
         pausePanel.SetActive(true);
         confirmPopup.SetActive(false);
+        SetMainPauseViewVisible(true);
+
+        if (helpPanel != null)
+            helpPanel.SetActive(false);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
     }
 
     public void Resume()
@@ -80,9 +109,42 @@ public class PauseMenuUI : MonoBehaviour
         Time.timeScale = 1f;
         pauseScreen.SetActive(false);
         confirmPopup.SetActive(false);
+        SetMainPauseViewVisible(true);
+
+        if (helpPanel != null)
+            helpPanel.SetActive(false);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
     }
 
     // ── Button callbacks ─────────────────────────────────────────────────────
+
+    private void SetMainPauseButtonsVisible(bool visible)
+    {
+        if (continueButton != null)
+            continueButton.gameObject.SetActive(visible);
+
+        if (optionsButton != null)
+            optionsButton.gameObject.SetActive(visible);
+
+        if (helpButton != null)
+            helpButton.gameObject.SetActive(visible);
+
+        if (leaveGameButton != null)
+            leaveGameButton.gameObject.SetActive(visible);
+    }
+
+    private void SetMainPauseViewVisible(bool visible)
+    {
+        if (pauseTitle != null)
+            pauseTitle.SetActive(visible);
+
+        if (pauseFrame != null)
+            pauseFrame.SetActive(visible);
+
+        SetMainPauseButtonsVisible(visible);
+    }
 
     public void OnContinueClicked()
     {
@@ -91,19 +153,70 @@ public class PauseMenuUI : MonoBehaviour
 
     public void OnOptionsClicked()
     {
-        // Options screen not implemented yet — placeholder
-        Debug.Log("[PauseMenu] Options clicked — not implemented yet");
+        if (optionsPanel == null)
+            return;
+
+        pausePanel.SetActive(true);
+        confirmPopup.SetActive(false);
+        SetMainPauseViewVisible(false);
+
+        if (helpPanel != null)
+            helpPanel.SetActive(false);
+
+        optionsPanel.SetActive(true);
+    }
+
+    public void OnOptionsBackClicked()
+    {
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
+
+        if (helpPanel != null)
+            helpPanel.SetActive(false);
+
+        confirmPopup.SetActive(false);
+        pausePanel.SetActive(true);
+        SetMainPauseViewVisible(true);
     }
 
     public void OnHelpClicked()
     {
-        // Help screen not implemented yet — placeholder
-        Debug.Log("[PauseMenu] Help clicked — not implemented yet");
+        if (helpPanel == null)
+            return;
+
+        pausePanel.SetActive(true);
+        confirmPopup.SetActive(false);
+        SetMainPauseViewVisible(false);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
+
+        helpPanel.SetActive(true);
+    }
+
+    public void OnHelpBackClicked()
+    {
+        if (helpPanel != null)
+            helpPanel.SetActive(false);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
+
+        confirmPopup.SetActive(false);
+        pausePanel.SetActive(true);
+        SetMainPauseViewVisible(true);
     }
 
     public void OnLeaveGameClicked()
     {
         // Show confirmation popup
+        if (helpPanel != null)
+            helpPanel.SetActive(false);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
+
+        SetMainPauseViewVisible(true);
         pausePanel.SetActive(false);
         confirmPopup.SetActive(true);
 
@@ -122,6 +235,10 @@ public class PauseMenuUI : MonoBehaviour
     {
         confirmPopup.SetActive(false);
         pausePanel.SetActive(true);
+        SetMainPauseViewVisible(true);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
     }
 
 
