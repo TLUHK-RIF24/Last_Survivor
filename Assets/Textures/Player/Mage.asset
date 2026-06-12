@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12430fcf28801a542830361c422f7c1e, type: 3}
+  m_Name: Mage
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterName: Mage
+  animatorController: {fileID: 9100000, guid: f3c4a36149e2811408947507524191b8, type: 2}
+  idleClip: {fileID: 7400000, guid: 7bcb70a9d93eeb0479064d34bfd0fa51, type: 2}
+  runClip: {fileID: 7400000, guid: 339aa7ff9ea83484c90df75e6d29bf98, type: 2}
+  combatClip: {fileID: 7400000, guid: 2766c4560a66cd84287f4fd197a7511e, type: 2}

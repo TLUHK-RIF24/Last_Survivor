@@ -27149,6 +27149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimatorHandler
   baseController: {fileID: 9100000, guid: f3c4a36149e2811408947507524191b8, type: 2}
+  characters:
+  - {fileID: 11400000, guid: 2b78c78e6fe44f88a6f36e4a909263f9, type: 2}
+  - {fileID: 11400000, guid: 05ea341ea2f94b71a3f3c1659f77ba6a, type: 2}
 --- !u!1 &988935309
 GameObject:
   m_ObjectHideFlags: 0
