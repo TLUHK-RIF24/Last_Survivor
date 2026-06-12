@@ -87,10 +87,12 @@ public class GameOverUI : MonoBehaviour
         StartCoroutine(FadeInResults());
     }
 
+    private string mainMenuSceneName = "MainMenu";
+
     public void OnQuitClicked()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
     // ── Coroutines ────────────────────────────────────────────────────────────
