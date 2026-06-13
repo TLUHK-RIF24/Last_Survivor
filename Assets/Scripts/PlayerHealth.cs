@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,17 +9,32 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
     private float currentHealth;
     private float timeSurvived = 0f;
-    private bool isDead = false;
-    private Sprite lastDamageSourceSprite;
-    public GameObject floatingTextPrefab;   // Assign the prefab here
+    private bool  isDead       = false;
+
+    [Header("Death Animation — Mage")]
+    [SerializeField] private Sprite mageDeathFrame1;
+    [SerializeField] private Sprite mageDeathFrame2;
+
+    [Header("Death Animation — Archer")]
+    [SerializeField] private Sprite archerDeathFrame1;
+    [SerializeField] private Sprite archerDeathFrame2;
+
+    private SpriteRenderer spriteRenderer;
+    private int    selectedCharacter = 0;
+    private Sprite killerSprite      = null;
+
     void Awake()
     {
-        Instance = this;
+        Instance          = this;
+        spriteRenderer    = GetComponent<SpriteRenderer>();
+        selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter", 0);
     }
 
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = PlayerStats.Instance != null
+            ? PlayerStats.Instance.maxHealth
+            : maxHealth;
         UpdateUI();
     }
 
@@ -28,15 +44,15 @@ public class PlayerHealth : MonoBehaviour
             timeSurvived += Time.deltaTime;
     }
 
-    public void TakeDamage(float amount, Sprite damageSourceSprite = null)
+    public void TakeDamage(float amount, Sprite sourceSprite = null)
     {
         if (isDead) return;
 
-        if (damageSourceSprite != null)
-            lastDamageSourceSprite = damageSourceSprite;
+        if (sourceSprite != null)
+            killerSprite = sourceSprite;
 
         currentHealth -= amount;
-        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        currentHealth  = Mathf.Clamp(currentHealth, 0f, maxHealth);
         UpdateUI();
 
         if (currentHealth <= 0f)
@@ -46,10 +62,65 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         isDead = true;
-        XPBarUI.Instance?.Hide();
-        int level = GameManager.Instance.GetCurrentLevel();
-        float xp = GameManager.Instance.GetCurrentXP();
-        GameOverUI.Instance?.ShowGameOver(level, timeSurvived, xp, lastDamageSourceSprite);
+
+        if (EnemySpawner.Instance != null)
+            EnemySpawner.Instance.enabled = false;
+
+        Animator anim = GetComponent<Animator>();
+        if (anim != null) anim.enabled = false;
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.simulated      = false;
+        }
+
+        PlayerShooter shooter = GetComponent<PlayerShooter>();
+        if (shooter != null) shooter.enabled = false;
+
+        PlayerMovement movement = GetComponent<PlayerMovement>();
+        if (movement != null) movement.enabled = false;
+
+        XPBarUI.Instance?.StopTimer();
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject e in enemies)
+            e.SetActive(false);
+
+        StartCoroutine(DeathSequence());
+    }
+
+    IEnumerator DeathSequence()
+    {
+        Sprite frame1 = null;
+        Sprite frame2 = null;
+
+        switch (selectedCharacter)
+        {
+            case 0: // Archer
+                frame1 = archerDeathFrame1;
+                frame2 = archerDeathFrame2;
+                break;
+            case 1: // Mage
+                frame1 = mageDeathFrame1;
+                frame2 = mageDeathFrame2;
+                break;
+        }
+
+        if (frame1 != null && spriteRenderer != null)
+            spriteRenderer.sprite = frame1;
+
+        yield return new WaitForSeconds(1.2f);
+
+        if (frame2 != null && spriteRenderer != null)
+            spriteRenderer.sprite = frame2;
+
+        yield return new WaitForSeconds(1.5f);
+
+        int   level = GameManager.Instance.GetCurrentLevel();
+        float xp    = GameManager.Instance.GetCurrentXP();
+        GameOverUI.Instance?.ShowGameOver(level, timeSurvived, xp, killerSprite);
     }
 
     public void Heal(float amount)
@@ -57,21 +128,6 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;
         currentHealth = Mathf.Clamp(currentHealth + amount, 0f, maxHealth);
         UpdateUI();
-
-    if (floatingTextPrefab != null)
-            {
-                Vector3 spawnPos = transform.position + new Vector3(0, 1.2f, 0); // Adjust height here
-
-                GameObject textObj = Instantiate(floatingTextPrefab, spawnPos, Quaternion.identity);
-
-                FloatingText ft = textObj.GetComponent<FloatingText>();
-                if (ft != null)
-                {
-                    ft.Setup("+" + amount, Color.green);
-                }
-            }
-
-        Debug.Log($"Healed +{amount} HP!");
     }
 
     void UpdateUI()
@@ -80,6 +136,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public float GetCurrentHealth() => currentHealth;
-    public float GetMaxHealth() => maxHealth;
-    public float GetTimeSurvived() => timeSurvived;
+    public float GetMaxHealth()     => maxHealth;
+    public float GetTimeSurvived()  => timeSurvived;
 }

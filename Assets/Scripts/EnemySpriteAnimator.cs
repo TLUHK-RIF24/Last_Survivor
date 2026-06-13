@@ -6,6 +6,8 @@ public class EnemySpriteAnimator : MonoBehaviour
 
     [Header("Simple Animation (uses flipX for direction — e.g. bat)")]
     [SerializeField] private Sprite[] frames;
+    [Tooltip("Tick this if the sprite naturally faces RIGHT instead of LEFT")]
+    [SerializeField] private bool flipXByDefault = false;
 
     [Header("Directional Animation (separate left and right frames)")]
     [SerializeField] private Sprite[] leftFrames;
@@ -49,25 +51,22 @@ public class EnemySpriteAnimator : MonoBehaviour
 
     void UpdateDirectional()
     {
-        if (rb != null)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
+            bool wantsRight = player.transform.position.x > transform.position.x;
+            if (wantsRight != facingRight)
             {
-                bool wantsRight = player.transform.position.x > transform.position.x;
-                if (wantsRight != facingRight)
+                directionTimer += Time.deltaTime;
+                if (directionTimer >= DIR_CHANGE_DELAY)
                 {
-                    directionTimer += Time.deltaTime;
-                    if (directionTimer >= DIR_CHANGE_DELAY)
-                    {
-                        facingRight    = wantsRight;
-                        directionTimer = 0f;
-                    }
-                }
-                else
-                {
+                    facingRight    = wantsRight;
                     directionTimer = 0f;
                 }
+            }
+            else
+            {
+                directionTimer = 0f;
             }
         }
 
@@ -87,17 +86,10 @@ public class EnemySpriteAnimator : MonoBehaviour
         spriteRenderer.sprite = frames[currentFrame];
 
         if (rb != null && Mathf.Abs(rb.linearVelocity.x) > 0.1f)
-            spriteRenderer.flipX = rb.linearVelocity.x > 0;
-    }
-
-    public Sprite GetResultPreviewSprite()
-    {
-        if (rightFrames != null && rightFrames.Length > 0)
-            return rightFrames[0];
-
-        if (frames != null && frames.Length > 0)
-            return frames[0];
-
-        return spriteRenderer != null ? spriteRenderer.sprite : null;
+        {
+            spriteRenderer.flipX = flipXByDefault
+                ? rb.linearVelocity.x < 0
+                : rb.linearVelocity.x > 0;
+        }
     }
 }

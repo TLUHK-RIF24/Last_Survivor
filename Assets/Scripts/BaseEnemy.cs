@@ -135,7 +135,6 @@ public class BaseEnemy : MonoBehaviour
         if (currentHealth <= 0f) Die();
         else
         {
-            // Re-enable if not dead
             rb.simulated = true;
             foreach (var c in cols) c.enabled = true;
         }
@@ -164,29 +163,19 @@ public class BaseEnemy : MonoBehaviour
         EnemyPool.Instance?.Return(this);
     }
 
-    public Sprite GetDeathSourceSprite()
-    {
-        EnemySpriteAnimator animator = GetComponent<EnemySpriteAnimator>();
-        if (animator == null)
-            animator = GetComponentInChildren<EnemySpriteAnimator>();
-
-        Sprite previewSprite = animator != null ? animator.GetResultPreviewSprite() : null;
-        if (previewSprite != null)
-            return previewSprite;
-
-        if (spriteRenderer != null && spriteRenderer.sprite != null)
-            return spriteRenderer.sprite;
-
-        SpriteRenderer childRenderer = GetComponentInChildren<SpriteRenderer>();
-        return childRenderer != null ? childRenderer.sprite : null;
-    }
-
+    // ── Passes current sprite to PlayerHealth so GameOverUI knows who killed you ──
     protected virtual void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
         if (contactDamageTimer < CONTACT_INTERVAL) return;
         contactDamageTimer = 0f;
-        PlayerHealth.Instance?.TakeDamage(damage, GetDeathSourceSprite());
+
+        // Get the current visible sprite from SpriteRenderer or EnemySpriteAnimator
+        Sprite currentSprite = null;
+        if (spriteRenderer != null)
+            currentSprite = spriteRenderer.sprite;
+
+        PlayerHealth.Instance?.TakeDamage(damage, currentSprite);
     }
 
     private void TriggerFlash()
