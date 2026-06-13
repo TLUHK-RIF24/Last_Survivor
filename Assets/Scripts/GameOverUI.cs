@@ -22,6 +22,12 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private Image  resultsBgImage;
     [SerializeField] private Image  resultsHeaderImage;
 
+    [Header("Death Preview")]
+    [SerializeField] private Image playerDeathImage;
+    [SerializeField] private Image killerImage;
+    [SerializeField] private Sprite archerDeathSprite;
+    [SerializeField] private Sprite mageDeathSprite;
+
     [Header("Stat Rows  (label + value pairs)")]
     [SerializeField] private TMP_Text levelLabel;
     [SerializeField] private TMP_Text levelValue;
@@ -42,11 +48,13 @@ public class GameOverUI : MonoBehaviour
     private int   finalLevel;
     private float finalTime;
     private float finalXP;
+    private Sprite finalKillerSprite;
 
     // ── PlayerPrefs keys ─────────────────────────────────────────────────────
     private const string PREF_BEST_LEVEL = "BestLevel";
     private const string PREF_BEST_TIME  = "BestTime";
     private const string PREF_BEST_XP    = "BestXP";
+    private const string PREF_SELECTED_CHARACTER = "SelectedCharacter";
 
     // ─────────────────────────────────────────────────────────────────────────
 
@@ -54,21 +62,24 @@ public class GameOverUI : MonoBehaviour
     {
         Instance = this;
         gameOverScreen.SetActive(false);
+        SetDeathPreviewActive(false);
     }
 
     // ── Called by PlayerHealth.Die() ─────────────────────────────────────────
 
-    public void ShowGameOver(int level, float timeSurvived, float xp)
+    public void ShowGameOver(int level, float timeSurvived, float xp, Sprite killerSprite = null)
     {
         finalLevel = level;
         finalTime  = timeSurvived;
         finalXP    = xp;
+        finalKillerSprite = killerSprite;
 
         Time.timeScale = 0f;
 
         gameOverScreen.SetActive(true);
         gameOverPanel.SetActive(true);
         resultsPanel.SetActive(false);
+        SetDeathPreviewActive(false);
 
         StartCoroutine(FadeInGameOverPanel());
     }
@@ -83,6 +94,7 @@ public class GameOverUI : MonoBehaviour
         SetRowActive(levelLabel, levelValue, false);
         SetRowActive(timeLabel,  timeValue,  false);
         SetRowActive(xpLabel,    xpValue,    false);
+        SetupDeathPreview();
 
         StartCoroutine(FadeInResults());
     }
@@ -182,6 +194,37 @@ public class GameOverUI : MonoBehaviour
     {
         if (label != null) label.gameObject.SetActive(active);
         if (value != null) value.gameObject.SetActive(active);
+    }
+
+    private void SetupDeathPreview()
+    {
+        Sprite playerSprite = GetSelectedCharacterDeathSprite();
+        SetDeathImage(playerDeathImage, playerSprite);
+        SetDeathImage(killerImage, finalKillerSprite);
+    }
+
+    private Sprite GetSelectedCharacterDeathSprite()
+    {
+        int selectedCharacter = PlayerPrefs.GetInt(PREF_SELECTED_CHARACTER, 0);
+        return selectedCharacter == 1 ? mageDeathSprite : archerDeathSprite;
+    }
+
+    private void SetDeathImage(Image image, Sprite sprite)
+    {
+        if (image == null)
+            return;
+
+        image.gameObject.SetActive(sprite != null);
+        image.sprite = sprite;
+        image.preserveAspect = true;
+        image.rectTransform.localScale = Vector3.one;
+        SetImageAlpha(image, 1f);
+    }
+
+    private void SetDeathPreviewActive(bool active)
+    {
+        if (playerDeathImage != null) playerDeathImage.gameObject.SetActive(active);
+        if (killerImage != null) killerImage.gameObject.SetActive(active);
     }
 
     private void ApplyRowColor(TMP_Text label, TMP_Text value, Color color)

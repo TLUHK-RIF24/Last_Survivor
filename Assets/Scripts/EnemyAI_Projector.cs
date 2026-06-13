@@ -53,7 +53,7 @@ public class EnemyAI_Projector : BaseEnemy
 
         EnemyProjectile ep = proj.GetComponent<EnemyProjectile>();
         if (ep != null)
-            ep.Init(dir, projectileSpeed, projectileDamage * (damage / baseDamage));
+            ep.Init(dir, projectileSpeed, projectileDamage * (damage / baseDamage), GetDeathSourceSprite());
         else
         {
             Rigidbody2D prb = proj.GetComponent<Rigidbody2D>();

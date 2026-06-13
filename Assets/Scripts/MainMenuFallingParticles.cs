@@ -10,6 +10,7 @@ public class MainMenuFallingParticles : MonoBehaviour
     [SerializeField] private Vector2 driftRange = new Vector2(-26f, 26f);
     [SerializeField] private Vector2 scaleRange = new Vector2(1f, 1f);
     [SerializeField] private Vector2 alphaRange = new Vector2(0.85f, 1f);
+    [SerializeField] private bool fillOnStart = true;
 
     private readonly List<FallingParticle> particles = new List<FallingParticle>();
     private readonly List<Sprite> usableSprites = new List<Sprite>();
@@ -99,7 +100,7 @@ public class MainMenuFallingParticles : MonoBehaviour
         for (int i = 0; i < particleCount; i++)
         {
             FallingParticle particle = CreateParticle(i);
-            ResetParticle(particle, true);
+            ResetParticle(particle, fillOnStart);
             particles.Add(particle);
         }
 

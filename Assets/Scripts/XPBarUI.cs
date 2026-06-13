@@ -44,4 +44,10 @@ public class XPBarUI : MonoBehaviour
     }
 
     public void StopTimer() => running = false;
+
+    public void Hide()
+    {
+        StopTimer();
+        gameObject.SetActive(false);
+    }
 }

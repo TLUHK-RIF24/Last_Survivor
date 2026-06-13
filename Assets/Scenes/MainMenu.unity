@@ -795,6 +795,7 @@ MonoBehaviour:
   driftRange: {x: -26, y: 26}
   scaleRange: {x: 1, y: 1}
   alphaRange: {x: 0.85, y: 1}
+  fillOnStart: 1
 --- !u!1 &580382057
 GameObject:
   m_ObjectHideFlags: 0

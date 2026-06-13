@@ -164,12 +164,29 @@ public class BaseEnemy : MonoBehaviour
         EnemyPool.Instance?.Return(this);
     }
 
+    public Sprite GetDeathSourceSprite()
+    {
+        EnemySpriteAnimator animator = GetComponent<EnemySpriteAnimator>();
+        if (animator == null)
+            animator = GetComponentInChildren<EnemySpriteAnimator>();
+
+        Sprite previewSprite = animator != null ? animator.GetResultPreviewSprite() : null;
+        if (previewSprite != null)
+            return previewSprite;
+
+        if (spriteRenderer != null && spriteRenderer.sprite != null)
+            return spriteRenderer.sprite;
+
+        SpriteRenderer childRenderer = GetComponentInChildren<SpriteRenderer>();
+        return childRenderer != null ? childRenderer.sprite : null;
+    }
+
     protected virtual void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
         if (contactDamageTimer < CONTACT_INTERVAL) return;
         contactDamageTimer = 0f;
-        PlayerHealth.Instance?.TakeDamage(damage);
+        PlayerHealth.Instance?.TakeDamage(damage, GetDeathSourceSprite());
     }
 
     private void TriggerFlash()

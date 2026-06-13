@@ -89,4 +89,15 @@ public class EnemySpriteAnimator : MonoBehaviour
         if (rb != null && Mathf.Abs(rb.linearVelocity.x) > 0.1f)
             spriteRenderer.flipX = rb.linearVelocity.x > 0;
     }
+
+    public Sprite GetResultPreviewSprite()
+    {
+        if (rightFrames != null && rightFrames.Length > 0)
+            return rightFrames[0];
+
+        if (frames != null && frames.Length > 0)
+            return frames[0];
+
+        return spriteRenderer != null ? spriteRenderer.sprite : null;
+    }
 }

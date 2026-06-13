@@ -7,23 +7,25 @@ public class EnemyProjectile : MonoBehaviour
 
     private float       damage;
     private Rigidbody2D rb;
+    private Sprite      damageSourceSprite;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Init(Vector2 direction, float speed, float dmg)
+    public void Init(Vector2 direction, float speed, float dmg, Sprite sourceSprite = null)
     {
-        damage            = dmg;
-        rb.linearVelocity = direction * speed;
+        damage             = dmg;
+        damageSourceSprite = sourceSprite != null ? sourceSprite : GetComponent<SpriteRenderer>()?.sprite;
+        rb.linearVelocity  = direction * speed;
         Destroy(gameObject, lifetime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-        PlayerHealth.Instance?.TakeDamage(damage);
+        PlayerHealth.Instance?.TakeDamage(damage, damageSourceSprite);
         Destroy(gameObject);
     }
 }

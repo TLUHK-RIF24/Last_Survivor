@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     private float currentHealth;
     private float timeSurvived = 0f;
     private bool isDead = false;
+    private Sprite lastDamageSourceSprite;
     public GameObject floatingTextPrefab;   // Assign the prefab here
     void Awake()
     {
@@ -27,9 +28,12 @@ public class PlayerHealth : MonoBehaviour
             timeSurvived += Time.deltaTime;
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, Sprite damageSourceSprite = null)
     {
         if (isDead) return;
+
+        if (damageSourceSprite != null)
+            lastDamageSourceSprite = damageSourceSprite;
 
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
@@ -42,10 +46,10 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         isDead = true;
-        XPBarUI.Instance?.StopTimer();
+        XPBarUI.Instance?.Hide();
         int level = GameManager.Instance.GetCurrentLevel();
         float xp = GameManager.Instance.GetCurrentXP();
-        GameOverUI.Instance?.ShowGameOver(level, timeSurvived, xp);
+        GameOverUI.Instance?.ShowGameOver(level, timeSurvived, xp, lastDamageSourceSprite);
     }
 
     public void Heal(float amount)
