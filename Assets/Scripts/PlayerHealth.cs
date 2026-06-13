@@ -88,6 +88,9 @@ public class PlayerHealth : MonoBehaviour
         foreach (GameObject e in enemies)
             e.SetActive(false);
 
+        Transform shadow = transform.Find("Player_Shadow_0");
+        if (shadow != null) shadow.gameObject.SetActive(false);
+
         StartCoroutine(DeathSequence());
     }
 
@@ -114,7 +117,11 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
 
         if (frame2 != null && spriteRenderer != null)
+        {
             spriteRenderer.sprite = frame2;
+            if (selectedCharacter == 1) 
+                spriteRenderer.flipX = true;
+        }
 
         yield return new WaitForSeconds(1.5f);
 
