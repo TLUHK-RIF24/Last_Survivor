@@ -20,9 +20,9 @@ public class MainMenuUI : MonoBehaviour
     public class CharacterData
     {
         public string   name;
-        public Sprite[] animationFrames;   
-        public Sprite   nameImage;         
-        public Sprite   tbaImage;          
+        public Sprite[] animationFrames;
+        public Sprite   nameImage;
+        public Sprite   tbaImage;
     }
 
     [Header("Characters")]
@@ -37,7 +37,9 @@ public class MainMenuUI : MonoBehaviour
     [Header("Scene")]
     [SerializeField] private string gameSceneName = "Scene1";
 
-    
+    private const string REPORT_BUG_URL = "https://github.com/TLUHK-RIF24/Last_Survivor";
+
+
     private int characterIndex = 0;
 
 
@@ -123,6 +125,11 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnOptionsClicked() => ShowOptions();
     public void OnHelpClicked()    => ShowHelp();
+
+    public void OnReportBugClicked()
+    {
+        Application.OpenURL(REPORT_BUG_URL);
+    }
 
     public void OnQuitClicked()
     {
