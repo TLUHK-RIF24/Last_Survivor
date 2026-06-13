@@ -216,8 +216,15 @@ public class PauseMenuUI : MonoBehaviour
         if (optionsPanel != null)
             optionsPanel.SetActive(false);
 
-        SetMainPauseViewVisible(true);
-        pausePanel.SetActive(false);
+        pausePanel.SetActive(true);
+
+        if (pauseTitle != null)
+            pauseTitle.SetActive(false);
+
+        if (pauseFrame != null)
+            pauseFrame.SetActive(true);
+
+        SetMainPauseButtonsVisible(false);
         confirmPopup.SetActive(true);
 
         if (confirmText != null)

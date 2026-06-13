@@ -3723,7 +3723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83da04de4232b7e4cbcf044fc7907176, type: 3}
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::OptionsUI
-  musicSlider: {fileID: 0}
+  musicSlider: {fileID: 1778087614}
   sfxSlider: {fileID: 0}
   fullscreenValueText: {fileID: 0}
   languageText: {fileID: 0}
