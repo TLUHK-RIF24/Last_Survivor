@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class OptionsUI : MonoBehaviour
 {
@@ -23,6 +24,22 @@ public class OptionsUI : MonoBehaviour
     private const string PREF_FULLSCREEN = "Fullscreen";
     private const string PREF_LANGUAGE   = "Language";
     private const float DEFAULT_SFX_ON_VOLUME = 0.8f;
+
+    private void Awake()
+    {
+        WireButton("SFXOnButton", OnSFXOnClicked);
+        WireButton("SFXOffButton", OnSFXOffClicked);
+        WireButton("FullscreenOnButton", OnFullscreenOnClicked);
+        WireButton("FullscreenOffButton", OnFullscreenOffClicked);
+        WireButton("EnglishButton", OnEnglishClicked);
+        WireButton("BackButton", OnBackClicked);
+
+        if (musicSlider != null)
+        {
+            musicSlider.onValueChanged.RemoveListener(OnMusicVolumeChanged);
+            musicSlider.onValueChanged.AddListener(OnMusicVolumeChanged);
+        }
+    }
 
     void OnEnable()
     {
@@ -159,5 +176,27 @@ public class OptionsUI : MonoBehaviour
 
         if (PauseMenuUI.Instance != null)
             PauseMenuUI.Instance.OnOptionsBackClicked();
+    }
+
+    private void WireButton(string objectName, UnityAction action)
+    {
+        Button button = FindButton(objectName);
+        if (button == null)
+            return;
+
+        button.onClick.RemoveListener(action);
+        button.onClick.AddListener(action);
+    }
+
+    private Button FindButton(string objectName)
+    {
+        Button[] buttons = GetComponentsInChildren<Button>(true);
+        foreach (Button button in buttons)
+        {
+            if (button.name == objectName)
+                return button;
+        }
+
+        return null;
     }
 }

@@ -676,19 +676,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 413782750}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1546627704}
-        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: OnArrowLeft
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &413782753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,9 +775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f072ba5bf69139aec122de6398b91d, type: 3}
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuFallingParticles
-  particleSprites:
-  - {fileID: 21300000, guid: 8eb23493762a2d8a8faadd528ebe7c2e, type: 3}
-  - {fileID: 21300000, guid: d9149c03200d732fbcc02921961320e6, type: 3}
+  particleSpriteLarge: {fileID: 21300000, guid: 8eb23493762a2d8a8faadd528ebe7c2e, type: 3}
+  particleSpriteSmall: {fileID: 21300000, guid: d9149c03200d732fbcc02921961320e6, type: 3}
   particleCount: 76
   speedRange: {x: 85, y: 165}
   driftRange: {x: -26, y: 26}
@@ -930,19 +917,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 714188818}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1546627704}
-        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: OnHelpClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &714188818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1330,19 +1305,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720100032}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1560384153}
-        m_TargetAssemblyTypeName: HelpUI, Assembly-CSharp
-        m_MethodName: OnBackClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &720100034
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1483,19 +1446,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720300003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2141344739}
-        m_TargetAssemblyTypeName: OptionsUI, Assembly-CSharp
-        m_MethodName: OnSFXOnClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &720300005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,19 +1579,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720300013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2141344739}
-        m_TargetAssemblyTypeName: OptionsUI, Assembly-CSharp
-        m_MethodName: OnSFXOffClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &720300015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1773,19 +1712,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720300023}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2141344739}
-        m_TargetAssemblyTypeName: OptionsUI, Assembly-CSharp
-        m_MethodName: OnFullscreenOnClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &720300025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1918,19 +1845,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720300033}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2141344739}
-        m_TargetAssemblyTypeName: OptionsUI, Assembly-CSharp
-        m_MethodName: OnFullscreenOffClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &720300035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2063,19 +1978,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720300043}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2141344739}
-        m_TargetAssemblyTypeName: OptionsUI, Assembly-CSharp
-        m_MethodName: OnEnglishClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &720300045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2208,19 +2111,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720301003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2141344739}
-        m_TargetAssemblyTypeName: OptionsUI, Assembly-CSharp
-        m_MethodName: OnBackClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &720301005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2393,7 +2284,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1173808553}
   - component: {fileID: 1173808552}
-  - component: {fileID: 1173808551}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2401,37 +2291,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1173808551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173808550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
-  m_SendPointerHoverToParent: 1
-  m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
-  m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
-  m_CursorLockBehavior: 0
-  m_ScrollDeltaPerTick: 6
 --- !u!114 &1173808552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2751,19 +2610,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1480110899}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1546627704}
-        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: OnOptionsClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1480110899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2939,27 +2786,19 @@ MonoBehaviour:
   characterAnimator: {fileID: 2118884726}
   arrowLeft: {fileID: 413782752}
   arrowRight: {fileID: 1795704314}
-  characters:
-  - name: Archer
-    animationFrames:
-    - {fileID: 21300000, guid: c010324b4cc417d48913d41b5ed15fe0, type: 3}
-    - {fileID: 21300000, guid: 048c5f6e46b267b478142ce901a84dec, type: 3}
-    nameImage: {fileID: 21300000, guid: cea16be4a5d944f46ba6e8d0148e5f0c, type: 3}
-    tbaImage: {fileID: 0}
-  - name: Mage
-    animationFrames:
-    - {fileID: 21300000, guid: 313316528ca290940bdc4de9935d2349, type: 3}
-    - {fileID: 21300000, guid: 845ad6f0284106148ab7bd5342f99cda, type: 3}
-    nameImage: {fileID: 21300000, guid: 95c2ecfde1aa74c90a1b698bbe95cf4b, type: 3}
-    tbaImage: {fileID: 0}
-  - name: Knight
-    animationFrames: []
-    nameImage: {fileID: 21300000, guid: 9443d3cb9bc75419a9e6e17fff882280, type: 3}
-    tbaImage: {fileID: 21300000, guid: 625c0e15b5050354ebe785b211095ac7, type: 3}
+  archerAnimationFrame1: {fileID: 21300000, guid: c010324b4cc417d48913d41b5ed15fe0, type: 3}
+  archerAnimationFrame2: {fileID: 21300000, guid: 048c5f6e46b267b478142ce901a84dec, type: 3}
+  archerNameImage: {fileID: 21300000, guid: cea16be4a5d944f46ba6e8d0148e5f0c, type: 3}
+  mageAnimationFrame1: {fileID: 21300000, guid: 313316528ca290940bdc4de9935d2349, type: 3}
+  mageAnimationFrame2: {fileID: 21300000, guid: 845ad6f0284106148ab7bd5342f99cda, type: 3}
+  mageNameImage: {fileID: 21300000, guid: 95c2ecfde1aa74c90a1b698bbe95cf4b, type: 3}
+  knightNameImage: {fileID: 21300000, guid: 9443d3cb9bc75419a9e6e17fff882280, type: 3}
+  knightTbaImage: {fileID: 21300000, guid: 625c0e15b5050354ebe785b211095ac7, type: 3}
   playButton: {fileID: 2036721260}
   optionsButton: {fileID: 1480110898}
   helpButton: {fileID: 714188817}
   quitButton: {fileID: 1592784015}
+  reportButton: {fileID: 720520004}
   gameSceneName: Scene1
 --- !u!1 &1560384151
 GameObject:
@@ -3111,19 +2950,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1592784016}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1546627704}
-        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: OnQuitClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1592784016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3294,19 +3121,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720520003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1546627704}
-        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: OnReportBugClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &720520005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3408,19 +3223,7 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2141344739}
-        m_TargetAssemblyTypeName: OptionsUI, Assembly-CSharp
-        m_MethodName: OnMusicVolumeChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1795704313
 GameObject:
   m_ObjectHideFlags: 0
@@ -3484,19 +3287,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1795704315}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1546627704}
-        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: OnArrowRight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1795704315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3799,19 +3590,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2036721261}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1546627704}
-        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: OnPlayClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2036721261
 MonoBehaviour:
   m_ObjectHideFlags: 0

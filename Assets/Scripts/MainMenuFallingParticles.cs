@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class MainMenuFallingParticles : MonoBehaviour
 {
-    [SerializeField] private Sprite[] particleSprites;
+    [SerializeField] private Sprite particleSpriteLarge;
+    [SerializeField] private Sprite particleSpriteSmall;
     [SerializeField] private int particleCount = 76;
     [SerializeField] private Vector2 speedRange = new Vector2(85f, 165f);
     [SerializeField] private Vector2 driftRange = new Vector2(-26f, 26f);
@@ -111,14 +112,11 @@ public class MainMenuFallingParticles : MonoBehaviour
     {
         usableSprites.Clear();
 
-        if (particleSprites != null)
-        {
-            foreach (Sprite sprite in particleSprites)
-            {
-                if (sprite != null)
-                    usableSprites.Add(sprite);
-            }
-        }
+        if (particleSpriteLarge != null)
+            usableSprites.Add(particleSpriteLarge);
+
+        if (particleSpriteSmall != null)
+            usableSprites.Add(particleSpriteSmall);
 
         if (usableSprites.Count == 0)
             usableSprites.Add(GetFallbackSprite());

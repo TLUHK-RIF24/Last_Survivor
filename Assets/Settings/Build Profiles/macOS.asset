@@ -167,7 +167,7 @@ MonoBehaviour:
     - line: '|   loadStoreDebugModeEnabled: 0'
     - line: '|   visionOSBundleVersion: 1.0'
     - line: '|   tvOSBundleVersion: 1.0'
-    - line: '|   bundleVersion: 1.0'
+    - line: '|   bundleVersion: 1.2.0'
     - line: '|   preloadedAssets:'
     - line: '|   - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100,
         type: 3}'
@@ -192,7 +192,7 @@ MonoBehaviour:
     - line: '|   androidMaxAspectRatio: 2.4'
     - line: '|   androidMinAspectRatio: 1'
     - line: '|   applicationIdentifier:'
-    - line: '|     Standalone: com.DefaultCompany.2D-URP'
+    - line: '|     Standalone: com.tluhk24.lastsurvivor'
     - line: '|   buildNumber:'
     - line: '|     Standalone: 0'
     - line: '|     VisionOS: 0'
@@ -760,4 +760,4 @@ MonoBehaviour:
         m_AdaptivePerformanceEnabled: 0
         m_MacOSXcodeBuildConfig: 1
         m_Architecture: 2
-        m_CreateXcodeProject: 1
+        m_CreateXcodeProject: 0
