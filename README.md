@@ -49,6 +49,9 @@ Koosolekuteks koguneme Discordi-is.
 # Videotükikeste kaust
 
 [Kaust](https://drive.google.com/drive/folders/11NwVq1rIIpjQuZyjQvQLYjXcTtTNrRxM?usp=sharing).
+[Poster](https://drive.google.com/file/d/18ITX8ykMcYnGZYW7fQNANsTZ9lnrFvDS/view?usp=drive_link).
+[Video](https://drive.google.com/file/d/1h9kQLZII__J74cPETlYRFtjnGjsnu41q/view?usp=drive_link).
+
 
 ## Kaastöölised, nende rollid ja päevikud
 
